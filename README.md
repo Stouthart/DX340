@@ -22,7 +22,7 @@ It will take 1-2 mins to finish. Your device will reboot automatically.
 
 > [!TIP]
 >
-> Make sure to manually disable Enhanced notifications via Settings > Notifications
+> Make sure to manually disable "Enhanced notifications" via Settings > Notifications
 
 ## Advanced Tweaking
 
