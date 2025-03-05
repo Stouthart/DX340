@@ -15,10 +15,9 @@
 
     # Google
     cmd package disable-user --user 0 com.android.chrome
-    cmd package uninstall --user 0 com.google.android.contactkeys
+    # cmd package uninstall --user 0 com.google.android.contactkeys
     cmd package uninstall --user 0 com.google.android.inputmethod.latin
     cmd package disable-user --user 0 com.google.android.partnersetup
-    cmd package uninstall --user 0 com.google.android.safetycore
 
     # Play services/Store
     # cmd package disable-user --user 0 com.android.vending
@@ -69,7 +68,7 @@
 
     ## https://source.android.com/docs/core/runtime/configure#compiler_filters
     cmd package compile -a -f -m speed-profile
-    # cmd package compile -a -f --compile-layouts
+    cmd package compile -a -f --compile-layouts
     pm bg-dexopt-job
 
     ## https://www.reddit.com/r/AndroidQuestions/comments/s1vk4z/does_anyone_know_how_to_clear_all_app_caches_at/
