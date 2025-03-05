@@ -1,0 +1,72 @@
+#!/bin/sh
+{
+    # v2.0, Copyright (c) 2025, Stouthart. All rights reserved.
+
+    echo 'Debloating...'
+
+    # Apps
+    cmd package uninstall --user 0 cm.aptoide.pt
+    cmd package uninstall --user 0 com.android.calculator2
+    cmd package uninstall --user 0 com.android.deskclock
+    cmd package uninstall --user 0 com.android.gallery3d
+    cmd package uninstall --user 0 com.wandoujia.phoenix2
+
+    # Google
+    cmd package disable-user --user 0 com.android.chrome
+    cmd package uninstall --user 0 com.google.android.contactkeys
+    cmd package uninstall --user 0 com.google.android.inputmethod.latin
+    cmd package disable-user --user 0 com.google.android.partnersetup
+    cmd package uninstall --user 0 com.google.android.safetycore
+
+    # Play services/Store
+    # cmd package disable-user --user 0 com.android.vending
+    # cmd package disable-user --user 0 com.google.android.gms
+
+    # Debloat other (only running packages)
+    cmd package uninstall --user 0 com.android.managedprovisioning
+    cmd package uninstall --user 0 com.android.remoteprovisioner
+    cmd package uninstall --user 0 com.android.traceur
+    cmd package uninstall --user 0 com.google.android.onetimeinitializer
+    cmd package uninstall --user 0 com.google.android.syncadapters.calendar
+    cmd package uninstall --user 0 com.qualcomm.qti.qms.service.connectionsecurity
+
+    ## https://android.stackexchange.com/questions/215313/how-to-reinstall-an-uninstalled-system-app-through-adb/215316#215316
+    # cmd package install-existing com.android.calculator2
+    # cmd package enable com.google.android.gms
+
+    echo 'Optimizing settings...'
+
+    # Global settings
+    settings put global bug_report 0
+    settings put global fstrim_mandatory_interval 1
+    settings put global mobile_data_always_on 0
+    settings put global mobile_signal_detector 0
+    settings put global ota_disable_automatic_update 1
+
+    # Remove animations
+    settings put global animator_duration_scale 0.0
+    settings put global transition_animation_scale 0.0
+    settings put global window_animation_scale 0.0
+
+    # Secure settings
+    settings put secure location_mode 0
+    settings put secure notification_bubbles 0
+    settings put secure ui_night_mode 2
+
+    # System settings
+    settings put system multicore_packet_scheduler 1
+    settings put system screen_brightness 81
+    settings put system screen_off_timeout 15000
+
+    echo 'Recompiling packages...'
+
+    ## https://source.android.com/docs/core/runtime/configure#compiler_filters
+    cmd package compile -a -f -m speed-profile
+    pm bg-dexopt-job
+
+    ## https://www.reddit.com/r/AndroidQuestions/comments/s1vk4z/does_anyone_know_how_to_clear_all_app_caches_at/
+    cmd package trim-caches 999G
+
+    echo 'Rebooting...'
+    reboot
+}
