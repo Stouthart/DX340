@@ -35,7 +35,7 @@ It will take 1-2 mins to finish. Your device will reboot automatically.
 > [!NOTE]
 >
 > - Rooting is NOT required
-> - adb remount may take 15-30 secs on 1st run, you can safely ignore any output
+> - "adb remount" may take 15-30 secs on 1st run, you can safely ignore any output
 
 **From the DX340 prompt, run:**
 
