@@ -15,7 +15,6 @@
 
     # Google
     cmd package disable-user --user 0 com.android.chrome
-    # cmd package uninstall --user 0 com.google.android.contactkeys
     cmd package uninstall --user 0 com.google.android.inputmethod.latin
     cmd package disable-user --user 0 com.google.android.partnersetup
 
