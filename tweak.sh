@@ -19,6 +19,7 @@
 
   ## https://android.stackexchange.com/questions/217495/how-can-proc-sys-values-be-changed-at-boot-sysctl-conf-does-this-on-normal-lin
   ## https://android.googlesource.com/platform/system/core/+/master/init/README.md
+
   cat >/etc/init/custom.rc <<EOF
 on init
   write /sys/kernel/debug/debug_enabled N
@@ -41,7 +42,7 @@ on late-fs
   write /sys/block/sda/queue/read_ahead_kb 2048
 
 on property:sys.boot_completed=1
-  # Runtime SchedTune
+  ##  https://xdaforums.com/t/09-01-script-schedtune-boost-making-pixel-xl-and-eas-even-more-smoother.3528807/post-70475813
   write /dev/stune/schedtune.boost 10
   write /dev/stune/foreground/schedtune.boost 15
   write /dev/stune/foreground/schedtune.prefer_idle 1

@@ -4,6 +4,8 @@
 
     echo 'Debloating...'
 
+    ## https://xdaforums.com/t/cmd-package-install-existing-user-user-package-vs-pm-install-existing-user-user-package.4553257/
+
     # Apps
     cmd package uninstall --user 0 cm.aptoide.pt
     cmd package uninstall --user 0 com.android.calculator2
@@ -36,6 +38,11 @@
 
     echo 'Optimizing settings...'
 
+    ## https://www.reddit.com/r/tasker/comments/fbi5ai/psa_you_can_use_adb_to_find_all_the_settings_that/
+    ## https://xdaforums.com/t/samsung-galaxy-one-ui-optimization-guide.4376755/page-413#post-89683326
+    ## https://github.com/ionuttbara/melody_android
+    ## https://technastic.com/adb-commands-improve-performance-android/
+
     # Global settings
     settings put global bug_report 0
     settings put global fstrim_mandatory_interval 1
@@ -62,6 +69,7 @@
 
     ## https://source.android.com/docs/core/runtime/configure#compiler_filters
     cmd package compile -a -f -m speed-profile
+    # cmd package compile -a -f --compile-layouts
     pm bg-dexopt-job
 
     ## https://www.reddit.com/r/AndroidQuestions/comments/s1vk4z/does_anyone_know_how_to_clear_all_app_caches_at/
