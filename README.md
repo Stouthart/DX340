@@ -20,6 +20,10 @@
 
 It will take 1-2 mins to finish. Your device will reboot automatically.
 
+> [!TIP]
+>
+> Make sure to manually disable Enhanced notifications via Settings > Notifications
+
 ## Advanced Tweaking
 
 **Run the following lines from a Command prompt, or Terminal window on Mac:**
