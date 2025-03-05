@@ -1,6 +1,6 @@
 #!/bin/sh
 {
-  # v2.2, Copyright (c) 2025, Stouthart. All rights reserved.
+  # v2.3, Copyright (c) 2025, Stouthart. All rights reserved.
 
   echo 'Checking...'
 
