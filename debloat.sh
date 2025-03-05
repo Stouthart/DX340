@@ -1,6 +1,6 @@
 #!/bin/sh
 {
-    # v2.2, Copyright (c) 2025, Stouthart. All rights reserved.
+    # v2.3, Copyright (c) 2025, Stouthart. All rights reserved.
 
     echo 'Debloating...'
 
@@ -63,7 +63,7 @@
     settings put system screen_brightness 81
     settings put system screen_off_timeout 15000
 
-    echo 'Recompiling packages & overlays...'
+    echo 'Recompiling...'
 
     ## https://source.android.com/docs/core/runtime/configure#compiler_filters
     cmd package compile -a -f -m speed-profile
