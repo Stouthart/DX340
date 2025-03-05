@@ -1,0 +1,33 @@
+on init
+  # v3.0, Copyright (c) 2025, Stouthart. All rights reserved.
+
+  write /sys/kernel/debug/debug_enabled N
+
+  ## https://github.com/redhat-performance/tuned/tree/master/profiles
+  write /proc/sys/kernel/timer_migration 0
+  write /proc/sys/net/core/somaxconn 2048
+  write /proc/sys/net/ipv4/tcp_fastopen 3
+  write /proc/sys/vm/dirty_background_ratio 3
+  write /proc/sys/vm/dirty_ratio 10
+  write /proc/sys/vm/stat_interval 10
+
+on late-init
+  # Disable scheduler statistics to reduce overhead
+  write /proc/sys/kernel/sched_schedstats 0
+
+on late-fs
+  ## https://source.android.com/docs/core/perf/boot-times#tuning-the-filesystem
+  write /sys/block/sda/queue/iostats 0
+  write /sys/block/sda/queue/read_ahead_kb 2048
+
+on property:sys.boot_completed=1
+  ##  https://xdaforums.com/t/09-01-script-schedtune-boost-making-pixel-xl-and-eas-even-more-smoother.3528807/post-70475813
+  write /dev/stune/schedtune.boost 10
+  write /dev/stune/foreground/schedtune.boost 15
+  write /dev/stune/foreground/schedtune.prefer_idle 1
+  write /dev/stune/top-app/schedtune.boost 25
+  write /dev/stune/top-app/schedtune.prefer_idle 1
+
+  # Fork & execute /etc/rc.local
+  exec_background -- /etc/rc.local
+  
