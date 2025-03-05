@@ -50,7 +50,11 @@ Your device will reboot immediately.
     adb shell rm -f /etc/init/custom.rc /etc/rc.local
     adb reboot
 
-Follow the discussion on [Head-Fi]. Enjoy the music!
+Enjoy the improvements!
+
+> [!TIP]
+>
+> Follow the discussion on [Head-Fi]
 
 [iBasso DX340]: https://ibasso.com/wp-content/uploads/2024/12/2024-12-24469.webp
 [Android SDK Platform-Tools]: https://developer.android.com/tools/releases/platform-tools
