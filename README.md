@@ -61,12 +61,12 @@ Enjoy the improvements!
 **Method 1:**
 
 - With device powered **on**, press Power button and select "Restart"
-- Immediately press Next button (above Play) AND hold until iBasso Audio logo appears
+- Immediately press Next button (above Play) & hold until iBasso Audio logo appears
 <!-- https://www.head-fi.org/threads/dx320-rohm-dac-chips-android-11-amp11mk2s-new-fw-2-07.962274/page-188#post-17009540 -->
 
 **Method 2:**
 
-- With device powered **off**, press AND hold Next button
+- With device powered **off**, press & hold Next button
 - Plug in USB-C charger cable
 - Release button when iBasso Audio logo appears
 <!-- https://www.head-fi.org/threads/ibasso-dx300-qualcomm-snapdragon-660-octa-core-6gb-ram-new-firmware-2-00-android-11.943221/page-353#post-16285599 -->
