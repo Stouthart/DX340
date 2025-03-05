@@ -54,7 +54,7 @@ Enjoy the improvements!
 
 > [!TIP]
 >
-> Follow the discussion on [Head-Fi]
+> Follow the discussion about the iBasso DX340 on [Head-Fi]
 
 [iBasso DX340]: https://ibasso.com/wp-content/uploads/2024/12/2024-12-24469.webp
 [Android SDK Platform-Tools]: https://developer.android.com/tools/releases/platform-tools
