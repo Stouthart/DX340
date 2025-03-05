@@ -1,6 +1,6 @@
 #!/bin/sh
 {
-  # v2.0, Copyright (c) 2025, Stouthart. All rights reserved.
+  # v2.1, Copyright (c) 2025, Stouthart. All rights reserved.
 
   echo 'Checking...'
 
@@ -76,7 +76,6 @@ echo 1 >/proc/sys/net/ipv6/conf/all/disable_ipv6
 [ -b  /dev/block/mmcblk0 ] && echo 0 >/sys/block/mmcblk0/queue/iostats
 
 exit 0
-
 EOF
 
   chmod +x /etc/rc.local

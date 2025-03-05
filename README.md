@@ -22,7 +22,7 @@ It will take 1-2 mins to finish. Your device will reboot automatically.
 
 > [!TIP]
 >
-> Make sure to manually disable "Enhanced notifications" via Settings > Notifications
+> Make sure to manually disable "Enhanced notifications" via Settings > Notifications (last option)
 
 ## Advanced Tweaking
 
@@ -61,4 +61,4 @@ Enjoy the improvements!
 [Homebrew]: https://formulae.brew.sh/cask/android-platform-tools
 [Head-Fi]: https://www.head-fi.org/threads/dx340-ibasso-developed-discret-dac-easily-replaceable-batteries-amp-modules-new-firmware-on-1st-page-v1-01-local-update.974099/
 
-<!-- v2.0, Copyright (c) 2025, Stouthart. All rights reserved. -->
+<!-- v2.1, Copyright (c) 2025, Stouthart. All rights reserved. -->
