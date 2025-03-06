@@ -39,7 +39,7 @@ It will take 1-2 mins to finish. Your device will reboot automatically.
 
 **From the DX340 prompt, run:**
 
-    curl -s https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/tweak.sh | sh
+    curl -s https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/install.sh | sh
 
 Your device will reboot immediately.
 
