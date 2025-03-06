@@ -31,4 +31,3 @@
   echo 'Rebooting...'
   reboot
 }
-exit
