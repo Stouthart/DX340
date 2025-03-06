@@ -2,8 +2,13 @@
 {
   # v3.0, Copyright (c) 2025, Stouthart. All rights reserved.
 
-  [ -w /etc ] || {
+  [ ! -w /etc ] && {
     echo 'Read-only file system. Try "adb remount" first.'
+    exit 1
+  }
+
+  [ -z "$(getprop wifi.active.interface)" ] && {
+    echo 'No WiFi interface active. Enable WiFi first.'
     exit 1
   }
 
