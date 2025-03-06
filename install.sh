@@ -2,15 +2,14 @@
 {
 	# v3.0, Copyright (c) 2025, Stouthart. All rights reserved.
 
-	file=/etc/rc.local
-
-	if ! touch $file 2>/dev/null; then
+	[ -w /etc ] || {
 		echo 'Read-only file system. Try "adb remount" first.'
 		exit 1
-	fi
+	}
 
 	echo 'Installing...'
 
+	file=/etc/rc.local
 	curl -so $file https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/rc.local
 	chmod +x $file
 
