@@ -1,7 +1,5 @@
 #!/bin/sh
 
-# v3.0, Copyright (c) 2025, Stouthart. All rights reserved.
-
 sleep 10
 
 # Runtime TuneD
