@@ -7,11 +7,6 @@
     exit 1
   }
 
-  [ -z "$(getprop wifi.active.interface)" ] && {
-    echo 'No WiFi interface active. Enable WiFi first.'
-    exit 1
-  }
-
   echo 'Installing...'
 
   file=/etc/rc.local
