@@ -1,18 +1,13 @@
 #!/bin/sh
 {
-  # v2.3, Copyright (c) 2025, Stouthart. All rights reserved.
+  # v2.4, Copyright (c) 2025, Stouthart. All rights reserved.
 
-  echo 'Checking...'
-
-  # Preconditions
-  failed() {
-    printf '\e[31m%s\e[m\n' "$1"
+  [ ! -w /etc ] && {
+    echo 'Read-only file system. Try "adb remount" first.'
     exit 1
   }
-  [ "$(whoami)" != root ] && failed 'Not running as root. Try "adb root" first.'
-  ! touch /etc/init/custom.rc 2>/dev/null && failed 'Read-only file system. Try "adb remount" first.'
 
-  echo 'Running...'
+  echo 'Installing...'
 
   # Remove system-wide tracing files, will be fixed in next firmware, confirmed by @Paul - iBasso
   rm -f /etc/init/atrace.rc /etc/init/atrace_userdebug.rc 2>/dev/null
