@@ -16,7 +16,7 @@
 
 **From the DX340 prompt, run:**
 
-    curl -fs https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/debloat.sh | sh
+    curl -s https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/debloat.sh | sh
 
 It will take 1-2 mins to finish. Your device will reboot automatically.
 
@@ -39,7 +39,7 @@ It will take 1-2 mins to finish. Your device will reboot automatically.
 
 **From the DX340 prompt, run:**
 
-    curl -fs https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/tweak.sh | sh
+    curl -s https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/tweak.sh | sh
 
 Your device will reboot immediately.
 
@@ -82,4 +82,4 @@ Enjoy the improvements!
 [Homebrew]: https://formulae.brew.sh/cask/android-platform-tools
 [Head-Fi]: https://www.head-fi.org/threads/dx340-ibasso-developed-discret-dac-easily-replaceable-batteries-amp-modules-new-firmware-on-1st-page-v1-01-local-update.974099/
 
-<!-- v2.3, Copyright (c) 2025, Stouthart. All rights reserved. -->
+<!-- v3.0, Copyright (c) 2025, Stouthart. All rights reserved. -->
