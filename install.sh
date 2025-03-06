@@ -31,5 +31,4 @@
   echo 'Rebooting...'
   reboot
 }
-
 exit
