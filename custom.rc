@@ -1,4 +1,4 @@
-# v3.0, Copyright (c) 2025, Stouthart. All rights reserved.
+## https://android.googlesource.com/platform/system/core/+/master/init/README.md
 
 on init
   write /sys/kernel/debug/debug_enabled N
@@ -30,4 +30,3 @@ on property:sys.boot_completed=1
 
   # Fork & execute /etc/rc.local
   exec_background -- /etc/rc.local
-  
