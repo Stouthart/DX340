@@ -4,7 +4,7 @@
 
 > [!IMPORTANT]
 >
-> - Download and install [Android SDK Platform-Tools], or via [Homebrew] for Mac
+> - Download and install [Android SDK Platform-Tools] (or install via [Homebrew] on Mac)
 > - Make sure your device has WiFi turned on
 > - Enable USB debugging (Developer options)
 
