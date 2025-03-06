@@ -75,7 +75,7 @@ Enjoy the improvements!
 >
 > - Use the Volume wheel to navigate between items
 > - Press Power button to confirm a selection
-> - It's a good practice to execute "Wipe data/factory reset" after a firmware update
+> - It's a good practice to execute "Wipe data/factory reset" after every firmware update
 
 [iBasso DX340]: https://ibasso.com/wp-content/uploads/2024/12/2024-12-24469.webp
 [Android SDK Platform-Tools]: https://developer.android.com/tools/releases/platform-tools
