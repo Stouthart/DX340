@@ -10,6 +10,7 @@ on init
   write /proc/sys/vm/dirty_background_ratio 3
   write /proc/sys/vm/dirty_ratio 10
   write /proc/sys/vm/stat_interval 10
+  write /proc/sys/vm/swappiness 10
 
 on late-init
   # Disable scheduler statistics to reduce overhead
@@ -20,13 +21,17 @@ on late-fs
   write /sys/block/sda/queue/iostats 0
   write /sys/block/sda/queue/read_ahead_kb 2048
 
+  # SD card tuning
+  write /sys/block/mmcblk0/queue/iostats 0
+
 on property:sys.boot_completed=1
-  ##  https://xdaforums.com/t/09-01-script-schedtune-boost-making-pixel-xl-and-eas-even-more-smoother.3528807/post-70475813
+  ## https://xdaforums.com/t/09-01-script-schedtune-boost-making-pixel-xl-and-eas-even-more-smoother.3528807/post-70475813
   write /dev/stune/schedtune.boost 10
   write /dev/stune/foreground/schedtune.boost 15
   write /dev/stune/foreground/schedtune.prefer_idle 1
   write /dev/stune/top-app/schedtune.boost 25
   write /dev/stune/top-app/schedtune.prefer_idle 1
 
-  # Fork & execute /etc/rc.local
-  exec_background -- /etc/rc.local
+on property:init.svc_debug_pid.vendor.msm_irqbalance=*
+  ## https://github.com/LeanxModulostk/IRQ-Balancer-Configuration/blob/main/service.sh
+  exec -- /system/bin/renice -n -10 -p "${init.svc_debug_pid.vendor.msm_irqbalance}"
