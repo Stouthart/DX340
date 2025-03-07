@@ -47,7 +47,7 @@ Your device will reboot immediately.
 
     adb root
     adb remount
-    adb shell rm -f /etc/init/custom.rc /etc/rc.local
+    adb shell rm -f /etc/init/custom.rc
     adb reboot
 
 Enjoy the improvements!
@@ -82,4 +82,4 @@ Enjoy the improvements!
 [Homebrew]: https://formulae.brew.sh/cask/android-platform-tools
 [Head-Fi]: https://www.head-fi.org/threads/dx340-ibasso-developed-discret-dac-easily-replaceable-batteries-amp-modules-new-firmware-on-1st-page-v1-01-local-update.974099/
 
-<!-- v3.0, Copyright (c) 2025, Stouthart. All rights reserved. -->
+<!-- v3.1, Copyright (c) 2025, Stouthart. All rights reserved. -->
