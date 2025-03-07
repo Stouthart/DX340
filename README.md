@@ -8,6 +8,8 @@
 > - Make sure your device has WiFi turned on
 > - Enable USB debugging (Developer options)
 
+[TOC]
+
 ## Debloating & Optimization
 
 **Run the following line from a Command prompt, or Terminal window on Mac:**
