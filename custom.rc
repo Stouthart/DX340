@@ -37,4 +37,4 @@ on property:init.svc_debug_pid.vendor.msm_irqbalance=*
   exec -- /system/bin/renice -n -10 -p "${init.svc_debug_pid.vendor.msm_irqbalance}"
 
 on property:init.svc.logd=running
-  setprop ctl.stop logd
+  exec -- /system/bin/setprop ctl.stop logd
