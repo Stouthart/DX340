@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# v4.0, Copyright (c) 2025, Stouthart. All rights reserved.
+# v4.1, Copyright (c) 2025, Stouthart. All rights reserved.
 {
   echo 'Debloating...'
 
@@ -26,6 +26,7 @@
 
   # Debloat other (only running packages)
   cmd package uninstall --user 0 com.android.managedprovisioning
+  cmd package uninstall --user 0 com.android.musicfx
   cmd package uninstall --user 0 com.android.remoteprovisioner
   cmd package uninstall --user 0 com.android.traceur
   cmd package uninstall --user 0 com.google.android.onetimeinitializer
