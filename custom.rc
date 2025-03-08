@@ -35,3 +35,6 @@ on property:sys.boot_completed=1
 on property:init.svc_debug_pid.vendor.msm_irqbalance=*
   ## https://github.com/LeanxModulostk/IRQ-Balancer-Configuration/blob/main/service.sh
   exec -- /system/bin/renice -n -10 -p "${init.svc_debug_pid.vendor.msm_irqbalance}"
+
+on property:init.svc.logd=running
+  setprop ctl.stop logd
