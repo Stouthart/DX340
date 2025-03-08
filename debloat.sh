@@ -1,7 +1,7 @@
 #!/bin/sh
+#
+# v4.0, Copyright (c) 2025, Stouthart. All rights reserved.
 {
-  # v3.0, Copyright (c) 2025, Stouthart. All rights reserved.
-
   echo 'Debloating...'
 
   ## https://xdaforums.com/t/cmd-package-install-existing-user-user-package-vs-pm-install-existing-user-user-package.4553257/
@@ -18,9 +18,11 @@
   cmd package uninstall --user 0 com.google.android.inputmethod.latin
   cmd package disable-user --user 0 com.google.android.partnersetup
 
-  # Play services/Store
-  # cmd package disable-user --user 0 com.android.vending
-  # cmd package disable-user --user 0 com.google.android.gms
+  # shellcheck disable=SC2154
+  [ "$play" = disable ] && {
+    cmd package disable-user --user 0 com.android.vending
+    cmd package disable-user --user 0 com.google.android.gms
+  }
 
   # Debloat other (only running packages)
   cmd package uninstall --user 0 com.android.managedprovisioning
@@ -32,7 +34,7 @@
 
   ## https://android.stackexchange.com/questions/215313/how-to-reinstall-an-uninstalled-system-app-through-adb/215316#215316
   # cmd package install-existing com.android.calculator2
-  # cmd package enable com.google.android.gms
+  # cmd package enable com.android.vending
 
   echo 'Optimizing settings...'
 
@@ -66,8 +68,7 @@
   echo 'Recompiling...'
 
   ## https://source.android.com/docs/core/runtime/configure#compiler_filters
-  cmd package compile -a -f -m speed-profile
-  cmd package compile -a -f --compile-layouts
+  cmd package compile -a -m speed-profile
   pm bg-dexopt-job
 
   ## https://www.reddit.com/r/AndroidQuestions/comments/s1vk4z/does_anyone_know_how_to_clear_all_app_caches_at/
