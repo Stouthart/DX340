@@ -1,7 +1,7 @@
 #!/bin/sh
+#
+# v4.0, Copyright (c) 2025, Stouthart. All rights reserved.
 {
-  # v3.1, Copyright (c) 2025, Stouthart. All rights reserved.
-
   [ -w /etc ] || {
     echo 'Read-only file system. Try "adb remount" first.'
     exit 1
@@ -15,6 +15,12 @@
   ## https://android.stackexchange.com/questions/217495/how-can-proc-sys-values-be-changed-at-boot-sysctl-conf-does-this-on-normal-lin
   chmod 0644 $file
   chcon u:object_r:system_file:s0 $file
+
+  # shellcheck disable=SC2154
+  [ "$tune" = max ] && {
+    sed -i -E 's,foreground/schedtune.boost [0-9]+$,foreground/schedtune.boost 30,' $file
+    sed -i -E 's,top-app/schedtune.boost [0-9]+$,top-app/schedtune.boost 40,' $file
+  }
 
   # Remove redundant file from previous versions
   rm -f /etc/rc.local 2>/dev/null
