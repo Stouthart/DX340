@@ -1,13 +1,13 @@
 #!/bin/sh
 #
-# v4.0, Copyright (c) 2025, Stouthart. All rights reserved.
+# v4.1, Copyright (c) 2025, Stouthart. All rights reserved.
 {
   [ -w /etc ] || {
     echo 'Read-only file system. Try "adb remount" first.'
     exit 1
   }
 
-  echo 'Installing...'
+  echo '> Installing...'
 
   file=/etc/init/custom.rc
   curl -so $file https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/custom.rc
@@ -28,6 +28,6 @@
   # Remove system-wide tracing files, will be fixed in next firmware, confirmed by @Paul - iBasso
   rm -f /etc/init/atrace.rc /etc/init/atrace_userdebug.rc 2>/dev/null
 
-  echo 'Rebooting...'
+  echo '> Rebooting...'
   reboot
 }
