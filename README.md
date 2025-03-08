@@ -2,6 +2,11 @@
 
 # iBasso DX340 Debloating & Tweaking Guide
 
+**Contents:**
+
+- [Debloating & Optimization](#debloating--optimization)
+- [Advanced Tweaking](#advanced-tweaking)
+
 > [!IMPORTANT]
 >
 > - Download and install [Android SDK Platform-Tools] (or install via [Homebrew] on Mac)
@@ -18,7 +23,7 @@
 
     curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/debloat.sh | sh
 
-It will take 1-2 mins to finish. Your device will reboot automatically.
+Script will take ±2 mins to finish. Your device will reboot automatically.
 
 > [!TIP]
 >
@@ -35,7 +40,7 @@ It will take 1-2 mins to finish. Your device will reboot automatically.
 > [!NOTE]
 >
 > - Rooting is NOT required
-> - "adb remount" may take 15-30 secs on 1st run, you can safely ignore any output
+> - "adb remount" may take ±30 secs on 1st run, you can safely ignore any output
 
 **From the DX340 prompt, run:**
 
