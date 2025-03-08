@@ -31,6 +31,8 @@
   cmd package uninstall --user 0 com.android.traceur
   cmd package uninstall --user 0 com.google.android.onetimeinitializer
   cmd package uninstall --user 0 com.google.android.syncadapters.calendar
+
+  ## https://forum.fairphone.com/t/telemetry-spyware-list-of-privacy-threats-on-fp3-android-9/55179
   cmd package uninstall --user 0 com.qualcomm.qti.qms.service.connectionsecurity
 
   ## https://android.stackexchange.com/questions/215313/how-to-reinstall-an-uninstalled-system-app-through-adb/215316#215316
@@ -40,16 +42,16 @@
   echo 'Optimizing settings...'
 
   ## https://www.reddit.com/r/tasker/comments/fbi5ai/psa_you_can_use_adb_to_find_all_the_settings_that/
-  ## https://xdaforums.com/t/samsung-galaxy-one-ui-optimization-guide.4376755/page-413#post-89683326
   ## https://github.com/ionuttbara/melody_android
   ## https://technastic.com/adb-commands-improve-performance-android/
 
   # Global settings
-  settings put global bug_report 0
   settings put global fstrim_mandatory_interval 1
   settings put global mobile_data_always_on 0
   settings put global mobile_signal_detector 0
   settings put global ota_disable_automatic_update 1
+  settings put global wifi_networks_available_notification_on 0
+  settings put global wifi_power_save 1
 
   # Remove animations
   settings put global animator_duration_scale 0.0
@@ -70,7 +72,7 @@
 
   ## https://source.android.com/docs/core/runtime/configure#compiler_filters
   cmd package compile -a -m speed-profile
-  pm bg-dexopt-job
+  cmd package bg-dexopt-job
 
   ## https://www.reddit.com/r/AndroidQuestions/comments/s1vk4z/does_anyone_know_how_to_clear_all_app_caches_at/
   cmd package trim-caches 256G
