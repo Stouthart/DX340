@@ -2,7 +2,7 @@
 #
 # v4.1, Copyright (c) 2025, Stouthart. All rights reserved.
 {
-  echo 'Debloating...'
+  echo '> Debloating...'
 
   ## https://xdaforums.com/t/cmd-package-install-existing-user-user-package-vs-pm-install-existing-user-user-package.4553257/
 
@@ -39,7 +39,7 @@
   # cmd package install-existing com.android.calculator2
   # cmd package enable com.android.vending
 
-  echo 'Optimizing settings...'
+  echo '> Optimizing settings...'
 
   ## https://www.reddit.com/r/tasker/comments/fbi5ai/psa_you_can_use_adb_to_find_all_the_settings_that/
   ## https://github.com/ionuttbara/melody_android
@@ -68,7 +68,7 @@
   settings put system screen_brightness 81
   settings put system screen_off_timeout 15000
 
-  echo 'Recompiling...'
+  echo '> Recompiling...'
 
   ## https://source.android.com/docs/core/runtime/configure#compiler_filters
   cmd package compile -a -m speed-profile
@@ -77,6 +77,6 @@
   ## https://www.reddit.com/r/AndroidQuestions/comments/s1vk4z/does_anyone_know_how_to_clear_all_app_caches_at/
   cmd package trim-caches 256G
 
-  echo 'Rebooting...'
+  echo '> Rebooting...'
   reboot
 }
