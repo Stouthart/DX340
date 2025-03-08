@@ -1,5 +1,6 @@
-## https://android.googlesource.com/platform/system/core/+/master/init/README.md
+# v4.0, Copyright (c) 2025, Stouthart. All rights reserved.
 
+## https://android.googlesource.com/platform/system/core/+/master/init/README.md
 on init
   write /sys/kernel/debug/debug_enabled N
 
@@ -19,6 +20,7 @@ on late-init
 on late-fs
   ## https://source.android.com/docs/core/perf/boot-times#tuning-the-filesystem
   write /sys/block/sda/queue/iostats 0
+  write /sys/block/sda/queue/nr_requests 256
   write /sys/block/sda/queue/read_ahead_kb 2048
 
   # SD card tuning
