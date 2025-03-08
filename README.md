@@ -59,7 +59,8 @@ Enjoy the improvements!
 
 > [!TIP]
 >
-> Follow the discussion about the iBasso DX340 on [Head-Fi]
+> - Check release notes for any changes
+> - Follow the discussion about the iBasso DX340 on [Head-Fi]
 
 ## Recovery Mode
 
