@@ -32,9 +32,11 @@ on property:sys.boot_completed=1
   write /dev/stune/top-app/schedtune.boost 25
   write /dev/stune/top-app/schedtune.prefer_idle 1
 
+  ## https://github.com/Magisk-Modules-Alt-Repo/audio-samplerate-changer/blob/main/jitter-reducer-functions.shlib
+  setprop ctl.stop logd
+  setprop ctl.stop traced
+  setprop ctl.stop traced_probes
+
 on property:init.svc_debug_pid.vendor.msm_irqbalance=*
   ## https://github.com/LeanxModulostk/IRQ-Balancer-Configuration/blob/main/service.sh
   exec -- /system/bin/renice -n -10 -p "${init.svc_debug_pid.vendor.msm_irqbalance}"
-
-on property:init.svc.logd=running
-  exec -- /system/bin/setprop ctl.stop logd
