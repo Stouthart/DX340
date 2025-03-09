@@ -19,7 +19,7 @@
   cmd package uninstall --user 0 com.google.android.inputmethod.latin
   cmd package disable-user --user 0 com.google.android.partnersetup
 
-  # Deprecated param, will be removed in next version
+  # Deprecated param, will be removed in 4.2 release
   # shellcheck disable=SC2154
   [ "$play" = disable ] && noplay=1
 
