@@ -18,12 +18,16 @@
   chmod 0644 $file
   chcon u:object_r:system_file:s0 $file
 
-  [ "$tune" = max ] && {
+  # Deprecated params, will be removed in next version
+  [ "$tune" = max ] && stmax=1
+  [ "$idle" = disable ] && noidle=1
+
+  [ "$stmax" = 1 ] && {
     sed -i -E 's,foreground/schedtune.boost [0-9]+$,foreground/schedtune.boost 30,' $file
     sed -i -E 's,top-app/schedtune.boost [0-9]+$,top-app/schedtune.boost 40,' $file
   }
 
-  [ "$idle" = disable ] && {
+  [ "$noidle" = 1 ] && {
     sed -i 's,# deviceidle$,exec -- /system/bin/dumpsys deviceidle disable all >/dev/null,' $file
   }
 
