@@ -88,7 +88,7 @@ Enjoy the improvements!
 
 - While the device is **off**, press & hold Next button
 - Connect the USB-C charger cable
-- Release the button when the iBasso Audio logo appears
+- Release button when the iBasso Audio logo appears
 <!-- https://www.head-fi.org/threads/ibasso-dx300-qualcomm-snapdragon-660-octa-core-6gb-ram-new-firmware-2-00-android-11.943221/page-353#post-16285599 -->
 
 > [!TIP]
