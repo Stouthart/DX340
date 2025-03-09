@@ -1,4 +1,4 @@
-<!-- v4.1, Copyright (C) 2025 Stouthart. All rights reserved. -->
+<!-- v4.2b, Copyright (C) 2025 Stouthart. All rights reserved. -->
 
 ![iBasso DX340]
 
@@ -7,7 +7,7 @@
 > [!IMPORTANT]
 >
 > 1. Download and install [Android SDK Platform-Tools] (or install via [Homebrew] on Mac)
-> 2. Make sure your device has WiFi turned **on**
+> 2. Make sure your device's WiFi is **on**
 > 3. Enable USB debugging (Developer options)
 
 **Contents:**
@@ -24,13 +24,13 @@
 adb shell
 ```
 
-**From the DX340 prompt, run:**
+**From the DX340 prompt, run the following:**
 
 ```
 curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/debloat.sh | sh
 ```
 
-Script will take ±2 mins to finish. Your device will reboot automatically.
+The script takes ±2 minutes to finish. Your device will reboot automatically.
 
 > [!TIP]
 >
@@ -50,9 +50,9 @@ adb shell
 > [!NOTE]
 >
 > - Rooting is NOT required
-> - "adb remount" will take ±30 secs on 1st run, you can safely ignore any output
+> - "adb remount" takes ±30 seconds on 1st run, you can safely ignore any output
 
-**From the DX340 prompt, run:**
+**From the DX340 prompt, run the following:**
 
 ```
 curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/install.sh | sh
@@ -81,21 +81,21 @@ Enjoy the improvements!
 **Method 1:**
 
 - With device powered **on**, press Power button and select "Restart"
-- Immediately press Next button (above Play) & hold until iBasso Audio logo appears
+- Immediately press Next button (above Play) & hold until the iBasso Audio logo appears
 <!-- https://www.head-fi.org/threads/dx320-rohm-dac-chips-android-11-amp11mk2s-new-fw-2-07.962274/page-188#post-17009540 -->
 
 **Method 2:**
 
-- With device powered **off**, press & hold Next button
-- Plug in USB-C charger cable
-- Release button when iBasso Audio logo appears
+- While the device is **off**, press & hold Next button
+- Connect the USB-C charger cable
+- Release the button when the iBasso Audio logo appears
 <!-- https://www.head-fi.org/threads/ibasso-dx300-qualcomm-snapdragon-660-octa-core-6gb-ram-new-firmware-2-00-android-11.943221/page-353#post-16285599 -->
 
 > [!TIP]
 >
 > - Use the Volume wheel to navigate between items
-> - Press Power button to confirm a selection
-> - It's a good practice to execute "Wipe data/factory reset" after every firmware update
+> - Press the Power button to confirm a selection
+> - It's a good habit to perform "Wipe data/factory reset" after every firmware update
 
 [iBasso DX340]: https://ibasso.com/wp-content/uploads/2024/12/2024-12-24469.webp
 [Android SDK Platform-Tools]: https://developer.android.com/tools/releases/platform-tools
