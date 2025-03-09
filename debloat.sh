@@ -68,7 +68,7 @@
   settings put system screen_brightness 81
   settings put system screen_off_timeout 15000
 
-  echo '> Recompiling...'
+  echo '> Compiling packages...'
 
   ## https://source.android.com/docs/core/runtime/configure#compiler_filters
   cmd package compile -a -m speed-profile
