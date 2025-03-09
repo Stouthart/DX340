@@ -8,6 +8,7 @@
 
 - [Debloating & Optimization](#debloating--optimization)
 - [Advanced Tweaking](#advanced-tweaking)
+- [Recovery Mode](#recovery-mode)
 
 > [!IMPORTANT]
 >
