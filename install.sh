@@ -18,7 +18,7 @@
   chmod 0644 $file
   chcon u:object_r:system_file:s0 $file
 
-  # Deprecated params, will be removed in next version
+  # Deprecated params, will be removed in 4.2 release
   [ "$tune" = max ] && stmax=1
   [ "$idle" = disable ] && noidle=1
 
