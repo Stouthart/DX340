@@ -63,7 +63,7 @@ Enjoy the improvements!
 
 > [!TIP]
 >
-> - Check release notes for any changes
+> - Check [release notes] for any changes
 > - Follow the discussion about the iBasso DX340 on [Head-Fi]
 
 ## Recovery Mode
@@ -90,4 +90,5 @@ Enjoy the improvements!
 [iBasso DX340]: https://ibasso.com/wp-content/uploads/2024/12/2024-12-24469.webp
 [Android SDK Platform-Tools]: https://developer.android.com/tools/releases/platform-tools
 [Homebrew]: https://formulae.brew.sh/cask/android-platform-tools
+[release notes]: https://github.com/Stouthart/DX340/releases
 [Head-Fi]: https://www.head-fi.org/threads/dx340-ibasso-developed-discret-dac-easily-replaceable-batteries-amp-modules-new-firmware-on-1st-page-v1-01-local-update.974099/
