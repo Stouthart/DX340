@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# v4.1, Copyright (c) 2025 Stouthart. All rights reserved.
+# v4.1, Copyright (C) 2025 Stouthart. All rights reserved.
 {
   echo '> Debloating...'
 
