@@ -26,7 +26,9 @@ adb shell
 
 **From the DX340 prompt, run:**
 
-    curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/debloat.sh | sh
+```
+curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/debloat.sh | sh
+```
 
 Script will take ±2 mins to finish. Your device will reboot automatically.
 
@@ -39,9 +41,11 @@ Script will take ±2 mins to finish. Your device will reboot automatically.
 
 **Run the following lines from a Command prompt, or Terminal window on Mac:**
 
-    adb root
-    adb remount
-    adb shell
+```
+adb root
+adb remount
+adb shell
+```
 
 > [!NOTE]
 >
@@ -50,16 +54,20 @@ Script will take ±2 mins to finish. Your device will reboot automatically.
 
 **From the DX340 prompt, run:**
 
-    curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/install.sh | sh
+```
+curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/install.sh | sh
+```
 
 Your device will reboot immediately.
 
 **Undo is just as easy:**
 
-    adb root
-    adb remount
-    adb shell rm -f /etc/init/custom.rc
-    adb reboot
+```
+adb root
+adb remount
+adb shell rm -f /etc/init/custom.rc
+adb reboot
+```
 
 Enjoy the improvements!
 
