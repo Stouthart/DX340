@@ -24,8 +24,8 @@
   }
 
   ## https://developer.android.com/training/monitoring-device-state/doze-standby
-  [ "$doze" = disable ] && cmd=disable || cmd=enable
-  dumpsys deviceidle "$cmd" all >/dev/null
+  [ "$doze" = disable ] || doze='enable'
+  dumpsys deviceidle "$doze" all >/dev/null
 
   # Remove "system-wide tracing" files, will be fixed in next firmware, confirmed by @Paul - iBasso
   rm -f /etc/init/atrace.rc /etc/init/atrace_userdebug.rc 2>/dev/null
