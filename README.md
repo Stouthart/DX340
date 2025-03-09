@@ -1,4 +1,4 @@
-<!-- v4.1, Copyright (c) 2025 Stouthart. All rights reserved. -->
+<!-- v4.1, Copyright (C) 2025 Stouthart. All rights reserved. -->
 
 ![iBasso DX340]
 
@@ -63,7 +63,7 @@ Enjoy the improvements!
 
 > [!TIP]
 >
-> - Check [release notes] for any changes
+> - Check the [release notes] for any changes
 > - Follow the discussion about the iBasso DX340 on [Head-Fi]
 
 ## Recovery Mode
