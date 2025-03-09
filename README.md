@@ -20,7 +20,9 @@
 
 **Run the following line from a Command prompt, or Terminal window on Mac:**
 
-    adb shell
+```
+adb shell
+```
 
 **From the DX340 prompt, run:**
 
