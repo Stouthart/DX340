@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# v4.1, Copyright (c) 2025, Stouthart. All rights reserved.
+# v4.1, Copyright (c) 2025 Stouthart. All rights reserved.
 {
   [ -w /etc ] || {
     echo 'Read-only file system. Try "adb remount" first.'
@@ -21,9 +21,6 @@
     sed -i -E 's,foreground/schedtune.boost [0-9]+$,foreground/schedtune.boost 30,' $file
     sed -i -E 's,top-app/schedtune.boost [0-9]+$,top-app/schedtune.boost 40,' $file
   }
-
-  # Remove redundant file from previous versions
-  rm -f /etc/rc.local 2>/dev/null
 
   # Remove system-wide tracing files, will be fixed in next firmware, confirmed by @Paul - iBasso
   rm -f /etc/init/atrace.rc /etc/init/atrace_userdebug.rc 2>/dev/null
