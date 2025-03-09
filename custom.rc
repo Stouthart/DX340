@@ -1,4 +1,4 @@
-# v4.1, Copyright (c) 2025 Stouthart. All rights reserved.
+# v4.1, Copyright (C) 2025 Stouthart. All rights reserved.
 #
 # IMPORTAMT: Do not change order of tweaks.
 
@@ -14,7 +14,6 @@ on init
   write /proc/sys/vm/dirty_background_ratio 3
   write /proc/sys/vm/dirty_ratio 10
   write /proc/sys/vm/stat_interval 10
-  write /proc/sys/vm/swappiness 10
 
 on late-init
   # Disable scheduler statistics to reduce overhead
