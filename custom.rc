@@ -8,6 +8,7 @@ on init
   write /sys/kernel/debug/debug_enabled N
 
   ## https://github.com/redhat-performance/tuned/tree/master/profiles
+  write /proc/sys/kernel/printk "4 4 1 7"
   write /proc/sys/kernel/timer_migration 0
   write /proc/sys/net/core/somaxconn 2048
   write /proc/sys/net/ipv4/tcp_fastopen 3
