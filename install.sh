@@ -22,7 +22,7 @@
     sed -i -E 's,top-app/schedtune.boost [0-9]+$,top-app/schedtune.boost 40,' $file
   }
 
-  # Remove system-wide tracing files, will be fixed in next firmware, confirmed by @Paul - iBasso
+  # Remove "system-wide tracing" files, will be fixed in next firmware, confirmed by @Paul - iBasso
   rm -f /etc/init/atrace.rc /etc/init/atrace_userdebug.rc 2>/dev/null
 
   echo '> Rebooting...'
