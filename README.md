@@ -4,17 +4,17 @@
 
 # iBasso DX340 Debloating & Tweaking Guide
 
-**Contents:**
-
-- [Debloating & Optimization](#debloating--optimization)
-- [Advanced Tweaking](#advanced-tweaking)
-- [Recovery Mode](#recovery-mode)
-
 > [!IMPORTANT]
 >
 > 1. Download and install [Android SDK Platform-Tools] (or install via [Homebrew] on Mac)
 > 2. Make sure your device has WiFi turned on
 > 3. Enable USB debugging (Developer options)
+
+**Contents:**
+
+- [Debloating & Optimization](#debloating--optimization)
+- [Advanced Tweaking](#advanced-tweaking)
+- [Recovery Mode](#recovery-mode)
 
 ## Debloating & Optimization
 
@@ -44,7 +44,7 @@ Script will take ±2 mins to finish. Your device will reboot automatically.
 > [!NOTE]
 >
 > - Rooting is NOT required
-> - "adb remount" may take ±30 secs on 1st run, you can safely ignore any output
+> - "adb remount" will take ±30 secs on 1st run, you can safely ignore any output
 
 **From the DX340 prompt, run:**
 
