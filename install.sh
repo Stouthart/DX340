@@ -1,9 +1,14 @@
 #!/bin/sh
 # shellcheck disable=SC2154
 #
-# v4.2, Copyright (C) 2025 Stouthart. All rights reserved.
-
+# v4.3b, Copyright (C) 2025 Stouthart. All rights reserved.
 {
+  # shellcheck disable=SC3028
+  [ "$HOSTNAME" = DX340 ] || {
+    echo 'Your device is not compatible with this version.'
+    exit 1
+  }
+
   [ -w /etc ] || {
     echo 'Read-only file system. Try "adb remount" first.'
     exit 1
