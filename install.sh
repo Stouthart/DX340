@@ -1,7 +1,7 @@
 #!/bin/sh
 # shellcheck disable=SC2154
 #
-# v4.2b, Copyright (C) 2025 Stouthart. All rights reserved.
+# v4.2, Copyright (C) 2025 Stouthart. All rights reserved.
 
 {
   [ -w /etc ] || {
@@ -17,10 +17,6 @@
   ## https://android.stackexchange.com/questions/217495/how-can-proc-sys-values-be-changed-at-boot-sysctl-conf-does-this-on-normal-lin
   chmod 0644 $file
   chcon u:object_r:system_file:s0 $file
-
-  # Deprecated params, will be removed in 4.2 release
-  [ "$tune" = max ] && stmax=1
-  [ "$idle" = disable ] && noidle=1
 
   [ "$stmax" = 1 ] && {
     sed -i -E 's,foreground/schedtune.boost [0-9]+$,foreground/schedtune.boost 30,' $file
