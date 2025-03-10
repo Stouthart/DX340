@@ -1,4 +1,4 @@
-<!-- v4.2b, Copyright (C) 2025 Stouthart. All rights reserved. -->
+<!-- v4.2, Copyright (C) 2025 Stouthart. All rights reserved. -->
 
 ![iBasso DX340]
 
