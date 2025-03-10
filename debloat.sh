@@ -1,8 +1,13 @@
 #!/bin/sh
 #
-# v4.2, Copyright (C) 2025 Stouthart. All rights reserved.
-
+# v4.3b, Copyright (C) 2025 Stouthart. All rights reserved.
 {
+  # shellcheck disable=SC3028
+  [ "$HOSTNAME" = DX340 ] || {
+    echo 'Your device is not compatible with this version.'
+    exit 1
+  }
+
   echo '> Debloating...'
 
   ## https://xdaforums.com/t/cmd-package-install-existing-user-user-package-vs-pm-install-existing-user-user-package.4553257/
