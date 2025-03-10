@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# v4.2b, Copyright (C) 2025 Stouthart. All rights reserved.
+# v4.2, Copyright (C) 2025 Stouthart. All rights reserved.
 
 {
   echo '> Debloating...'
@@ -19,10 +19,7 @@
   cmd package uninstall --user 0 com.google.android.inputmethod.latin
   cmd package disable-user --user 0 com.google.android.partnersetup
 
-  # Deprecated param, will be removed in 4.2 release
   # shellcheck disable=SC2154
-  [ "$play" = disable ] && noplay=1
-
   [ "$noplay" = 1 ] && {
     cmd package disable-user --user 0 com.android.vending
     cmd package disable-user --user 0 com.google.android.gms
