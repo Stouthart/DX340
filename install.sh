@@ -1,7 +1,7 @@
 #!/bin/sh
 # shellcheck disable=SC2154
 #
-# v4.3b, Copyright (C) 2025 Stouthart. All rights reserved.
+# v4.3, Copyright (C) 2025 Stouthart. All rights reserved.
 {
   # shellcheck disable=SC3028
   [ "$HOSTNAME" = DX340 ] || {
@@ -23,13 +23,13 @@
   chmod 0644 $file
   chcon u:object_r:system_file:s0 $file
 
+  [ "$noidle" = 1 ] && {
+    sed -i 's,# deviceidle$,exec -- /system/bin/dumpsys deviceidle disable all >/dev/null,' $file
+  }
+
   [ "$stmax" = 1 ] && {
     sed -i -E 's,foreground/schedtune.boost [0-9]+$,foreground/schedtune.boost 30,' $file
     sed -i -E 's,top-app/schedtune.boost [0-9]+$,top-app/schedtune.boost 40,' $file
-  }
-
-  [ "$noidle" = 1 ] && {
-    sed -i 's,# deviceidle$,exec -- /system/bin/dumpsys deviceidle disable all >/dev/null,' $file
   }
 
   # Remove "system-wide tracing" files, will be fixed in next firmware, confirmed by @Paul - iBasso
