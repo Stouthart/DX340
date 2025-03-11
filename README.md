@@ -1,4 +1,4 @@
-<!-- v4.3, Copyright (C) 2025 Stouthart. All rights reserved. -->
+<!-- v4.4b, Copyright (C) 2025 Stouthart. All rights reserved. -->
 
 ![iBasso DX340]
 
@@ -58,7 +58,12 @@ adb shell
 curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/install.sh | sh
 ```
 
-Your device will reboot immediately.
+Your device will reboot immediately. Enjoy the improvements!
+
+> [!TIP]
+>
+> - Check the [release notes] for changes and additional options
+> - Follow the discussion about the iBasso DX340 on [Head-Fi]
 
 **Undo is just as easy:**
 
@@ -68,13 +73,6 @@ adb remount
 adb shell rm -f /etc/init/custom.rc
 adb reboot
 ```
-
-Enjoy the improvements!
-
-> [!TIP]
->
-> - Check the [release notes] for changes and additional options
-> - Follow the discussion about the iBasso DX340 on [Head-Fi]
 
 ## Recovery Mode
 
