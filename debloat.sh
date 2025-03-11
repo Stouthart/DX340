@@ -25,7 +25,7 @@
   cmd package disable-user --user 0 com.google.android.partnersetup
 
   ## https://9to5google.com/2024/11/25/november-2024-google-system-updates/
-  cmd package list packages | grep -Fq 'com.google.android.safetycore' && {
+  LC_ALL=C cmd package list packages | grep -Fq 'com.google.android.safetycore' && {
     cmd package uninstall --user 0 com.google.android.safetycore
   }
 
