@@ -1,7 +1,7 @@
 #!/bin/sh
 # shellcheck disable=SC2154
 #
-# v4.3, Copyright (C) 2025 Stouthart. All rights reserved.
+# v4.4b, Copyright (C) 2025 Stouthart. All rights reserved.
 {
   # shellcheck disable=SC3028
   [ "$HOSTNAME" = DX340 ] || {
@@ -24,7 +24,7 @@
   chcon u:object_r:system_file:s0 $file
 
   [ "$noidle" = 1 ] && {
-    sed -i 's,# deviceidle$,exec -- /system/bin/dumpsys deviceidle disable all >/dev/null,' $file
+    LC_ALL=C sed -i 's,# deviceidle$,exec -- /system/bin/dumpsys deviceidle disable all >/dev/null,' $file
   }
 
   [ "$stmax" = 1 ] && {
