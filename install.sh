@@ -24,7 +24,7 @@
   chcon u:object_r:system_file:s0 $file
 
   [ "$noidle" = 1 ] && {
-    LC_ALL=C sed -i 's,# deviceidle$,exec -- /system/bin/dumpsys deviceidle disable all >/dev/null,' $file
+    LC_ALL=C sed -i 's,### deviceidle$,exec -- /system/bin/dumpsys deviceidle disable all >/dev/null,' $file
   }
 
   [ "$stmax" = 1 ] && {
