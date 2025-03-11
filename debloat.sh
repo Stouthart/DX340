@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# v4.3, Copyright (C) 2025 Stouthart. All rights reserved.
+# v4.4b, Copyright (C) 2025 Stouthart. All rights reserved.
 {
   # shellcheck disable=SC3028
   [ "$HOSTNAME" = DX340 ] || {
@@ -23,7 +23,7 @@
   cmd package disable-user --user 0 com.android.chrome
   cmd package uninstall --user 0 com.google.android.inputmethod.latin
   cmd package disable-user --user 0 com.google.android.partnersetup
-  cmd package disable-user --user 0 com.google.android.safetycore
+  cmd package uninstall --user 0 com.google.android.safetycore
 
   # shellcheck disable=SC2154
   [ "$noplay" = 1 ] && {
