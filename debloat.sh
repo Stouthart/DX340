@@ -47,8 +47,8 @@
   cmd package uninstall --user 0 com.qualcomm.qti.qms.service.connectionsecurity
 
   ## https://android.stackexchange.com/questions/215313/how-to-reinstall-an-uninstalled-system-app-through-adb/215316#215316
-  # cmd package install-existing com.android.calculator2
-  # cmd package enable com.android.vending
+  # cmd package install-existing com.android.gallery3d
+  # cmd package enable com.google.android.gms && cmd package enable com.android.vending
 
   echo '> Optimizing settings...'
 
