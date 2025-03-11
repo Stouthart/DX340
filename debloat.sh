@@ -23,7 +23,11 @@
   cmd package disable-user --user 0 com.android.chrome
   cmd package uninstall --user 0 com.google.android.inputmethod.latin
   cmd package disable-user --user 0 com.google.android.partnersetup
-  cmd package uninstall --user 0 com.google.android.safetycore
+
+  ## https://9to5google.com/2024/11/25/november-2024-google-system-updates/
+  cmd package list packages | grep -Fq 'com.google.android.safetycore' && {
+    cmd package uninstall --user 0 com.google.android.safetycore
+  }
 
   # shellcheck disable=SC2154
   [ "$noplay" = 1 ] && {
