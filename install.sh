@@ -24,12 +24,16 @@
   chcon u:object_r:system_file:s0 $file
 
   [ "$noidle" = 1 ] && {
-    LC_ALL=C sed -i 's,### noidle$,exec -- /system/bin/dumpsys deviceidle disable all >/dev/null,' $file
+    LC_ALL=C sed -i 's,### noidle$,exec_background -- /system/bin/dumpsys deviceidle disable all >/dev/null,' $file
   }
 
   [ "$stmax" = 1 ] && {
     sed -i -E 's,foreground/schedtune.boost [0-9]+$,foreground/schedtune.boost 30,' $file
     sed -i -E 's,top-app/schedtune.boost [0-9]+$,top-app/schedtune.boost 40,' $file
+  }
+
+  [ -f /etc/rc.local ] && {
+    LC_ALL=C sed -i 's,### rc.local$,exec_background -- /etc/rc.local,' $file
   }
 
   # Remove "system-wide tracing" files, will be fixed in next firmware, confirmed by @Paul - iBasso
