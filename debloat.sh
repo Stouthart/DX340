@@ -1,6 +1,7 @@
 #!/bin/sh
+# shellcheck disable=SC2154
 #
-# v4.4, Copyright (C) 2025 Stouthart. All rights reserved.
+# v4.5, Copyright (C) 2025 Stouthart. All rights reserved.
 {
   # shellcheck disable=SC3028
   [ "$HOSTNAME" = DX340 ] || {
@@ -29,7 +30,6 @@
     cmd package uninstall --user 0 com.google.android.safetycore
   }
 
-  # shellcheck disable=SC2154
   [ "$noplay" = 1 ] && {
     cmd package disable-user --user 0 com.android.vending
     cmd package disable-user --user 0 com.google.android.gms
@@ -62,6 +62,12 @@
   settings put global mobile_signal_detector 0
   settings put global ota_disable_automatic_update 1
   settings put global wifi_networks_available_notification_on 0
+
+  [ "$nonoise" = 1 ] && {
+    # Default value: 120
+    settings put global wifi_power_save 1
+  }
+
   settings put global wifi_power_save 1
 
   # Remove animations
