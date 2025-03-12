@@ -17,9 +17,8 @@
   echo '> Installing...'
 
   file=/etc/init/custom.rc
-  curl -so $file https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/custom.rc
 
-  ## https://android.stackexchange.com/questions/217495/how-can-proc-sys-values-be-changed-at-boot-sysctl-conf-does-this-on-normal-lin
+  curl -so $file https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/custom.rc
   chmod 0644 $file
   chcon u:object_r:system_file:s0 $file
 
