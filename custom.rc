@@ -41,6 +41,8 @@ on property:sys.boot_completed=1
   stop traced
   stop traced_probes
   ### noidle
+
+  # Debugging & testing
   ### rclocal
 
 on property:init.svc_debug_pid.vendor.msm_irqbalance=*
