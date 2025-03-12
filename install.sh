@@ -33,7 +33,7 @@
   }
 
   [ -f /etc/rc.local ] && {
-    LC_ALL=C sed -i 's,### rc.local$,exec_background -- /etc/rc.local,' $file
+    LC_ALL=C sed -i 's,### rclocal$,exec_background -- /etc/rc.local,' $file
   }
 
   # Remove "system-wide tracing" files, will be fixed in next firmware, confirmed by @Paul - iBasso
