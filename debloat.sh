@@ -1,7 +1,7 @@
 #!/bin/sh
 # shellcheck disable=SC2154
 #
-# v4.5, Copyright (C) 2025 Stouthart. All rights reserved.
+# v4.6b, Copyright (C) 2025 Stouthart. All rights reserved.
 {
   # shellcheck disable=SC3028
   [ "$HOSTNAME" = DX340 ] || {
@@ -67,8 +67,6 @@
     # Default value: 120
     settings put global wifi_power_save 1
   }
-
-  settings put global wifi_power_save 1
 
   # Remove animations
   settings put global animator_duration_scale 0.0
