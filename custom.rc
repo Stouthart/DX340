@@ -1,4 +1,4 @@
-# v4.5, Copyright (C) 2025 Stouthart. All rights reserved.
+# v4.6, Copyright (C) 2025 Stouthart. All rights reserved.
 #
 # Device model: DX340
 
@@ -41,6 +41,9 @@ on property:sys.boot_completed=1
   stop traced
   stop traced_probes
   ### noidle
+
+  # Reduce debug information to the console
+  write /proc/sys/kernel/printk "4 4 1 7"
 
   # Debugging & testing
   ### rclocal
