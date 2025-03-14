@@ -1,7 +1,7 @@
 #!/bin/sh
 # shellcheck disable=SC2154
 #
-# v4.6, Copyright (C) 2025 Stouthart. All rights reserved.
+# v4.7, Copyright (C) 2025 Stouthart. All rights reserved.
 {
   # shellcheck disable=SC3028
   [ "$HOSTNAME" = DX340 ] || {
@@ -26,9 +26,7 @@
   cmd package disable-user --user 0 com.google.android.partnersetup
 
   ## https://9to5google.com/2024/11/25/november-2024-google-system-updates/
-  cmd package list packages | LC_ALL=C grep -Fq 'com.google.android.safetycore' && {
-    cmd package uninstall --user 0 com.google.android.safetycore
-  }
+  cmd package uninstall --user 0 com.google.android.safetycore 2>/dev/null
 
   [ "$noplay" = 1 ] && {
     cmd package disable-user --user 0 com.android.vending
