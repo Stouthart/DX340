@@ -98,7 +98,7 @@ adb reboot
 
 ## License
 
-The software in this repository is free to use. However, it is NOT published under a software license (yet). This means - as stated in the [GitHub Docs] - that (literal quote) "...without a license, the default copyright laws apply, meaning that you retain all rights to your source code and no one may reproduce, distribute, or create derivative works from your work".
+The software in this repository is free to use. However, it is NOT published under a software license (yet). This means - as stated in the [GitHub Docs] - that the default copyright laws apply, meaning that the owner retains all rights to the source code and no one may reproduce, distribute, or create derivative works from this work.
 
 [iBasso DX340]: https://ibasso.com/wp-content/uploads/2024/12/2024-12-24469.webp
 [Android SDK Platform-Tools]: https://developer.android.com/tools/releases/platform-tools
