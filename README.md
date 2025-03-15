@@ -1,4 +1,4 @@
-<!-- v4.7, Copyright (C) 2025 Stouthart. All rights reserved. -->
+<!-- v4.7b, Copyright (C) 2025 Stouthart. All rights reserved. -->
 
 ![iBasso DX340]
 
@@ -15,6 +15,7 @@
 - [Debloating & Optimization](#debloating--optimization)
 - [Advanced Tweaking](#advanced-tweaking)
 - [Recovery Mode](#recovery-mode)
+- [License](#license)
 
 ## Debloating & Optimization
 
@@ -95,8 +96,13 @@ adb reboot
 > - Press the Power button to confirm a selection
 > - It's a good habit to perform "Wipe data/factory reset" after every firmware update
 
+## License
+
+The software in this repository is free to use. However, it is NOT published under a software license (yet). This means - as stated in the [GitHub Docs] - that (literal quote) "...without a license, the default copyright laws apply, meaning that you retain all rights to your source code and no one may reproduce, distribute, or create derivative works from your work".
+
 [iBasso DX340]: https://ibasso.com/wp-content/uploads/2024/12/2024-12-24469.webp
 [Android SDK Platform-Tools]: https://developer.android.com/tools/releases/platform-tools
 [Homebrew]: https://formulae.brew.sh/cask/android-platform-tools
 [release notes]: https://github.com/Stouthart/DX340/releases
 [Head-Fi]: https://www.head-fi.org/threads/dx340-ibasso-developed-discret-dac-easily-replaceable-batteries-amp-modules-new-firmware-on-1st-page-v1-01-local-update.974099/
+[GitHub Docs]: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository
