@@ -1,7 +1,7 @@
 #!/bin/sh
 # shellcheck disable=SC2154
 #
-# v5.0, Copyright (C) 2025 Stouthart. All rights reserved.
+# v5.1b, Copyright (C) 2025 Stouthart. All rights reserved.
 {
   # shellcheck disable=SC3028
   [ "$HOSTNAME" = DX340 ] || {
@@ -23,8 +23,8 @@
   chcon u:object_r:system_file:s0 $file
 
   [ "$pmax" = 1 ] && { # "Performance MAX"
+    LC_ALL=C sed -i 's,### noidle$,exec_background -- /system/bin/dumpsys deviceidle disable,' $file
     minfreq=1401600
-    noidle=1
   }
 
   case "$minfreq" in
@@ -33,10 +33,6 @@
     LC_ALL=C sed -i "s,### minfreq$,exec_background -- ${SHELL} -c \"${cmd}\"," $file
     ;;
   esac
-
-  [ "$noidle" = 1 ] && {
-    LC_ALL=C sed -i 's,### noidle$,exec_background -- /system/bin/dumpsys deviceidle disable,' $file
-  }
 
   [ "$stmax" = 1 ] && { # "MAX by Whitigir" scheduler tuning
     sed -i -E 's,(foreground/schedtune.boost) [0-9]+$,\1 30,' $file
@@ -51,7 +47,7 @@
   sed -i -E 's,### [a-z]+$,# N/A,g' $file
 
   # Remove "system-wide tracing" files, will be fixed in next firmware, confirmed by @Paul - iBasso
-  rm -f /etc/init/atrace.rc /etc/init/atrace_userdebug.rc 2>/dev/null
+  # rm -f /etc/init/atrace.rc /etc/init/atrace_userdebug.rc 2>/dev/null
 
   echo '> Rebooting...'
   reboot
