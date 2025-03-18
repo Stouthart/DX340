@@ -1,7 +1,7 @@
 #!/bin/sh
 # shellcheck disable=SC2154
 #
-# v5.0, Copyright (C) 2025 Stouthart. All rights reserved.
+# v5.1, Copyright (C) 2025 Stouthart. All rights reserved.
 {
   # shellcheck disable=SC3028
   [ "$HOSTNAME" = DX340 ] || {
@@ -49,8 +49,8 @@
   _uninstall com.qualcomm.qti.qms.service.connectionsecurity
 
   ## https://android.stackexchange.com/questions/215313/how-to-reinstall-an-uninstalled-system-app-through-adb/215316#215316
-  # cmd package install-existing com.android.gallery3d
-  # cmd package enable com.google.android.gms && cmd package enable com.android.vending
+  # cmd package install-existing --user 0 com.android.gallery3d
+  # cmd package enable --user 0 com.google.android.gms && cmd package enable --user 0 com.android.vending
 
   echo '> Optimizing settings...'
 
