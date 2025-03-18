@@ -1,0 +1,62 @@
+# v5.0, Copyright (C) 2025 Stouthart. All rights reserved.
+#
+# Device model: DX340
+
+## https://android.googlesource.com/platform/system/core/+/master/init/README.md
+
+on init
+  ### printk init
+  write /sys/kernel/debug/debug_enabled N
+
+  ## https://github.com/redhat-performance/tuned/tree/master/profiles
+  write /proc/sys/kernel/timer_migration 0
+  write /proc/sys/net/core/somaxconn 2048
+  write /proc/sys/net/ipv4/tcp_fastopen 3
+  write /proc/sys/vm/dirty_background_ratio 3
+  write /proc/sys/vm/dirty_ratio 10
+  write /proc/sys/vm/stat_interval 10
+
+on late-init
+  # Disable scheduler statistics to reduce overhead
+  write /proc/sys/kernel/sched_schedstats 0
+
+on late-fs
+  ## https://source.android.com/docs/core/perf/boot-times#tuning-the-filesystem
+  write /sys/block/sda/queue/iostats 0
+  write /sys/block/sda/queue/nr_requests 256
+  write /sys/block/sda/queue/read_ahead_kb 2048
+
+  # SD card tuning
+  write /sys/block/mmcblk0/queue/iostats 0
+
+on property:sys.boot_completed=1
+  # Set scaling_min_freq for "big" CPU cluster
+  ### minfreq
+
+  # Disable "Doze mode" (deviceidle)
+  ### noidle
+
+  ## https://xdaforums.com/t/3528807/post-70475813
+  write /dev/stune/schedtune.boost 10
+  write /dev/stune/foreground/schedtune.boost 15
+  write /dev/stune/foreground/schedtune.prefer_idle 1
+  write /dev/stune/top-app/schedtune.boost 25
+  write /dev/stune/top-app/schedtune.prefer_idle 1
+
+  # Stop logd & traced services
+  stop logd
+  setprop logd.ready false
+  stop traced
+  stop traced_probes
+
+  # Reduce debug information to the kernel ring buffer
+  write /proc/sys/kernel/printk "4 4 1 7"
+
+  # Debugging & testing
+  ### printk done
+  ### debug
+
+on property:init.svc_debug_pid.vendor.msm_irqbalance=*
+  # Increase priority of IRQ balancer
+  ### printk irqb
+  exec_background -- /system/bin/renice -n -5 -p "${init.svc_debug_pid.vendor.msm_irqbalance}"
