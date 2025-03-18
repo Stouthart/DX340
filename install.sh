@@ -1,7 +1,7 @@
 #!/bin/sh
 # shellcheck disable=SC2154
 #
-# v5.1b, Copyright (C) 2025 Stouthart. All rights reserved.
+# v5.1, Copyright (C) 2025 Stouthart. All rights reserved.
 {
   # shellcheck disable=SC3028
   [ "$HOSTNAME" = DX340 ] || {
@@ -45,9 +45,6 @@
 
   sed -i -E "s,### printk ([a-z]+)$,write /dev/kmsg \"${file##*/}: \1\",g" $file
   sed -i -E 's,### [a-z]+$,# N/A,g' $file
-
-  # Remove "system-wide tracing" files, will be fixed in next firmware, confirmed by @Paul - iBasso
-  # rm -f /etc/init/atrace.rc /etc/init/atrace_userdebug.rc 2>/dev/null
 
   echo '> Rebooting...'
   reboot
