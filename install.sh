@@ -42,8 +42,8 @@
   esac
 
   [ "$stmax" = 1 ] && { # "MAX by Whitigir" scheduler tuning
-    sed -i -E 's,(foreground/schedtune.boost) [0-9]+$,\1 30,' $file
-    sed -i -E 's,(top-app/schedtune.boost) [0-9]+$,\1 40,' $file
+    _stboost 'foreground/' 30
+    _stboost 'top-app/' 40
   }
 
   [ -x /etc/rc.local ] && sed -i 's,### debug$,exec_background -- /etc/rc.local,' $file
