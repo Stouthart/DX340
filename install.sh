@@ -22,12 +22,17 @@
   chmod 0644 $file
   chcon u:object_r:system_file:s0 $file
 
-  [ "$pmax" = 1 ] && { # "Performance MAX"
+  _sboost() { sed -i -E "s,(stune/${1}schedtune.boost) [0-9]+$,\1 ${2}," $file; }
+
+  if [ "$pmax" = 1 ]; then # "Performance MAX"
     minfreq=1401600
     sed -i 's,### noidle$,exec_background -- /system/bin/dumpsys deviceidle disable,' $file
-  }
-
-  [ "$psave" = 1 ] && minfreq=902400 # "Power SAVE"
+  elif [ "$psave" = 1 ]; then # "Power SAVE"
+    minfreq=902400
+    _sboost '' 8
+    _sboost 'foreground/' 12
+    _sboost 'top-app/' 25
+  fi
 
   case "$minfreq" in
   902400 | 1401600)
