@@ -27,6 +27,7 @@
   if [ "$pmax" = 1 ]; then # "Performance MAX"
     minfreq=1401600
     sed -i 's,### noidle$,exec_background -- /system/bin/dumpsys deviceidle disable,' $file
+    _stboost 'top-app/' 40
   elif [ "$psave" = 1 ]; then # "Power SAVE"
     minfreq=902400
     _stboost '' 8
