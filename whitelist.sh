@@ -37,4 +37,6 @@
 
   # shellcheck disable=SC2086
   dumpsys deviceidle whitelist +com.ibasso.music $wl
+
+  echo '> Done'
 }
