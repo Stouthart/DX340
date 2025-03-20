@@ -8,6 +8,8 @@
     exit 1
   }
 
+  echo 'Whitelisting...'
+
   set -- au.com.shiftyjelly.pocketcasts \
     com.amazon.mp3 \
     com.apple.android.music \
@@ -28,8 +30,6 @@
     de.bluegaspode.squeezeplayer \
     deezer.android.app \
     tunein.player
-
-  echo 'Whitelisting...'
 
   p3=$(cmd package list packages -3 | sed 's,package:,,g')
   wl=$(printf '%s\n' "$@" "$p3" | LC_ALL=C sort | uniq -d | sed 's,^,+,')
