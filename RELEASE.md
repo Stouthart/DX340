@@ -5,7 +5,7 @@
 
 ### Advanced Tweaking
 
-- Introduced new option **psave=1** (aka "Power SAVE") which provides majority of improvements while reducing battery consumption (reduces minimum scaling frequency from 1056.0 MHz to 902.4 MHz, less aggressive scheduler tuning):
+- New option **psave=1** (aka "Power SAVE") which provides majority of improvements while reducing battery consumption (reduces minimum scaling frequency from 1056.0 MHz to 902.4 MHz, less aggressive scheduler tuning):
 
 ```
 curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/install.sh | psave=1 sh
@@ -47,7 +47,7 @@ curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/deblo
 
 ### Advanced Tweaking
 
-- Introduced new option **pmax=1** to get absolute maximum performance out of the DX340:
+- New option **pmax=1** to get absolute maximum performance out of the DX340:
 
 ```
 curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/install.sh | pmax=1 sh
@@ -76,7 +76,7 @@ curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/insta
 
 ### Debloating & Optimization
 
-- Introduced option (**nonoise=1**) to reduce WiFi-related noise with **AMP14** card:
+- New option **nonoise=1** to reduce WiFi-related noise with **AMP14** card:
 
 ```
 curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/debloat.sh | nonoise=1 sh
@@ -110,7 +110,7 @@ curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/deblo
 ### Advanced Tweaking
 
 - ~~Optimized **dirty_ratio** & **dirty_background_ratio** for troughput instead of latency (reduced disk I/O)~~
-- ~~Introduced option (**noidle=1**) to disable "Doze & App Standby" (deviceidle), similar to setting apps to "Unrestricted", but for the entire device (noticeable improvement, but may impact battery life)~~
+- ~~New option **noidle=1** to disable "Doze & App Standby" (deviceidle), similar to setting apps to "Unrestricted", but for the entire device (noticeable improvement, but may impact battery life)~~
 
 ## v4.1
 
@@ -126,7 +126,7 @@ curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/deblo
 
 - Optimized compilation of packages
 - Removed compilation of overlays (no measurable impact)
-- Introduced option (**noplay=1**) to disable Play Services/Store as well:
+- New option **noplay=1** to disable Play Services/Store as well:
 
 ```
 curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/debloat.sh | noplay=1 sh
