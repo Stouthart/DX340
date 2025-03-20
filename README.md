@@ -2,6 +2,8 @@
 
 ![iBasso DX340]
 
+v5.1 - Latest
+
 # iBasso DX340 Debloating & Tweaking Guides
 
 > [!IMPORTANT]
