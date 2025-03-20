@@ -2,9 +2,9 @@
 
 ![iBasso DX340]
 
-v5.1 - Latest
-
 # iBasso DX340 Debloating & Tweaking Guides
+
+[v5.1](https://github.com/Stouthart/DX340/blob/main/RELEASE.md) - Latest
 
 > [!IMPORTANT]
 >
