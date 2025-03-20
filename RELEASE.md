@@ -11,7 +11,7 @@
 curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/install.sh | psave=1 sh
 ```
 
-- "Scheduler tuning by Whitigir" merged with option **pmax=1**
+- "Scheduler tuning by Whitigir" merged with option **pmax=1** (aka "Performance MAX")
 
 ### General
 
