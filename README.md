@@ -1,4 +1,4 @@
-<!-- v5.1, Copyright (C) 2025 Stouthart. All rights reserved. -->
+<!-- Copyright (C) 2025 Stouthart. All rights reserved. -->
 
 ![iBasso DX340]
 
@@ -108,6 +108,6 @@ The software in this repository is free for personal use. However, it is NOT pub
 [Homebrew]: https://formulae.brew.sh/cask/android-platform-tools
 [Debloating & Optimization]: #debloating--optimization
 [Advanced Tweaking]: #advanced-tweaking
-[release notes]: https://github.com/Stouthart/DX340/releases
+[release notes]: https://github.com/Stouthart/DX340/blob/main/RELEASE.md
 [Head-Fi]: https://www.head-fi.org/threads/dx340-ibasso-developed-discret-dac-easily-replaceable-batteries-amp-modules-new-firmware-on-1st-page-v1-01-local-update.974099/
 [GitHub Docs]: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository
