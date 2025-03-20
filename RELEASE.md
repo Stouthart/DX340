@@ -28,7 +28,7 @@ curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/insta
 
 ### Debloating & Optimization
 
-- Improved visibility on packages being uninstalled during execution
+- Improved visibility of packages removed during debloating
 - [Reminder] Option **nonoise=1** was introduced in v4.5 to reduce WiFi-related noise with **AMP14** card:
 
 ```
