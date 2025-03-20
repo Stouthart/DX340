@@ -8,6 +8,7 @@
     exit 1
   }
 
+  echo '[ Doze Whitelist ]'
   echo 'Whitelisting...'
 
   set -- au.com.shiftyjelly.pocketcasts \
