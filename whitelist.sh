@@ -36,5 +36,5 @@
   wl=$(printf '%s\n' "$@" "$p3" | LC_ALL=C sort | uniq -d | sed 's,^,+,')
 
   # shellcheck disable=SC2086
-  dumpsys deviceidle whitelist +com.ibasso.music $wl
+  dumpsys deviceidle whitelist -com.google.android.gms +com.ibasso.music $wl
 }
