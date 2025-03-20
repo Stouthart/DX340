@@ -59,4 +59,4 @@ on property:sys.boot_completed=1
 on property:init.svc_debug_pid.vendor.msm_irqbalance=*
   # Increase priority of IRQ balancer
   ### printk irqb
-  exec_background -- /system/bin/renice -n -5 -p "${init.svc_debug_pid.vendor.msm_irqbalance}"
+  exec_background -- /system/bin/renice -n -5 -p ${init.svc_debug_pid.vendor.msm_irqbalance}
