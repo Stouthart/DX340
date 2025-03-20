@@ -33,15 +33,15 @@ on property:sys.boot_completed=1
   # Set scaling_min_freq for "big" CPU cluster
   ### minfreq
 
-  # Disable "Doze mode" (deviceidle)
-  ### noidle
-
   ## https://xdaforums.com/t/3528807/post-70475813
   write /dev/stune/schedtune.boost 10
   write /dev/stune/foreground/schedtune.boost 15
   write /dev/stune/foreground/schedtune.prefer_idle 1
   write /dev/stune/top-app/schedtune.boost 25
   write /dev/stune/top-app/schedtune.prefer_idle 1
+
+  # Disable "Doze mode" (deviceidle)
+  ### noidle
 
   # Stop logd & traced services
   stop logd
