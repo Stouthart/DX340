@@ -1,0 +1,140 @@
+<!-- Copyright (C) 2025 Stouthart. All rights reserved. -->
+
+<!--
+# v5.2b
+
+### Advanced Tweaking
+
+- Introduced new option **psave=1** (aka "Power SAVE") which provides majority of improvements while reducing battery consumption (reduces minimum scaling frequency from 1056.0 MHz to 902.4 MHz, less aggressive scheduler tuning):
+
+```
+curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/install.sh | psave=1 sh
+```
+
+### General
+
+- Various code improvements
+- Moved release notes to RELEASE.md
+-->
+
+# v5.1 - Latest
+
+### General
+
+- Fixed a compatibility issue with Apple Music in **Advanced Tweaking**
+- Various code optimizations
+
+## v5.0
+
+### Debloating & Optimization
+
+- Improved visibility on packages being uninstalled during execution
+- [Reminder] Option **nonoise=1** was introduced in v4.5 to reduce WiFi-related noise with **AMP14** card:
+
+```
+curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/debloat.sh | nonoise=1 sh
+```
+
+- This can be combined with option to disable Play Services/Store (**noplay=1**):
+
+```
+curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/debloat.sh | nonoise=1 noplay=1 sh
+```
+
+> [!IMPORTANT]
+>
+> Be careful with option **nonoise=1**, as it may break the network connection for some apps (e.g., Apple Music, thanks for reporting **altomo**). That's why this setting is no longer enabled by default.
+
+### Advanced Tweaking
+
+- Introduced new option **pmax=1** to get absolute maximum performance out of the DX340:
+
+```
+curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/install.sh | pmax=1 sh
+```
+
+- Special thanks to users **quaddac** and **Whitigir** for the many hours of testing!
+
+> [!NOTE]
+>
+> Option **pmax=1** (aka "Performance MAX") replaces option **noidle=1** (from v4.2). In addition to disabling "Doze & App Standby" (deviceidle), the minimum scaling frequency is increased from 1056.0 MHz to 1401.6 MHz. This may cause "Performance MAX" to have an impact on battery life (although results may vary).
+
+## v4.7
+
+### General
+
+- Various code optimizations
+
+## v4.6
+
+### General
+
+- Reduced debug information to the console (**printk**) in **Advanced Tweaking**
+- Various code optimizations
+
+## v4.5
+
+### Debloating & Optimization
+
+- Introduced option (**nonoise=1**) to reduce WiFi-related noise with **AMP14** card:
+
+```
+curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/debloat.sh | nonoise=1 sh
+```
+
+- This can be combined with option to disable Play Services/Store (**noplay=1**):
+
+```
+curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/debloat.sh | nonoise=1 noplay=1 sh
+```
+
+### Advanced Tweaking
+
+- Reverted change of **dirty_ratio** & **dirty_background_ratio** values (v4.2), due to impact on sound quality (thanks for reporting **quaddac**)
+- Slightly improved boot time by performing some tweaks in parallel/background
+
+## v4.4
+
+### General
+
+- Various code optimizations
+
+## v4.3
+
+- Added **com.google.android.safetycore** package to **Debloating & Optimization**
+- Implemented device model checks
+- Various code optimizations
+
+## v4.2
+
+### Advanced Tweaking
+
+- ~~Optimized **dirty_ratio** & **dirty_background_ratio** for troughput instead of latency (reduced disk I/O)~~
+- ~~Introduced option (**noidle=1**) to disable "Doze & App Standby" (deviceidle), similar to setting apps to "Unrestricted", but for the entire device (noticeable improvement, but may impact battery life)~~
+
+## v4.1
+
+### General
+
+- ~~Added **wifi_power_save** setting to **Debloating & Optimization** (reduced WiFi-related noise with **AMP14** card)~~
+- Removed **swappiness** from **Advanced Tweaking** (no measurable impact)
+- Various code optimizations
+
+## v4.0
+
+### Debloating & Optimization
+
+- Optimized compilation of packages
+- Removed compilation of overlays (no measurable impact)
+- Introduced option (**noplay=1**) to disable Play Services/Store as well:
+
+```
+curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/debloat.sh | noplay=1 sh
+```
+
+### Advanced Tweaking
+
+- Moved all tweaks to one file (/etc/init/custom.rc)
+- Disabled log & trace daemons
+- Optimized disk performance (**nr_requests** increased to 256 for SDA)
+- ~~In addition to default preset (a.k.a. "ECO"), introduced "MAX by Whitigir" scheduler tuning (**stmax=1**)~~
