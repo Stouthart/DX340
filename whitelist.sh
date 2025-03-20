@@ -9,7 +9,7 @@
   }
 
   echo '[ Doze Whitelist ]'
-  echo 'Whitelisting...'
+  echo '> Whitelisting...'
 
   set -- au.com.shiftyjelly.pocketcasts \
     com.amazon.mp3 \
