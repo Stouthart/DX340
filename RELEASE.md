@@ -134,6 +134,10 @@ curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/deblo
 curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/debloat.sh | noplay=1 sh
 ```
 
+> [!NOTE]
+>
+> MangoPlayer app seems to store thumbnails of images in the cache folder. Since "Debloating & Optimization" clears all caches, it may be necessary to rescan the media.
+
 ### Advanced Tweaking
 
 - Moved all tweaks to one file (/etc/init/custom.rc)
