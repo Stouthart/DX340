@@ -14,14 +14,14 @@ curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/insta
 ### General
 
 - Various code improvements
-- Moved release notes to RELEASE.md
+- Moved release notes to RELEASE.md (easier to maintain)
 -->
 
 # v5.1 - Latest
 
 ### General
 
-- Fixed a compatibility issue with Apple Music in **Advanced Tweaking**
+- Fixed a compatibility issue with Apple Music in **Advanced Tweaking** (thanks for reporting **Paul - iBasso**)
 - Various code optimizations
 
 ## v5.0
