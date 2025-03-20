@@ -27,12 +27,11 @@
   if [ "$pmax" = 1 ]; then # "Performance MAX"
     minfreq=1401600
     sed -i 's,### noidle$,exec_background -- /system/bin/dumpsys deviceidle disable,' $file
-    _stboost 'top-app/' 40
+    _stboost 'top-app/' 40    # Scheduler tuning by Whitigir
   elif [ "$psave" = 1 ]; then # "Power SAVE"
     minfreq=902400
     _stboost '' 8
     _stboost 'foreground/' 12
-    _stboost 'top-app/' 25
   fi
 
   case "$minfreq" in
@@ -42,12 +41,7 @@
     ;;
   esac
 
-  [ "$stmax" = 1 ] && { # "MAX by Whitigir" scheduler tuning
-    _stboost 'foreground/' 30
-    _stboost 'top-app/' 40
-  }
-
-  [ -x /etc/rc.local ] && sed -i 's,### debug$,exec_background -- /etc/rc.local,' $file
+  [ -x /etc/rc.local ] && sed -i 's,### rclocal$,exec_background -- /etc/rc.local,' $file
 
   sed -i -E "s,### printk ([a-z]+)$,write /dev/kmsg \"${file##*/}: \1\",g" $file
   sed -i -E 's,### [a-z]+$,# N/A,g' $file
