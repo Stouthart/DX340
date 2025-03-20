@@ -110,7 +110,7 @@ curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/deblo
 ### Advanced Tweaking
 
 - ~~Optimized **dirty_ratio** & **dirty_background_ratio** for troughput instead of latency (reduced disk I/O)~~
-- ~~New option **noidle=1** to disable "Doze & App Standby" (deviceidle), similar to setting apps to "Unrestricted", but for the entire device (noticeable improvement, but may impact battery life)~~
+- ~~New option **noidle=1** to disable "Doze & App Standby" (deviceidle), similar to setting apps to "Unrestricted", but for the entire device~~
 
 ## v4.1
 
