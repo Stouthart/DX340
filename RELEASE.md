@@ -5,7 +5,7 @@
 
 ### Advanced Tweaking
 
-- New option **psave=1** (aka "Power SAVE") which provides majority of improvements while reducing battery consumption (reduces minimum scaling frequency from 1056.0 MHz to 902.4 MHz, less aggressive scheduler tuning):
+- New option **psave=1** (aka "Power SAVE") for those who are conscious about battery life. This provides majority of improvements while reducing battery consumption (reduces minimum scaling frequency from 1056.0 MHz to 902.4 MHz, less aggressive scheduler tuning):
 
 ```
 curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/install.sh | psave=1 sh
