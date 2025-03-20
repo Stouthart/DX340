@@ -14,6 +14,7 @@
     exit 1
   }
 
+  echo '[ Advanced Tweaking ]'
   echo '> Installing...'
 
   file=/etc/init/custom.rc
