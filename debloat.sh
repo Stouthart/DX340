@@ -1,7 +1,7 @@
 #!/bin/sh
 # shellcheck disable=SC2154
 #
-# v5.1, Copyright (C) 2025 Stouthart. All rights reserved.
+# v5.2b, Copyright (C) 2025 Stouthart. All rights reserved.
 {
   # shellcheck disable=SC3028
   [ "$HOSTNAME" = DX340 ] || {
@@ -9,6 +9,7 @@
     exit 1
   }
 
+  echo '[ Debloating & Optimization ]'
   echo '> Debloating...'
 
   _uninstall() {
@@ -48,13 +49,11 @@
   ## https://forum.fairphone.com/t/telemetry-spyware-list-of-privacy-threats-on-fp3-android-9/55179
   _uninstall com.qualcomm.qti.qms.service.connectionsecurity
 
-  ## https://android.stackexchange.com/questions/215313/how-to-reinstall-an-uninstalled-system-app-through-adb/215316#215316
   # cmd package install-existing --user 0 com.android.gallery3d
   # cmd package enable --user 0 com.google.android.gms && cmd package enable --user 0 com.android.vending
 
   echo '> Optimizing settings...'
 
-  ## https://www.reddit.com/r/tasker/comments/fbi5ai/psa_you_can_use_adb_to_find_all_the_settings_that/
   ## https://github.com/ionuttbara/melody_android
   ## https://technastic.com/adb-commands-improve-performance-android/
 
