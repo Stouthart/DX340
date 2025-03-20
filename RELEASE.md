@@ -136,7 +136,7 @@ curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/deblo
 
 > [!NOTE]
 >
-> MangoPlayer app seems to store thumbnails of images in the cache folder. Since "Debloating & Optimization" clears all caches, it may be necessary to rescan the media.
+> MangoPlayer app seems to store thumbnails of images in the cache folder. Since **Debloating & Optimization** clears all caches, it may be necessary to rescan the media.
 
 ### Advanced Tweaking
 
