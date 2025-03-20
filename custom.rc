@@ -1,4 +1,4 @@
-# v5.1, Copyright (C) 2025 Stouthart. All rights reserved.
+# v5.2b, Copyright (C) 2025 Stouthart. All rights reserved.
 #
 # Device model: DX340
 
@@ -54,7 +54,7 @@ on property:sys.boot_completed=1
 
   # Debugging & testing
   ### printk done
-  ### debug
+  ### rclocal
 
 on property:init.svc_debug_pid.vendor.msm_irqbalance=*
   # Increase priority of IRQ balancer
