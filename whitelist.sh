@@ -28,6 +28,7 @@
     com.roon.onthego \
     com.soundcloud.android \
     com.spotify.music \
+    de.battlestr1k3.radionerd \
     de.bluegaspode.squeezeplayer \
     deezer.android.app \
     tunein.player
