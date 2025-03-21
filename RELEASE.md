@@ -43,7 +43,7 @@ curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/deblo
 
 > [!IMPORTANT]
 >
-> Be careful with option **nonoise=1**, as it may break the network connection for some apps (e.g., Apple Music, thanks for reporting **altomo**). That's why this setting is no longer enabled by default.
+> 🚸 Be careful with option **nonoise=1**, as it may break the network connection for some apps (e.g., Apple Music, thanks for reporting **altomo**). That's why this setting is no longer enabled by default.
 
 ### Advanced Tweaking
 
@@ -57,7 +57,7 @@ curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/insta
 
 > [!NOTE]
 >
-> Option **pmax=1** integrates option **noidle=1** (from v4.2). In addition to disabling "Doze & App Standby" (deviceidle), the minimum scaling frequency is increased from 1056.0 MHz to 1401.6 MHz. This may cause "Performance MAX ✨" to have an impact on battery life (although results may vary).
+> Option **pmax=1** integrates deprecated option **noidle=1** (from v4.2). In addition to disabling "Doze & App Standby" (deviceidle), the minimum scaling frequency is increased from 1056.0 MHz to 1401.6 MHz. This may cause "Performance MAX ✨" to have an impact on battery life (although results may vary).
 
 ## v4.7
 
