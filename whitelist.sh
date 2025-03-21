@@ -8,8 +8,8 @@
     exit 1
   }
 
-  echo '[🌿 Doze & App Standby]'
-  echo '[🌱] Whitelisting...'
+  echo '🔨 Doze & App Standby'
+  echo '🌱 Whitelisting...'
 
   set -- au.com.shiftyjelly.pocketcasts \
     com.amazon.mp3 \
@@ -39,6 +39,6 @@
   # shellcheck disable=SC2086
   dumpsys deviceidle whitelist +com.ibasso.music $wl
 
-  echo '💖 Done'
-  echo '✨ Rebooting...'
+  echo '✨ Done'
+  echo '🌿 Rebooting...'
 }
