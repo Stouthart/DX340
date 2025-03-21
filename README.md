@@ -2,15 +2,15 @@
 
 ![iBasso DX340]
 
-# iBasso DX340 Debloating & Tweaking Guides
+# iBasso DX340 Debloating & Tweaking Playbook
 
-[v5.1](https://github.com/Stouthart/DX340/blob/main/RELEASE.md) - Latest
+[v5.1 - Latest](https://github.com/Stouthart/DX340/blob/main/RELEASE.md)
 
 > [!IMPORTANT]
 >
 > 1. Download and install [Android SDK Platform-Tools] (or install via [Homebrew] on Mac)
 > 2. Make sure your device's WiFi is **on**
-> 3. Enable USB debugging (Developer options)
+> 3. Enable "USB debugging" (Settings > System > Developer options)
 
 **Contents:**
 
