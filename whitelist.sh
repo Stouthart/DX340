@@ -8,7 +8,7 @@
     exit 1
   }
 
-  echo '🔨 Doze & App Standby'
+  echo '🌿 [ Doze & App Standby ]'
   echo '🌱 Whitelisting...'
 
   set -- au.com.shiftyjelly.pocketcasts \
@@ -40,4 +40,5 @@
   dumpsys deviceidle whitelist +com.ibasso.music $wl
 
   echo '✨ Done'
+  echo '🔨Rebooting...'
 }
