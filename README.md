@@ -103,7 +103,7 @@ adb reboot
 
 Copyright (C) 2025 Stouthart. All rights reserved.
 
-The software in this repository is free for personal use. However, it is NOT published under a software license. This implies - as stated in the [GitHub Docs] - that default copyright laws apply, meaning that the owner retains all rights to the source code and no one may reproduce, distribute, or create derivative works from this work.
+🚸 The software in this repository is free for personal use. However, it is NOT published under a software license. This implies - as stated in the [GitHub Docs] - that default copyright laws apply, meaning that the owner retains all rights to the source code and no one may reproduce, distribute, or create derivative works from this work.
 
 [iBasso DX340]: https://ibasso.com/wp-content/uploads/2024/12/2024-12-24469.webp
 [Android SDK Platform-Tools]: https://developer.android.com/tools/releases/platform-tools
