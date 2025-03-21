@@ -4,7 +4,7 @@
 
 # iBasso DX340 Debloating & Tweaking Playbook
 
-The GitHub repository provides a playbook for debloating and tweaking the iBasso DX340 digital audio player.
+This GitHub repository provides a playbook for debloating and tweaking the iBasso DX340 digital audio player.
 
 > [!IMPORTANT]
 >
