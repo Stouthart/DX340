@@ -6,8 +6,6 @@
 
 The GitHub repository provides a playbook for debloating and tweaking the iBasso DX340 digital audio player.
 
-🔨 [v5.2 - Latest](https://github.com/Stouthart/DX340/blob/main/RELEASE.md)
-
 > [!IMPORTANT]
 >
 > 1. Download and install [Android SDK Platform-Tools] (or install via [Homebrew] on Mac)
