@@ -9,8 +9,8 @@
     exit 1
   }
 
-  echo '🌿 Debloating & Optimization'
-  echo '🔨 Debloating...'
+  echo '[ Debloating & Optimization ]'
+  echo '🌱 Debloating...'
 
   _uninstall() {
     # shellcheck disable=SC3037
@@ -52,7 +52,7 @@
   # cmd package install-existing --user 0 com.android.gallery3d
   # cmd package enable --user 0 com.google.android.gms && cmd package enable --user 0 com.android.vending
 
-  echo '🔨 Optimizing settings...'
+  echo '🌱 Optimizing settings...'
 
   ## https://github.com/ionuttbara/melody_android
   ## https://technastic.com/adb-commands-improve-performance-android/
@@ -80,17 +80,17 @@
   settings put system screen_brightness 81
   settings put system screen_off_timeout 15000
 
-  echo '🔨 Compiling packages...'
+  echo '🌱 Compiling packages...'
 
   ## https://source.android.com/docs/core/runtime/configure#compiler_filters
   cmd package compile -a -m speed-profile
   cmd package bg-dexopt-job
 
-  echo '🔨 Trimming caches...'
+  echo '🌱 Trimming caches...'
   cmd package trim-caches 999G
 
   echo '✨ Done'
 
-  echo '🌱 Rebooting...'
+  echo '🔨 Rebooting...'
   reboot
 }
