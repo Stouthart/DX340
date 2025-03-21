@@ -41,10 +41,6 @@ curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/deblo
 curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/debloat.sh | nonoise=1 noplay=1 sh
 ```
 
-> [!IMPORTANT]
->
-> 🚸 Be careful with option **nonoise=1**, as it may break the network connection for some apps (e.g., Apple Music, thanks for reporting **altomo**). That's why this setting is no longer enabled by default.
-
 ### Advanced Tweaking
 
 - New option **pmax=1** (aka "Performance MAX ✨") to get absolute maximum performance out of the DX340:
@@ -81,6 +77,10 @@ curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/insta
 ```
 curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/debloat.sh | nonoise=1 sh
 ```
+
+> [!IMPORTANT]
+>
+> 🚸 Be careful with this option, as it may break the network connection for some apps (e.g., Apple Music, thanks for reporting **altomo**). That's why this setting is no longer enabled by default.
 
 ### Advanced Tweaking
 
