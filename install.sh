@@ -5,17 +5,17 @@
 {
   # shellcheck disable=SC3028
   [ "$HOSTNAME" = DX340 ] || {
-    echo 'Your device is not compatible with this version.'
+    echo '🚸 Your device is not compatible with this version.'
     exit 1
   }
 
   [ -w /etc/init ] || {
-    echo 'Read-only file system. Try "adb remount" first.'
+    echo '🚸 Read-only file system. Try "adb remount" first.'
     exit 1
   }
 
-  echo '[ Advanced Tweaking ]'
-  echo '> Installing...'
+  echo '🌿 Advanced Tweaking '
+  echo '🔨 Installing...'
 
   file=/etc/init/custom.rc
 
@@ -47,6 +47,8 @@
   sed -i -E "s,### printk ([a-z]+)$,write /dev/kmsg \"${file##*/}: \1\",g" $file
   sed -i -E 's,### [a-z]+$,# N/A,g' $file
 
-  echo '> Rebooting...'
+  echo '✨ Done'
+
+  echo '🌱 Rebooting...'
   reboot
 }
