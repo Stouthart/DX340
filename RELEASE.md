@@ -19,7 +19,7 @@ curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/insta
 - Moved release notes to RELEASE.md (easier to maintain)
 -->
 
-# v5.1 - Latest
+# v5.1 - Latest 🌱
 
 ### General
 
