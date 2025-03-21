@@ -1,7 +1,7 @@
 #!/bin/sh
 # shellcheck disable=SC2154
 #
-# v5.2b, Copyright (C) 2025 Stouthart. All rights reserved.
+# v5.b, Copyright (C) 2025 Stouthart. All rights reserved.
 {
   # shellcheck disable=SC3028
   [ "$HOSTNAME" = DX340 ] || {
@@ -63,10 +63,7 @@
   settings put global ota_disable_automatic_update 1
   settings put global wifi_networks_available_notification_on 0
 
-  [ "$nonoise" = 1 ] && {
-    # Default value: 120
-    settings put global wifi_power_save 1
-  }
+  [ "$nonoise" = 1 ] && settings put global wifi_power_save 1 # Default value: 120
 
   # Remove animations
   settings put global animator_duration_scale 0.0
