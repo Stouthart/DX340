@@ -29,7 +29,7 @@ curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/insta
 ### Debloating & Optimization
 
 - Improved visibility of packages removed during debloating
-- [Reminder] Option **nonoise=1** was introduced in [v4.5](#v45) to reduce WiFi-related noise with **AMP14** card:
+- [ Reminder ] Option **nonoise=1** was introduced in [v4.5](#v45) to reduce WiFi-related noise with **AMP14** card:
 
 ```
 curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/debloat.sh | nonoise=1 sh
