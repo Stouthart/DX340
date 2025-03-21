@@ -10,7 +10,7 @@
 curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/install.sh | psave=1 sh
 ```
 
-- "Scheduler tuning by Whitigir" merged with option **pmax=1** (aka "Performance MAX ✨")
+- "Scheduler tuning by Whitigir" merged with option **pmax=1** (aka "Performance MAX ✨", see [v5.0](#v50))
 
 ### General
 
@@ -29,7 +29,7 @@ curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/insta
 ### Debloating & Optimization
 
 - Improved visibility of packages removed during debloating
-- [Reminder] Option **nonoise=1** was introduced in v4.5 to reduce WiFi-related noise with **AMP14** card:
+- [Reminder] Option **nonoise=1** was introduced in [v4.5](#v45) to reduce WiFi-related noise with **AMP14** card:
 
 ```
 curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/debloat.sh | nonoise=1 sh
@@ -90,7 +90,7 @@ curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/deblo
 
 ### Advanced Tweaking
 
-- Reverted change of **dirty_ratio** & **dirty_background_ratio** values (v4.2), due to impact on sound quality (thanks for reporting **quaddac**)
+- Reverted change of **dirty_ratio** & **dirty_background_ratio** values ([v4.2](#v42)), due to impact on sound quality (thanks for reporting **quaddac**)
 - Slightly improved boot time by performing some tweaks in parallel/background
 
 ## v4.4
