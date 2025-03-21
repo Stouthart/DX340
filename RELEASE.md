@@ -82,12 +82,6 @@ curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/insta
 curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/debloat.sh | nonoise=1 sh
 ```
 
-- This can be combined with option to disable Play Services/Store (**noplay=1**):
-
-```
-curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/debloat.sh | nonoise=1 noplay=1 sh
-```
-
 ### Advanced Tweaking
 
 - Reverted change of **dirty_ratio** & **dirty_background_ratio** values ([v4.2](#v42)), due to impact on sound quality (thanks for reporting **quaddac**)
