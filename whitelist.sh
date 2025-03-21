@@ -40,5 +40,4 @@
   dumpsys deviceidle whitelist +com.ibasso.music $wl
 
   echo '✨ Done'
-  echo '🔨 Rebooting...'
 }
