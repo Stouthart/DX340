@@ -4,7 +4,7 @@
 
 # iBasso DX340 Debloating & Tweaking Playbook
 
-[v5.1 - Latest 🌱](https://github.com/Stouthart/DX340/blob/main/RELEASE.md)
+[v5.1 - Latest](https://github.com/Stouthart/DX340/blob/main/RELEASE.md)
 
 > [!IMPORTANT]
 >
