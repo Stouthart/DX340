@@ -86,7 +86,7 @@
   cmd package compile -a -m speed-profile
   cmd package bg-dexopt-job
 
-  ## https://www.reddit.com/r/AndroidQuestions/comments/s1vk4z/does_anyone_know_how_to_clear_all_app_caches_at/
+  echo 'Trimming caches...'
   cmd package trim-caches 999G
 
   echo '> Rebooting...'
