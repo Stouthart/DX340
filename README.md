@@ -8,9 +8,10 @@ This GitHub repository provides a playbook for debloating and tweaking the iBass
 
 > [!IMPORTANT]
 >
-> 1. Download and install [Android SDK Platform-Tools] (or install via [Homebrew] on Mac)
-> 2. Make sure your device's WiFi is **on**
-> 3. Enable "USB debugging" (Settings > System > Developer options)
+> - Download and install [Android SDK Platform-Tools] (or install via [Homebrew] on Mac)
+> - Make sure your device's WiFi is **on**
+> - Enable "USB debugging" (Settings > System > Developer options)
+> - Check the [release notes] for changes and additional options
 
 **Contents:**
 
@@ -64,9 +65,7 @@ curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/insta
 Your device will reboot immediately. Enjoy the improvements!
 
 > [!TIP]
->
-> - Check the [release notes] for changes and additional options
-> - Follow the discussion about the iBasso DX340 on [Head-Fi]
+> Follow the discussion about the iBasso DX340 digital audio player on [Head-Fi]
 
 **Undo is just as easy:**
 
@@ -108,8 +107,8 @@ Copyright (C) 2025 Stouthart. All rights reserved.
 [iBasso DX340]: https://ibasso.com/wp-content/uploads/2024/12/2024-12-24469.webp
 [Android SDK Platform-Tools]: https://developer.android.com/tools/releases/platform-tools
 [Homebrew]: https://formulae.brew.sh/cask/android-platform-tools
+[release notes]: https://github.com/Stouthart/DX340/blob/main/RELEASE.md
 [Debloating & Optimization]: #debloating--optimization
 [Advanced Tweaking]: #advanced-tweaking
-[release notes]: https://github.com/Stouthart/DX340/blob/main/RELEASE.md
 [Head-Fi]: https://www.head-fi.org/threads/dx340-ibasso-developed-discret-dac-easily-replaceable-batteries-amp-modules-new-firmware-on-1st-page-v1-01-local-update.974099/
 [GitHub Docs]: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository
