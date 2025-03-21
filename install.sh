@@ -1,7 +1,7 @@
 #!/bin/sh
 # shellcheck disable=SC2154
 #
-# v5.2b, Copyright (C) 2025 Stouthart. All rights reserved.
+# v5.2, Copyright (C) 2025 Stouthart. All rights reserved.
 {
   # shellcheck disable=SC3028
   [ "$HOSTNAME" = DX340 ] || {
