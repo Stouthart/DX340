@@ -1,7 +1,7 @@
 #!/bin/sh
 # shellcheck disable=SC2154
 #
-# v5.2, Copyright (C) 2025 Stouthart. All rights reserved.
+# v5.3b, Copyright (C) 2025 Stouthart. All rights reserved.
 {
   # shellcheck disable=SC3028
   [ "$HOSTNAME" = DX340 ] || {
@@ -76,7 +76,7 @@
   settings put secure ui_night_mode 2
 
   # System settings
-  settings put system multicore_packet_scheduler 1
+  settings put system multicore_packet_scheduler 0
   settings put system screen_brightness 81
   settings put system screen_off_timeout 15000
 
