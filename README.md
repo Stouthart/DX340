@@ -8,10 +8,10 @@ This GitHub repository provides a playbook for debloating and tweaking the iBass
 
 > [!IMPORTANT]
 >
-> - Download and install [Android SDK Platform-Tools] (or install via [Homebrew] on Mac)
-> - Make sure your device's WiFi is **on**
-> - Enable "USB debugging" (Settings > System > Developer options)
-> - Check the [release notes] for changes and additional options
+> 1. Download and install [Android SDK Platform-Tools] (or install via [Homebrew] on Mac)
+> 2. Make sure your device's WiFi is **on**
+> 3. Enable "USB debugging" (Settings > System > Developer options)
+> 4. Check the [release notes] for changes and additional options
 
 **Contents:**
 
