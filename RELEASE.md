@@ -1,7 +1,6 @@
 <!-- Copyright (C) 2025 Stouthart. All rights reserved. -->
 
-<!--
-# v5.2b
+# v5.2 - Latest
 
 ### Advanced Tweaking
 
@@ -17,9 +16,8 @@ curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/insta
 
 - Various code improvements
 - Moved release notes to RELEASE.md (easier to maintain)
--->
 
-# v5.1 - Latest
+## v5.1
 
 ### General
 
@@ -140,7 +138,7 @@ curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/deblo
 
 ### Advanced Tweaking
 
-- Moved all tweaks to one file (/etc/init/custom.rc)
+- Moved all tweaks to a single file (/etc/init/custom.rc)
 - Disabled log & trace daemons
 - Optimized disk performance (**nr_requests** increased to 256 for SDA)
 - ~~In addition to default preset (a.k.a. "ECO"), introduced "MAX by Whitigir" scheduler tuning (**stmax=1**)~~
