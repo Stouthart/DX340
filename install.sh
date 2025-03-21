@@ -14,8 +14,8 @@
     exit 1
   }
 
-  echo '🌿 Advanced Tweaking '
-  echo '🔨 Installing...'
+  echo '[ Advanced Tweaking ]'
+  echo '🌱 Installing...'
 
   file=/etc/init/custom.rc
 
@@ -49,6 +49,6 @@
 
   echo '✨ Done'
 
-  echo '🌱 Rebooting...'
+  echo '🔨 Rebooting...'
   reboot
 }
