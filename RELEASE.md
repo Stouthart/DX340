@@ -84,7 +84,7 @@ curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/deblo
 
 ### Advanced Tweaking
 
-- Reverted change of **dirty_ratio** & **dirty_background_ratio** values ([v4.2](#v42)), due to impact on sound quality (thanks for reporting **quaddac**)
+- Reverted change of **dirty_ratio** & **dirty_background_ratio** values (from [v4.2](#v42)), due to impact on sound quality (thanks for reporting **quaddac**)
 - Slightly improved boot time by performing some tweaks in parallel/background
 
 ## v4.4
