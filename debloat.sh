@@ -86,7 +86,7 @@
   cmd package compile -a -m speed-profile
   cmd package bg-dexopt-job
 
-  echo 'Trimming caches...'
+  echo '> Trimming caches...'
   cmd package trim-caches 999G
 
   echo '> Rebooting...'
