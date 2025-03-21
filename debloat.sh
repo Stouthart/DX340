@@ -9,7 +9,7 @@
     exit 1
   }
 
-  echo '🌱 Debloating & Optimization'
+  echo '🌿 Debloating & Optimization'
   echo '🔨 Debloating...'
 
   _uninstall() {
@@ -91,6 +91,6 @@
 
   echo '✨ Done'
 
-  echo '🌿 Rebooting...'
+  echo '🌱 Rebooting...'
   reboot
 }
