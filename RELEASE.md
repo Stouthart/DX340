@@ -35,7 +35,7 @@ curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/insta
 curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/debloat.sh | nonoise=1 sh
 ```
 
-- This can be combined with option to disable Play Services/Store (**noplay=1**):
+- This can be combined with option to disable Play Services/Store (**noplay=1**, see [v4.0](#v40)):
 
 ```
 curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/debloat.sh | nonoise=1 noplay=1 sh
