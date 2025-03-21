@@ -57,7 +57,7 @@ curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/insta
 
 > [!NOTE]
 >
-> Option **pmax=1** integrates deprecated option **noidle=1** (from v4.2). In addition to disabling "Doze & App Standby" (deviceidle), the minimum scaling frequency is increased from 1056.0 MHz to 1401.6 MHz. This may cause "Performance MAX ✨" to have an impact on battery life (although results may vary).
+> Option **pmax=1** replaces option **noidle=1** (deprecated). In addition to disabling "Doze & App Standby" (deviceidle), the minimum scaling frequency is increased from 1056.0 MHz to 1401.6 MHz. This may cause "Performance MAX ✨" to have an impact on battery life (although results may vary).
 
 ## v4.7
 
