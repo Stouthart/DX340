@@ -24,11 +24,10 @@
   chcon u:object_r:system_file:s0 $file
 
   _minfreq() {
-    cmd="sleep 2; echo -n ${1} >/sys/devices/system/cpu/cpufreq/policy4/scaling_min_freq"
-    sed -i "s,### minfreq$,exec_background -- ${SHELL} -c \"${cmd}\"," $file
+    _shsleep 'minfreq' "echo -n ${1} >/sys/devices/system/cpu/cpufreq/policy4/scaling_min_freq"
   }
 
-  _sleepsh() {
+  _shsleep() {
     sed -i "s,### ${1}$,exec_background -- ${SHELL} -c \"sleep 2; ${2}\"," $file
   }
 
@@ -39,14 +38,14 @@
   if [ "$pmax" = 1 ]; then # Performance MAX
     _minfreq 1401600
     _stboost 'top-app/' 40 # Scheduler tuning by Whitigir
-    sed -i 's,### noidle$,exec_background -- /system/bin/dumpsys deviceidle disable,' $file
+    _shsleep 'noidle' 'dumpsys deviceidle disable'
   elif [ "$psave" = 1 ]; then # Power SAVE
     _minfreq 902400
     _stboost '' 8
     _stboost 'foreground/' 12
   fi
 
-  [ "$noswap" -eq 1 ] && _sleepsh 'noswap' '/system/bin/swapoff /dev/block/zram0'
+  [ "$noswap" -eq 1 ] && _shsleep 'noswap' 'swapoff /dev/block/zram0'
 
   [ -x /etc/rc.local ] && sed -i 's,### rclocal$,exec_background -- /etc/rc.local,' $file
 
