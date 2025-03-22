@@ -35,11 +35,11 @@
     sed -i -E "s,(stune/${1}schedtune.boost) [0-9]+$,\1 ${2}," $file
   }
 
-  if [ "$pmax" = 1 ]; then # Performance MAX
+  if [ "$pmax" -eq 1 ]; then # Performance MAX
     _minfreq 1401600
     _stboost 'top-app/' 40 # Scheduler tuning by Whitigir
     _shsleep 'noidle' 'dumpsys deviceidle disable'
-  elif [ "$psave" = 1 ]; then # Power SAVE
+  elif [ "$psave" -eq 1 ]; then # Power SAVE
     _minfreq 902400
     _stboost '' 8
     _stboost 'foreground/' 12
