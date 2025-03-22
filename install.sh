@@ -47,7 +47,7 @@
 
   [ "$noswap" -eq 1 ] && _shsleep 'noswap' 'swapoff /dev/block/zram0'
 
-  [ -x /etc/rc.local ] && sed -i 's,### rclocal$,exec_background -- /etc/rc.local,' $file
+  [ -x /etc/rc.local ] && _shsleep 'rclocal' '/etc/rc.local'
 
   sed -i -E "s,### printk ([a-z]+)$,write /dev/kmsg \"${file##*/}: \1\",g" $file
   sed -i -E 's,### [a-z]+$,# N/A,g' $file
