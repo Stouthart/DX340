@@ -23,12 +23,12 @@
   chmod 0644 $file
   chcon u:object_r:system_file:s0 $file
 
-  _minfreq() {
-    _shsleep 'minfreq' "echo -n ${1} >/sys/devices/system/cpu/cpufreq/policy4/scaling_min_freq"
+  _execbkg() {
+    sed -i "s,### ${1}$,exec_background -- ${SHELL} -c \"sleep 2; ${2}\"," $file
   }
 
-  _shsleep() {
-    sed -i "s,### ${1}$,exec_background -- ${SHELL} -c \"sleep 2; ${2}\"," $file
+  _minfreq() {
+    _execbkg 'minfreq' "echo -n ${1} >/sys/devices/system/cpu/cpufreq/policy4/scaling_min_freq"
   }
 
   _stboost() {
@@ -38,16 +38,16 @@
   if [ "$pmax" -eq 1 ]; then # Performance MAX
     _minfreq 1401600
     _stboost 'top-app/' 40 # Scheduler tuning by Whitigir
-    _shsleep 'noidle' 'dumpsys deviceidle disable'
+    _execbkg 'noidle' 'dumpsys deviceidle disable'
   elif [ "$psave" -eq 1 ]; then # Power SAVE
     _minfreq 902400
     _stboost '' 8
     _stboost 'foreground/' 12
   fi
 
-  [ "$noswap" -eq 1 ] && _shsleep 'noswap' 'swapoff /dev/block/zram0'
+  [ "$noswap" -eq 1 ] && _execbkg 'noswap' 'swapoff /dev/block/zram0'
 
-  [ -x /etc/rc.local ] && _shsleep 'rclocal' '/etc/rc.local'
+  [ -x /etc/rc.local ] && _execbkg 'rclocal' '/etc/rc.local'
 
   sed -i -E "s,### printk ([a-z]+)$,write /dev/kmsg \"${file##*/}: \1\",g" $file
   sed -i -E 's,### [a-z]+$,# N/A,g' $file
