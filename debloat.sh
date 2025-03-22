@@ -33,7 +33,7 @@
   ## https://9to5google.com/2024/11/25/november-2024-google-system-updates/
   _uninstall com.google.android.safetycore
 
-  [ "$noplay" = 1 ] && {
+  [ "$noplay" -eq 1 ] && {
     cmd package disable-user --user 0 com.android.vending
     cmd package disable-user --user 0 com.google.android.gms
   }
@@ -63,7 +63,7 @@
   settings put global ota_disable_automatic_update 1
   settings put global wifi_networks_available_notification_on 0
 
-  [ "$nonoise" = 1 ] && settings put global wifi_power_save 1 # Default value: 120
+  [ "$nonoise" -eq 1 ] && settings put global wifi_power_save 1 # Default value: 120
 
   # Remove animations
   settings put global animator_duration_scale 0.0
