@@ -76,7 +76,7 @@
   settings put secure ui_night_mode 2
 
   # System settings
-  settings put system multicore_packet_scheduler 0
+  settings put system multicore_packet_scheduler 0 # Avoid spurious interrupts (IRQ 7)
   settings put system screen_brightness 81
   settings put system screen_off_timeout 15000
 
