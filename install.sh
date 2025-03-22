@@ -1,7 +1,7 @@
 #!/bin/sh
 # shellcheck disable=SC2154
 #
-# v5.2, Copyright (C) 2025 Stouthart. All rights reserved.
+# v5.3b, Copyright (C) 2025 Stouthart. All rights reserved.
 {
   # shellcheck disable=SC3028
   [ "$HOSTNAME" = DX340 ] || {
@@ -28,6 +28,10 @@
     sed -i "s,### minfreq$,exec_background -- ${SHELL} -c \"${cmd}\"," $file
   }
 
+  _sleepsh() {
+    sed -i "s,### ${1}$,exec_background -- ${SHELL} -c \"sleep 2; ${2}\"," $file
+  }
+
   _stboost() {
     sed -i -E "s,(stune/${1}schedtune.boost) [0-9]+$,\1 ${2}," $file
   }
@@ -41,6 +45,8 @@
     _stboost '' 8
     _stboost 'foreground/' 12
   fi
+
+  [ "$noswap" -eq 1 ] && _sleepsh 'noswap' '/system/bin/swapoff /dev/block/zram0'
 
   [ -x /etc/rc.local ] && sed -i 's,### rclocal$,exec_background -- /etc/rc.local,' $file
 
