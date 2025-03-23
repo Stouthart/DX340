@@ -21,8 +21,10 @@ on late-init
 
 on late-fs
   ## https://source.android.com/docs/core/perf/boot-times#tuning-the-filesystem
+  write /sys/block/dm-1/queue/read_ahead_kb 2048
   write /sys/block/sda/queue/iostats 0
   write /sys/block/sda/queue/nr_requests 256
+  write /sys/block/sda/queue/read_ahead_kb 2048
 
   # SD card tuning
   write /sys/block/mmcblk0/queue/iostats 0
