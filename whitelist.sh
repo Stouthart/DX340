@@ -8,7 +8,9 @@
     exit 1
   }
 
-  echo '[ Doze & App Standby ]'
+  # shellcheck disable=SC2154
+  [ "$inline" -eq 1 ] || echo '[ Doze & App Standby ]'
+
   echo '🌱 Whitelisting...'
 
   set -- au.com.shiftyjelly.pocketcasts \
