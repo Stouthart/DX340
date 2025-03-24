@@ -48,8 +48,8 @@ on property:sys.boot_completed=1
   # Stop logd & traced services
   stop logd
   setprop logd.ready false
-  stop traced
   stop traced_probes
+  stop traced
 
   # Reduce debug information to the kernel ring buffer
   write /proc/sys/kernel/printk "4 4 1 7"
