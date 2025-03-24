@@ -9,7 +9,6 @@
     exit 1
   }
 
-
   echo '[ Debloating & Optimization ]'
   echo '🌱 Debloating...'
 
