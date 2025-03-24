@@ -49,7 +49,6 @@
 
   [ -x /etc/rc.local ] && _execbkg 'rclocal' '/etc/rc.local'
 
-  sed -i -E "s,### printk ([a-z]+)$,write /dev/kmsg \"${file##*/}: \1\",g" $file
   sed -i -E 's,### [a-z]+$,# N/A,g' $file
 
   # Disable tracing services (perfetto.rc)
