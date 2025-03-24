@@ -5,7 +5,6 @@
 ## https://android.googlesource.com/platform/system/core/+/master/init/README.md
 
 on init
-  ### printk init
   write /sys/kernel/debug/debug_enabled N
 
   ## https://github.com/redhat-performance/tuned/tree/master/profiles
@@ -16,7 +15,7 @@ on init
   write /proc/sys/vm/stat_interval 10
 
 on late-init
-  # Disable scheduler statistics to reduce overhead
+  # Disable scheduler statistics to reduce overhead (atrace.rc)
   write /proc/sys/kernel/sched_schedstats 0
 
 on late-fs
@@ -49,10 +48,8 @@ on property:sys.boot_completed=1
   write /proc/sys/kernel/printk "4 4 1 7"
 
   # Debugging & testing
-  ### printk done
   ### rclocal
 
 on property:init.svc_debug_pid.vendor.msm_irqbalance=*
   # Increase priority of IRQ balancer
-  ### printk irqb
   exec_background -- /system/bin/renice -n -5 -p ${init.svc_debug_pid.vendor.msm_irqbalance}
