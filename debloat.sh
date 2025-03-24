@@ -83,9 +83,6 @@
   settings put system screen_brightness 81
   settings put system screen_off_timeout 15000
 
-  # Disable tracing services
-  setprop persist.traced.enable 0
-
   echo '🌱 Compiling packages...'
 
   ## https://source.android.com/docs/core/runtime/configure#compiler_filters
