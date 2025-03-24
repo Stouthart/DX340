@@ -52,6 +52,9 @@
   # cmd package install-existing --user 0 com.android.gallery3d
   # cmd package enable --user 0 com.google.android.gms && cmd package enable --user 0 com.android.vending
 
+  # Doze & App Standby
+  curl -s https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/whitelist.sh | inline=1 sh
+
   echo '🌱 Optimizing settings...'
 
   ## https://github.com/ionuttbara/melody_android
@@ -82,9 +85,6 @@
 
   # Disable tracing services
   setprop persist.traced.enable 0
-
-  # Doze & App Standby
-  curl -s https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/whitelist.sh | inline=1 sh
 
   echo '🌱 Compiling packages...'
 
