@@ -49,7 +49,7 @@
 
   [ -x /etc/rc.local ] && _execbkg 'rclocal' '/etc/rc.local'
 
-  sed -i -E 's,### [a-z]+$,# N/A,g' $file
+  sed -i -E 's,### [a-z]+$,# N/A,g' $file # Cleanup
 
   # Disable tracing services (perfetto.rc)
   setprop persist.traced.enable 0
