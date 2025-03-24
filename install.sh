@@ -52,7 +52,7 @@
   sed -i -E 's,### [a-z]+$,# N/A,g' $file # Cleanup
 
   # Reduce logging of system messages (logcat)
-  setprop persist.log.tag W
+  setprop persist.log.tag E
 
   # Disable tracing services (perfetto.rc)
   setprop persist.traced.enable 0
