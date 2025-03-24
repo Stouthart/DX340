@@ -52,7 +52,7 @@
   sed -i -E "s,### printk ([a-z]+)$,write /dev/kmsg \"${file##*/}: \1\",g" $file
   sed -i -E 's,### [a-z]+$,# N/A,g' $file
 
-  # Disable tracing services
+  # Disable tracing services (perfetto.rc)
   setprop persist.traced.enable 0
 
   echo '✨ Done'
