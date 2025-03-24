@@ -11,7 +11,7 @@
   # shellcheck disable=SC2154
   [ "$inline" -eq 1 ] || echo '[ Doze & App Standby ]'
 
-  echo '🌱 Whitelisting...'
+  echo '🌱 Whitelisting apps...'
 
   set -- au.com.shiftyjelly.pocketcasts \
     com.amazon.mp3 \
