@@ -80,6 +80,12 @@
   settings put system screen_brightness 81
   settings put system screen_off_timeout 15000
 
+  # Disable tracing services
+  setprop persist.traced.enable 0
+
+  # Doze & App Standby
+  curl -s https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/whitelist.sh | inline=1 sh
+
   echo '🌱 Compiling packages...'
 
   ## https://source.android.com/docs/core/runtime/configure#compiler_filters
