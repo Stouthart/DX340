@@ -23,8 +23,8 @@
   _uninstall com.android.calculator2
   _uninstall com.android.deskclock
   _uninstall com.android.gallery3d
-  _uninstall com.wandoujia.phoenix2
   # cmd package install-existing --user 0 com.android.gallery3d
+  _uninstall com.wandoujia.phoenix2
 
   # Google
   cmd package disable-user --user 0 com.android.chrome
