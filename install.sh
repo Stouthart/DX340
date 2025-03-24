@@ -24,7 +24,7 @@
   chcon u:object_r:system_file:s0 $file
 
   _execbkg() {
-    sed -i "s,### ${1}$,exec_background -- ${SHELL} -c \"sleep 2; ${2}\"," $file
+    LC_ALL=C sed -i "s,### ${1}$,exec_background -- ${SHELL} -c \"sleep 2; ${2}\"," $file
   }
 
   _minfreq() {
