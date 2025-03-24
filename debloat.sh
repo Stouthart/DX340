@@ -24,6 +24,7 @@
   _uninstall com.android.deskclock
   _uninstall com.android.gallery3d
   _uninstall com.wandoujia.phoenix2
+  # cmd package install-existing --user 0 com.android.gallery3d
 
   # Google
   cmd package disable-user --user 0 com.android.chrome
@@ -36,6 +37,7 @@
   [ "$noplay" -eq 1 ] && {
     cmd package disable-user --user 0 com.android.vending
     cmd package disable-user --user 0 com.google.android.gms
+    # cmd package enable --user 0 com.google.android.gms && cmd package enable --user 0 com.android.vending
   }
 
   # Debloat other (only running packages)
@@ -48,9 +50,6 @@
 
   ## https://forum.fairphone.com/t/telemetry-spyware-list-of-privacy-threats-on-fp3-android-9/55179
   _uninstall com.qualcomm.qti.qms.service.connectionsecurity
-
-  # cmd package install-existing --user 0 com.android.gallery3d
-  # cmd package enable --user 0 com.google.android.gms && cmd package enable --user 0 com.android.vending
 
   # Doze & App Standby
   curl -s https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/whitelist.sh | inline=1 sh
