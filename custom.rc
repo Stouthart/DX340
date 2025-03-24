@@ -45,10 +45,6 @@ on property:sys.boot_completed=1
   # Disable swap/zram
   ### noswap
 
-  # Stop logd service
-  setprop logd.ready false
-  stop logd
-
   # Reduce debug information to the kernel ring buffer
   write /proc/sys/kernel/printk "4 4 1 7"
 
