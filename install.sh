@@ -51,6 +51,9 @@
 
   sed -i -E 's,### [a-z]+$,# N/A,g' $file # Cleanup
 
+  # Set minimum loglevel (logcat)
+  setprop persist.log.tag W
+
   # Disable tracing services (perfetto.rc)
   setprop persist.traced.enable 0
 
