@@ -41,5 +41,5 @@
   # shellcheck disable=SC2086
   dumpsys deviceidle whitelist +com.ibasso.music $wl
 
-  echo '✨ Done'
+  [ "$inline" -eq 1 ] || echo '✨ Done'
 }
