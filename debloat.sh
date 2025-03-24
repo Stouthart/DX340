@@ -60,7 +60,6 @@
   # Global settings
   settings put global mobile_data_always_on 0
   settings put global mobile_signal_detector 0
-  settings put global network_scoring_ui_enabled 0
   settings put global ota_disable_automatic_update 1
   settings put global wifi_networks_available_notification_on 0
 
