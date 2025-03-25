@@ -31,6 +31,10 @@
     _execbkg 'minfreq' "echo -n ${1} >/sys/devices/system/cpu/cpufreq/policy4/scaling_min_freq"
   }
 
+  _noidle() {
+    _execbkg 'noidle' "dumpsys deviceidle disable ${1}"
+  }
+
   _stboost() {
     sed -i -E "s,(stune/${1}schedtune.boost) [0-9]+$,\1 ${2}," $file
   }
@@ -38,11 +42,13 @@
   if [ "$pmax" -eq 1 ]; then # Performance MAX
     _minfreq 1401600
     _stboost 'top-app/' 40 # Scheduler tuning by Whitigir
-    _execbkg 'noidle' 'dumpsys deviceidle disable'
+    _noidle 'all'
   elif [ "$psave" -eq 1 ]; then # Power SAVE
     _minfreq 902400
     _stboost '' 8
     _stboost 'foreground/' 12
+  else
+    _noidle 'deep'
   fi
 
   [ "$noswap" -eq 1 ] && _execbkg 'noswap' 'swapoff /dev/block/zram0'
