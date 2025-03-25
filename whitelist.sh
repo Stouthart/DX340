@@ -8,9 +8,7 @@
     exit 1
   }
 
-  # shellcheck disable=SC2154
-  [ "$inline" -eq 1 ] || echo '[ Doze & App Standby ]'
-
+  echo '[ Doze & App Standby ]'
   echo '🌱 Whitelisting apps...'
 
   set -- au.com.shiftyjelly.pocketcasts \
@@ -41,5 +39,5 @@
   # shellcheck disable=SC2086
   dumpsys deviceidle whitelist +com.ibasso.music $wl
 
-  [ "$inline" -eq 1 ] || echo '✨ Done'
+  echo '✨ Done'
 }
