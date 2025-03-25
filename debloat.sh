@@ -51,9 +51,6 @@
   ## https://forum.fairphone.com/t/telemetry-spyware-list-of-privacy-threats-on-fp3-android-9/55179
   _uninstall com.qualcomm.qti.qms.service.connectionsecurity
 
-  # Doze & App Standby
-  curl -s https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/whitelist.sh | inline=1 sh
-
   echo '🌱 Optimizing settings...'
 
   # Global settings
