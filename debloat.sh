@@ -3,8 +3,8 @@
 #
 # v5.3b2, Copyright (C) 2025 Stouthart. All rights reserved.
 {
-  # shellcheck disable=SC3028
-  [ "$HOSTNAME" = DX340 ] || {
+  # shellcheck disable=SC2166,SC3028
+  [ "$HOSTNAME" = DX180 -o "$HOSTNAME" = DX340 ] || {
     echo '🚸 Your device is not compatible with this version.'
     exit 1
   }
