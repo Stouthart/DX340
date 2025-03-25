@@ -15,12 +15,14 @@
   }
 
   echo '[ Advanced Tweaking ]'
-  echo '🌱 Installing...'
 
   url=https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/custom.rc
   file=/etc/init/${url##*/}
 
+  echo '🌱 Downloading...'
   curl -so "$file" $url
+
+  echo '🌱 Installing...'
 
   chmod 0644 "$file"
   chcon u:object_r:system_file:s0 "$file"
