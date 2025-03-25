@@ -17,14 +17,16 @@
   echo '[ Advanced Tweaking ]'
   echo '🌱 Installing...'
 
-  file=/etc/init/custom.rc
+  url=https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/custom.rc
+  file=/etc/init/${url##*/}
 
-  curl -so $file https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/custom.rc
-  chmod 0644 $file
-  chcon u:object_r:system_file:s0 $file
+  curl -so "$file" $url
+
+  chmod 0644 "$file"
+  chcon u:object_r:system_file:s0 "$file"
 
   _execbkg() {
-    LC_ALL=C sed -i "s,### ${1}$,exec_background -- ${SHELL} -c \"sleep 2; ${2}\"," $file
+    LC_ALL=C sed -i "s,### ${1}$,exec_background -- ${SHELL} -c \"sleep 2; ${2}\"," "$file"
   }
 
   _minfreq() {
@@ -36,7 +38,7 @@
   }
 
   _stboost() {
-    sed -i -E "s,(stune/${1}schedtune.boost) [0-9]+$,\1 ${2}," $file
+    sed -i -E "s,(stune/${1}schedtune.boost) [0-9]+$,\1 ${2}," "$file"
   }
 
   if [ "$pmax" -eq 1 ]; then # Performance MAX
@@ -55,7 +57,7 @@
 
   [ -x /etc/rc.local ] && _execbkg 'rclocal' '/etc/rc.local'
 
-  sed -i -E 's,### [a-z]+$,# N/A,g' $file # Cleanup
+  sed -i -E 's,### [a-z]+$,# N/A,g' "$file" # Cleanup
 
   # Reduce logging of system messages (logcat)
   setprop persist.log.tag W
