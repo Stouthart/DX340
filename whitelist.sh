@@ -11,8 +11,7 @@
   echo '[ Doze & App Standby ]'
   echo '🌱 Whitelisting apps...'
 
-  set -- \
-    au.com.shiftyjelly.pocketcasts \
+  set -- au.com.shiftyjelly.pocketcasts \
     com.amazon.mp3 \
     com.apple.android.music \
     com.apple.android.music.classical \
