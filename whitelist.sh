@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# v5.3b2, Copyright (C) 2025 Stouthart. All rights reserved.
+# v5.3b4, Copyright (C) 2025 Stouthart. All rights reserved.
 {
   # shellcheck disable=SC2166,SC3028
   [ "$HOSTNAME" = DX180 -o "$HOSTNAME" = DX340 ] || {
