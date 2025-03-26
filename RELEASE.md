@@ -32,8 +32,8 @@ curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/insta
 
 ### General
 
-- Various code improvements
 - Moved release notes to RELEASE.md (easier to maintain)
+- Various code improvements
 
 ## v5.1
 
