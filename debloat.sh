@@ -27,7 +27,6 @@
   _uninstall com.wandoujia.phoenix2
 
   # Google
-  cmd package disable-user --user 0 com.android.chrome
   _uninstall com.google.android.inputmethod.latin
   cmd package disable-user --user 0 com.google.android.partnersetup
 
