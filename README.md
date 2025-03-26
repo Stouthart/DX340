@@ -1,10 +1,10 @@
-<!-- Copyright (C) 2025 Stouthart. All rights reserved. -->
+<!-- v5.3, Copyright (C) 2025 Stouthart. All rights reserved. -->
 
 ![iBasso DX340]
 
 # iBasso DX340 Debloating & Tweaking Playbook
 
-This GitHub repository provides a playbook for debloating and tweaking the iBasso DX340 digital audio player.
+This GitHub repository provides a playbook for debloating and tweaking the iBasso DX340 digital audio player. All scripts should also be compatible with DX180 (although not fully tested).
 
 > [!IMPORTANT]
 >

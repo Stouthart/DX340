@@ -1,6 +1,24 @@
 <!-- Copyright (C) 2025 Stouthart. All rights reserved. -->
 
-# v5.2 - Latest
+# v5.3 - Latest
+
+### Debloating & Optimization
+
+- Changed value of **multicore_packet_scheduler** to **0** (=disabled) to prevent spurious interrupts
+- Chrome is no longer disabled automatically, as it may be needed for sign-in purposes and subscription management (thanks for the feedback **pmichaelro**)
+
+### Debloating & Optimization
+
+- Reimplemented **vm.swappiness = 10** setting (removed in [v4.1](#v41)) to reduce the kernel's tendency to move processes from physical memory to the swap disk (as a precaution)
+- Instead of stopping "logd" service - which might cause compatibility issues - logging of system messages is now reduced via a persistent property (**persist.log.tag = W**)
+- Instead of stopping tracing services at runtime, these services are now disabled during installation (via properties **persist.traced.enable** and **persist.debug.perfetto.boottrace**)
+
+### General
+
+- All scripts should now also be compatible with DX180 (although not fully tested)
+- Various code improvements
+
+## v5.2
 
 ### Advanced Tweaking
 
@@ -111,7 +129,7 @@ curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/deblo
 ### General
 
 - ~~Added **wifi_power_save** setting to **Debloating & Optimization** (reduced WiFi-related noise with **AMP14** card)~~
-- Removed **swappiness** from **Advanced Tweaking** (no measurable impact)
+- ~~Removed **vm.swappiness** setting from **Advanced Tweaking** (no measurable impact)~~
 - Various code optimizations
 
 ## v4.0
