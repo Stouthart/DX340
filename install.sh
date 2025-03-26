@@ -55,7 +55,8 @@
     _noidle 'deep'
   fi
 
-  [ "$noswap" -eq 1 ] && _execbkg 'noswap' 'swapoff /dev/block/zram0'
+  [ "$noswap" -eq 1 ] && cmd='swapoff /dev/block/zram0' || cmd='echo -n 10 >/proc/sys/vm/swappiness'
+  _execbkg 'noswap' "$cmd"
 
   [ -x /etc/rc.local ] && _execbkg 'rclocal' '/etc/rc.local'
 
