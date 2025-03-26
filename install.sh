@@ -68,9 +68,6 @@
   setprop persist.traced.enable 0
   setprop persist.debug.perfetto.boottrace ''
 
-  echo '🌱 Trimming /...'
-  busybox fstrim -v /
-
   echo '✨ Done'
 
   echo '🔨 Rebooting...'

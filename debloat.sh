@@ -84,9 +84,6 @@
   echo '🌱 Trimming caches...'
   cmd package trim-caches 999G
 
-  echo '🌱 Trimming /data...'
-  busybox fstrim -v /data
-
   echo '✨ Done'
 
   echo '🔨 Rebooting...'
