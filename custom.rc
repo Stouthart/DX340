@@ -28,7 +28,7 @@ on late-fs
   write /sys/block/mmcblk0/queue/iostats 0
 
 on property:sys.boot_completed=1
-  # Set scaling_min_freq for "big" CPU cluster
+  # Alter scaling_min_freq for "big" CPU cluster
   ### minfreq
 
   ## https://xdaforums.com/t/3528807/post-70475813
