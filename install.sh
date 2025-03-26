@@ -1,7 +1,7 @@
 #!/bin/sh
 # shellcheck disable=SC2154
 #
-# v5.3b2, Copyright (C) 2025 Stouthart. All rights reserved.
+# v5.3b4, Copyright (C) 2025 Stouthart. All rights reserved.
 {
   # shellcheck disable=SC3028
   [ "$HOSTNAME" = DX340 ] || {
@@ -55,8 +55,7 @@
     _noidle 'deep'
   fi
 
-  [ "$noswap" -eq 1 ] && cmd='swapoff /dev/block/zram0' || cmd='echo -n 10 >/proc/sys/vm/swappiness'
-  _execbkg 'noswap' "$cmd"
+  _execbkg 'tdswap' 'echo -n 10 >/proc/sys/vm/swappiness'
 
   [ -x /etc/rc.local ] && _execbkg 'rclocal' '/etc/rc.local'
 
@@ -68,6 +67,9 @@
   # Disable tracing services (perfetto.rc)
   setprop persist.traced.enable 0
   setprop persist.debug.perfetto.boottrace ''
+
+  echo '🌱 Trimming /...'
+  busybox fstrim -v /
 
   echo '✨ Done'
 
