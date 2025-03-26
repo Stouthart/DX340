@@ -1,7 +1,7 @@
 #!/bin/sh
 # shellcheck disable=SC2154
 #
-# v5.3b2, Copyright (C) 2025 Stouthart. All rights reserved.
+# v5.3b4, Copyright (C) 2025 Stouthart. All rights reserved.
 {
   # shellcheck disable=SC2166,SC3028
   [ "$HOSTNAME" = DX180 -o "$HOSTNAME" = DX340 ] || {
@@ -83,6 +83,9 @@
 
   echo '🌱 Trimming caches...'
   cmd package trim-caches 999G
+
+  echo '🌱 Trimming /data...'
+  busybox fstrim -v /data
 
   echo '✨ Done'
 
