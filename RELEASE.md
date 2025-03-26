@@ -7,7 +7,7 @@
 - Changed value of **multicore_packet_scheduler** to **0** (=disabled) to prevent spurious interrupts
 - Chrome is no longer disabled automatically, as it may be needed for sign-in purposes and subscription management (thanks for the feedback **pmichaelro**)
 
-### Debloating & Optimization
+### Advanced Tweaking
 
 - Reimplemented **vm.swappiness = 10** setting (removed in [v4.1](#v41)) to reduce the kernel's tendency to move processes from physical memory to the swap disk (as a precaution)
 - Instead of stopping "logd" service - which might cause compatibility issues - logging of system messages is now reduced via a persistent property (**persist.log.tag = W**)
