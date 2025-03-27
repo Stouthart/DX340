@@ -67,7 +67,7 @@ Your device will reboot immediately. Enjoy the improvements!
 > [!TIP]
 > Follow the discussion about the iBasso DX340 digital audio player on [Head-Fi]
 
-**Undo is just as easy:**
+**Undo/reverse is just as easy:**
 
 ```
 adb root
