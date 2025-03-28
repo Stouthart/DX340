@@ -1,7 +1,7 @@
 #!/bin/sh
 # shellcheck disable=SC2154
 #
-# v5.3, Copyright (C) 2025 Stouthart. All rights reserved.
+# v5.4b, Copyright (C) 2025 Stouthart. All rights reserved.
 {
   # shellcheck disable=SC2166,SC3028
   [ "$HOSTNAME" = DX340 -o "$HOSTNAME" = DX180 ] || {
@@ -33,6 +33,8 @@
   ## https://9to5google.com/2024/11/25/november-2024-google-system-updates/
   _uninstall com.google.android.safetycore
 
+  [ "$nochrome" -eq 1 ] && cmd package disable-user --user 0 com.android.chrome
+
   [ "$noplay" -eq 1 ] && {
     cmd package disable-user --user 0 com.android.vending
     cmd package disable-user --user 0 com.google.android.gms
@@ -61,9 +63,9 @@
   [ "$nonoise" -eq 1 ] && settings put global wifi_power_save 1 # Default value: 120
 
   # Remove animations
-  settings put global animator_duration_scale 0.0
-  settings put global transition_animation_scale 0.0
-  settings put global window_animation_scale 0.0
+  settings put global animator_duration_scale 0.1 # UAPP artwork fix
+  settings put global transition_animation_scale 0
+  settings put global window_animation_scale 0
 
   # Secure settings
   settings put secure location_mode 0
@@ -71,7 +73,7 @@
   settings put secure ui_night_mode 2
 
   # System settings
-  settings put system multicore_packet_scheduler 0 # Prevent spurious interrupts (IRQ 7)
+  settings put system multicore_packet_scheduler 0 # Prevent spurious interrupts
   settings put system screen_brightness 81
   settings put system screen_off_timeout 15000
 
