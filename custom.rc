@@ -1,4 +1,4 @@
-# v5.3, Copyright (C) 2025 Stouthart. All rights reserved.
+# v5.4, Copyright (C) 2025 Stouthart. All rights reserved.
 #
 # Device model: DX340
 
@@ -50,6 +50,10 @@ on property:sys.boot_completed=1
   # Debugging & testing
   ### rclocal
 
+on property:init.svc_debug_pid.vendor.cnss_diag=*
+  # Decrease priority of diagnosis tool for the Qualcomm ConNectivity SubSystem
+  exec_background -- /system/bin/renice -n 5 -g ${init.svc_debug_pid.vendor.cnss_diag}
+
 on property:init.svc_debug_pid.vendor.msm_irqbalance=*
   # Increase priority of IRQ balancer
-  exec_background -- /system/bin/renice -n -5 -p ${init.svc_debug_pid.vendor.msm_irqbalance}
+  exec_background -- /system/bin/renice -n -10 -p ${init.svc_debug_pid.vendor.msm_irqbalance}

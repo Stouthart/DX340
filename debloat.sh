@@ -1,7 +1,7 @@
 #!/bin/sh
 # shellcheck disable=SC2154
 #
-# v5.4b, Copyright (C) 2025 Stouthart. All rights reserved.
+# v5.4, Copyright (C) 2025 Stouthart. All rights reserved.
 {
   # shellcheck disable=SC2166,SC3028
   [ "$HOSTNAME" = DX340 -o "$HOSTNAME" = DX180 ] || {
@@ -23,15 +23,14 @@
   _uninstall com.android.calculator2
   _uninstall com.android.deskclock
   _uninstall com.android.gallery3d
-  # cmd package install-existing --user 0 com.android.gallery3d
   _uninstall com.wandoujia.phoenix2
+  # cmd package install-existing --user 0 com.android.gallery3d
 
   # Google
+  cmd package disable-user --user 0 com.google.android.apps.restore # Switch - added by GMS
   _uninstall com.google.android.inputmethod.latin
   cmd package disable-user --user 0 com.google.android.partnersetup
-
-  ## https://9to5google.com/2024/11/25/november-2024-google-system-updates/
-  _uninstall com.google.android.safetycore
+  _uninstall com.google.android.safetycore # Added by GMS
 
   [ "$nochrome" -eq 1 ] && cmd package disable-user --user 0 com.android.chrome
 
@@ -60,10 +59,10 @@
   settings put global ota_disable_automatic_update 1
   settings put global wifi_networks_available_notification_on 0
 
-  [ "$nonoise" -eq 1 ] && settings put global wifi_power_save 1 # Default value: 120
+  [ "$nonoise" -eq 1 ] && settings put global wifi_power_save 1 # Default 120
 
   # Remove animations
-  settings put global animator_duration_scale 0.1 # UAPP artwork fix
+  settings put global animator_duration_scale 0
   settings put global transition_animation_scale 0
   settings put global window_animation_scale 0
 

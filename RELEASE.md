@@ -1,10 +1,32 @@
 <!-- Copyright (C) 2025 Stouthart. All rights reserved. -->
 
-# v5.3 - Latest
+# v5.4 - Latest
 
 ### Debloating & Optimization
 
-- Changed value of **multicore_packet_scheduler** to **0** (=disabled) to prevent spurious interrupts
+- Added **com.google.android.apps.restore** (Switch) to list of disabled packages
+- New option **nochrome=1** to disable Chrome as well (not done automatically since [v5.3](#v53)):
+
+```
+curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/debloat.sh | nochrome=1 sh
+```
+
+- This can be combined with option to disable Play Services/Store (**noplay=1**, see [v4.0](#v40)):
+
+```
+curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/debloat.sh | nochrome=1 noplay=1 sh
+```
+
+### Advanced Tweaking
+
+- New: decreased priority (nice level +5) of diagnosis tool for the Qualcomm ConNectivity SubSystem (**cnss_diag**)
+- Increased priority (from -5 to -10) of IRQ balancer (**msm_irqbalance**)
+
+## v5.3
+
+### Debloating & Optimization
+
+- Changed value of **multicore_packet_scheduler** to **0** (=disabled), to prevent spurious interrupts
 - Chrome is no longer disabled automatically, as it may be needed for sign-in purposes and subscription management (thanks for the feedback **pmichaelro**)
 
 ### Advanced Tweaking
@@ -47,7 +69,7 @@ curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/insta
 ### Debloating & Optimization
 
 - Improved visibility of packages removed during debloating
-- [ Reminder ] Option **nonoise=1** was introduced in [v4.5](#v45) to reduce WiFi-related noise with **AMP14** card:
+- Reminder: option **nonoise=1** was introduced in [v4.5](#v45) to reduce WiFi-related noise with **AMP14** card:
 
 ```
 curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/debloat.sh | nonoise=1 sh
@@ -83,7 +105,7 @@ curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/insta
 
 ### General
 
-- Reduced debug information to the console (**printk**) in **Advanced Tweaking**
+- New: reduced debug information to the console (**printk**) in **Advanced Tweaking**
 - Various code optimizations
 
 ## v4.5
@@ -103,7 +125,7 @@ curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/deblo
 ### Advanced Tweaking
 
 - Reverted change of **dirty_ratio** & **dirty_background_ratio** values (from [v4.2](#v42)), due to impact on sound quality (thanks for reporting **quaddac**)
-- Slightly improved boot time by performing some tweaks in parallel/background
+- Slightly improved boot time, by performing some tweaks in parallel/background
 
 ## v4.4
 
@@ -152,5 +174,5 @@ curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/deblo
 
 - Moved all tweaks to a single file (/etc/init/custom.rc)
 - Disabled log & trace daemons
-- Optimized disk performance (**nr_requests** increased to 256 for SDA)
+- Optimized disk performance (**nr_requests** increased to 256 for SDA block device)
 - ~~In addition to default preset (a.k.a. "ECO"), introduced "MAX by Whitigir" scheduler tuning (**stmax=1**)~~

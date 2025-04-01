@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# v5.3, Copyright (C) 2025 Stouthart. All rights reserved.
+# v5.4, Copyright (C) 2025 Stouthart. All rights reserved.
 {
   # shellcheck disable=SC2166,SC3028
   [ "$HOSTNAME" = DX340 -o "$HOSTNAME" = DX180 ] || {
@@ -25,6 +25,7 @@
     com.jriver.mediacenter \
     com.maxmpz.audioplayer \
     com.neutroncode.mp \
+    com.pandora.android \
     com.qobuz.music \
     com.roon.mobile \
     com.roon.onthego \
