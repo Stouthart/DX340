@@ -1,7 +1,7 @@
 #!/bin/sh
 # shellcheck disable=SC2154
 #
-# v5.4, Copyright (C) 2025 Stouthart. All rights reserved.
+# v5.5, Copyright (C) 2025 Stouthart. All rights reserved.
 {
   # shellcheck disable=SC2166,SC3028
   [ "$HOSTNAME" = DX340 -o "$HOSTNAME" = DX180 ] || {
@@ -24,7 +24,7 @@
   _uninstall com.android.deskclock
   _uninstall com.android.gallery3d
   _uninstall com.wandoujia.phoenix2
-  # cmd package install-existing --user 0 com.android.gallery3d
+  # Reinstall: cmd package install-existing --user 0 com.android.gallery3d
 
   # Google
   cmd package disable-user --user 0 com.google.android.apps.restore # Switch - added by GMS
@@ -59,7 +59,7 @@
   settings put global ota_disable_automatic_update 1
   settings put global wifi_networks_available_notification_on 0
 
-  [ "$nonoise" -eq 1 ] && settings put global wifi_power_save 1 # Default 120
+  [ "$nonoise" -eq 1 ] && settings put global wifi_power_save 1 # Default: 120
 
   # Remove animations
   settings put global animator_duration_scale 0
@@ -69,6 +69,7 @@
   # Secure settings
   settings put secure location_mode 0
   settings put secure notification_bubbles 0
+  settings put secure spell_checker_enabled 0
   settings put secure ui_night_mode 2
 
   # System settings

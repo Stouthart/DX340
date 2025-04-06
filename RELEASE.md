@@ -1,6 +1,16 @@
 <!-- Copyright (C) 2025 Stouthart. All rights reserved. -->
 
-# v5.4 - Latest
+# v5.5 - Latest
+
+### Advanced Tweaking
+
+- Instead of running the Qualcomm Connectivity SubSystem diagnostic tool at low priority, this resource-intensive service (**cnss_diag**) is now gracefully stopped at startup
+
+### General
+
+- Various code improvements
+
+## v5.4
 
 ### Debloating & Optimization
 
@@ -19,7 +29,7 @@ curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/deblo
 
 ### Advanced Tweaking
 
-- New: decreased priority (nice level +5) of diagnosis tool for the Qualcomm ConNectivity SubSystem (**cnss_diag**)
+- ~~Decreased priority (nice level +5) of diagnosis tool for the Qualcomm ConNectivity SubSystem (**cnss_diag**)~~
 - Increased priority (from -5 to -10) of IRQ balancer (**msm_irqbalance**)
 
 ## v5.3
