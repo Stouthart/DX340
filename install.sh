@@ -1,7 +1,7 @@
 #!/bin/sh
 # shellcheck disable=SC2154
 #
-# v5.5, Copyright (C) 2025 Stouthart. All rights reserved.
+# v5.6b, Copyright (C) 2025 Stouthart. All rights reserved.
 {
   # shellcheck disable=SC2166,SC3028
   [ "$HOSTNAME" = DX340 -o "$HOSTNAME" = DX180 ] || {
@@ -66,7 +66,7 @@
 
   # Disable tracing services (perfetto.rc)
   setprop persist.debug.perfetto.boottrace ''
-  setprop persist.traced.enable 0
+  setprop persist.traced.enable 0 # 1
 
   echo '✨ Done'
 
