@@ -1,6 +1,17 @@
 <!-- Copyright (C) 2025 Stouthart. All rights reserved. -->
 
-# v5.5 - Latest
+# v5.6 - Latest
+
+### Debloating & Optimization
+
+- Added **google_core_control** setting, to reduce wakelocks of Google Play Services (GMS)
+
+### General
+
+- Default values ​​added as comments for changed settings (where applicable)
+- Various code improvements
+
+# v5.5
 
 ### Advanced Tweaking
 
