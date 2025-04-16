@@ -56,12 +56,11 @@
   # Global settings
   settings put global activity_starts_logging_enabled 0         # 1
   settings put global bug_report 0                              # 1
+  settings put global google_core_control 0                     # null (Reduce GMS wakelocks)
   settings put global mobile_data_always_on 0                   # 1
   settings put global mobile_signal_detector 0                  # 1
   settings put global multi_cb 0                                # 2 (Usage & diagnostics)
-  settings put global network_scoring_ui_enabled 0              # 1
   settings put global ota_disable_automatic_update 1            # null
-  settings put secure send_action_app_error 0                   # 1
   settings put global wifi_networks_available_notification_on 0 # 1
 
   [ "$nonoise" -eq 1 ] && settings put global wifi_power_save 1 # 120
@@ -72,9 +71,10 @@
   settings put global window_animation_scale 0     # 1.0
 
   # Secure settings
-  settings put secure location_mode 0        # 3
-  settings put secure notification_bubbles 0 # 1
-  settings put secure ui_night_mode 2        # null
+  settings put secure location_mode 0         # 3
+  settings put secure notification_bubbles 0  # 1
+  settings put secure send_action_app_error 0 # 1
+  settings put secure ui_night_mode 2         # null
 
   # System settings
   settings put system multicore_packet_scheduler 0 # null (Prevent spurious interrupts)
