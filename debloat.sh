@@ -54,7 +54,6 @@
   echo '🌱 Optimizing settings...'
 
   # Global settings
-  settings put global activity_starts_logging_enabled 0         # 1
   settings put global bug_report 0                              # 1
   settings put global google_core_control 0                     # null (Reduce GMS wakelocks)
   settings put global mobile_data_always_on 0                   # 1
@@ -74,6 +73,7 @@
   settings put secure location_mode 0         # 3
   settings put secure notification_bubbles 0  # 1
   settings put secure send_action_app_error 0 # 1
+  settings put system send_security_reports 0 # null
   settings put secure ui_night_mode 2         # null
 
   # System settings
