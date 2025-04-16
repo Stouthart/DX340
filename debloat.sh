@@ -1,7 +1,7 @@
 #!/bin/sh
 # shellcheck disable=SC2154
 #
-# v5.5, Copyright (C) 2025 Stouthart. All rights reserved.
+# v5.6b, Copyright (C) 2025 Stouthart. All rights reserved.
 {
   # shellcheck disable=SC2166,SC3028
   [ "$HOSTNAME" = DX340 -o "$HOSTNAME" = DX180 ] || {
@@ -27,7 +27,7 @@
   # Reinstall: cmd package install-existing --user 0 com.android.gallery3d
 
   # Google
-  cmd package disable-user --user 0 com.google.android.apps.restore # Switch - added by GMS
+  cmd package disable-user --user 0 com.google.android.apps.restore # Added by GMS (Switch)
   _uninstall com.google.android.inputmethod.latin
   cmd package disable-user --user 0 com.google.android.partnersetup
   _uninstall com.google.android.safetycore # Added by GMS
@@ -54,28 +54,32 @@
   echo '🌱 Optimizing settings...'
 
   # Global settings
-  settings put global mobile_data_always_on 0
-  settings put global mobile_signal_detector 0
-  settings put global ota_disable_automatic_update 1
-  settings put global wifi_networks_available_notification_on 0
+  settings put global activity_starts_logging_enabled 0         # 1
+  settings put global bug_report 0                              # 1
+  settings put global mobile_data_always_on 0                   # 1
+  settings put global mobile_signal_detector 0                  # 1
+  settings put global multi_cb 0                                # 2 (Usage & diagnostics)
+  settings put global network_scoring_ui_enabled 0              # 1
+  settings put global ota_disable_automatic_update 1            # null
+  settings put secure send_action_app_error 0                   # 1
+  settings put global wifi_networks_available_notification_on 0 # 1
 
-  [ "$nonoise" -eq 1 ] && settings put global wifi_power_save 1 # Default: 120
+  [ "$nonoise" -eq 1 ] && settings put global wifi_power_save 1 # 120
 
   # Remove animations
-  settings put global animator_duration_scale 0
-  settings put global transition_animation_scale 0
-  settings put global window_animation_scale 0
+  settings put global animator_duration_scale 0    # null
+  settings put global transition_animation_scale 0 # 1.0
+  settings put global window_animation_scale 0     # 1.0
 
   # Secure settings
-  settings put secure location_mode 0
-  settings put secure notification_bubbles 0
-  settings put secure spell_checker_enabled 0
-  settings put secure ui_night_mode 2
+  settings put secure location_mode 0        # 3
+  settings put secure notification_bubbles 0 # 1
+  settings put secure ui_night_mode 2        # null
 
   # System settings
-  settings put system multicore_packet_scheduler 0 # Prevent spurious interrupts
-  settings put system screen_brightness 81
-  settings put system screen_off_timeout 15000
+  settings put system multicore_packet_scheduler 0 # null (Prevent spurious interrupts)
+  settings put system screen_brightness 81         # 102
+  settings put system screen_off_timeout 15000     # 60000
 
   echo '🌱 Compiling packages...'
 
