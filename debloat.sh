@@ -77,7 +77,6 @@
 
   # System settings
   settings put system multicore_packet_scheduler 0 # null (Prevent spurious interrupts)
-  settings put system send_security_reports 0      # null
   settings put system screen_brightness 81         # 102
   settings put system screen_off_timeout 15000     # 60000
 
