@@ -73,11 +73,11 @@
   settings put secure location_mode 0         # 3
   settings put secure notification_bubbles 0  # 1
   settings put secure send_action_app_error 0 # 1
-  settings put system send_security_reports 0 # null
   settings put secure ui_night_mode 2         # null
 
   # System settings
   settings put system multicore_packet_scheduler 0 # null (Prevent spurious interrupts)
+  settings put system send_security_reports 0      # null
   settings put system screen_brightness 81         # 102
   settings put system screen_off_timeout 15000     # 60000
 
