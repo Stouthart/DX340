@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# v5.5, Copyright (C) 2025 Stouthart. All rights reserved.
+# v5.6b, Copyright (C) 2025 Stouthart. All rights reserved.
 {
   # shellcheck disable=SC2166,SC3028
   [ "$HOSTNAME" = DX340 -o "$HOSTNAME" = DX180 ] || {
@@ -32,6 +32,7 @@
     com.roon.onthego \
     com.soundcloud.android \
     com.spotify.music \
+    com.zilideus.jukebox_new \
     de.battlestr1k3.radionerd \
     de.bluegaspode.squeezeplayer \
     deezer.android.app \
