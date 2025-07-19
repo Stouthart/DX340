@@ -1,7 +1,7 @@
 #!/bin/sh
 # shellcheck disable=SC2154
 #
-# v5.6, Copyright (C) 2025 Stouthart. All rights reserved.
+# v5.7b, Copyright (C) 2025 Stouthart. All rights reserved.
 {
   # shellcheck disable=SC2166,SC3028
   [ "$HOSTNAME" = DX340 -o "$HOSTNAME" = DX180 ] || {
@@ -42,7 +42,7 @@
 
   # Debloat other (only running packages)
   _uninstall com.android.managedprovisioning
-  _uninstall com.android.musicfx
+  _uninstall com.android.musicfx # Not required for firmware >= 1.04.440
   _uninstall com.android.remoteprovisioner
   _uninstall com.android.traceur
   _uninstall com.google.android.onetimeinitializer
@@ -63,6 +63,7 @@
   settings put global wifi_networks_available_notification_on 0 # 1
 
   [ "$nonoise" -eq 1 ] && settings put global wifi_power_save 1 # 120
+  [ "$nozram" -eq 1 ] && settings put global zram_enabled 0     # 1
 
   # Remove animations
   settings put global animator_duration_scale 0    # null
