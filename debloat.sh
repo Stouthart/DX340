@@ -42,7 +42,7 @@
 
   # Debloat other (only running packages)
   _uninstall com.android.managedprovisioning
-  _uninstall com.android.musicfx # Required for firmware < 1.04.440
+  _uninstall com.android.musicfx # Required for firmware < v1.04.440
   _uninstall com.android.remoteprovisioner
   _uninstall com.android.traceur
   _uninstall com.google.android.onetimeinitializer
