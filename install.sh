@@ -1,7 +1,7 @@
 #!/bin/sh
 # shellcheck disable=SC2154
 #
-# v5.6, Copyright (C) 2025 Stouthart. All rights reserved.
+# v5.7, Copyright (C) 2025 Stouthart. All rights reserved.
 {
   # shellcheck disable=SC2166,SC3028
   [ "$HOSTNAME" = DX340 -o "$HOSTNAME" = DX180 ] || {
@@ -28,7 +28,7 @@
   chcon u:object_r:system_file:s0 "$file"
 
   _execbkg() {
-    LC_ALL=C sed -i "s,### ${1}$,exec_background -- ${SHELL} -c \"sleep 2; ${2}\"," "$file"
+    sed -i "s,### ${1}$,exec_background -- ${SHELL} -c \"sleep 2; ${2}\"," "$file"
   }
 
   _minfreq() {
@@ -65,7 +65,6 @@
   setprop persist.log.tag 'W'
 
   # Disable tracing services (perfetto.rc)
-  setprop persist.debug.perfetto.boottrace ''
   setprop persist.traced.enable 0 # 1
 
   echo '✨ Done'

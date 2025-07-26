@@ -1,4 +1,4 @@
-# v5.6, Copyright (C) 2025 Stouthart. All rights reserved.
+# v5.7, Copyright (C) 2025 Stouthart. All rights reserved.
 #
 # Device model: DX340/DX180
 
@@ -16,7 +16,7 @@ on init
 
 on late-init
   # Disable scheduler statistics (atrace.rc)
-  write /proc/sys/kernel/sched_schedstats 0
+  write /proc/sys/kernel/sched_schedstats 0 # Firmware < v1.04.440
 
 on late-fs
   ## https://source.android.com/docs/core/perf/boot-times#tuning-the-filesystem

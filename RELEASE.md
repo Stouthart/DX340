@@ -1,6 +1,26 @@
 <!-- Copyright (C) 2025 Stouthart. All rights reserved. -->
 
-# v5.6 - Latest
+# v5.7 - Latest
+
+### Debloating & Optimization
+
+- New option **nozram=1** to disable zRam (compressed block of memory in RAM used as swap device):
+
+```
+curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/debloat.sh | nozram=1 sh
+```
+
+- This can be combined with other options, e.g.:
+
+```
+curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/debloat.sh | nochrome=1 noplay=1 nozram=1 sh
+```
+
+### General
+
+- Various code improvements
+
+## v5.6 - Latest
 
 ### Debloating & Optimization
 
@@ -11,7 +31,7 @@
 - Default values ​​added as comments for changed settings (where applicable)
 - Various code improvements
 
-# v5.5
+## v5.5
 
 ### Advanced Tweaking
 
