@@ -4,7 +4,7 @@
 
 ### Debloating & Optimization
 
-- New option **nozram=1** to disable zRam (compressed block of memory in RAM used as swap device):
+- New option (**nozram=1**) to disable zRam (compressed block of memory in RAM used as swap device):
 
 ```
 curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/debloat.sh | nozram=1 sh
