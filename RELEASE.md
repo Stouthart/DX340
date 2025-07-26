@@ -20,7 +20,7 @@ curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/deblo
 
 - Various code improvements
 
-## v5.6 - Latest
+## v5.6
 
 ### Debloating & Optimization
 
