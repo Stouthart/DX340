@@ -32,7 +32,7 @@
   }
 
   _minfreq() {
-    _execbkg 'minfreq' "echo -n ${1} >/sys/devices/system/cpu/cpufreq/policy4/scaling_min_freq"
+    _execbkg 'minfreq' "echo ${1} >/sys/devices/system/cpu/cpufreq/policy4/scaling_min_freq"
   }
 
   _noidle() {
@@ -55,9 +55,9 @@
     _noidle 'deep'
   fi
 
-  [ "$nozram" -eq 1 ] && _execbkg 'nozram' 'swapoff /dev/block/zram0; echo -n 1 >/sys/block/zram0/reset'
+  [ "$nozram" -eq 1 ] && _execbkg 'nozram' 'swapoff /dev/block/zram0; echo 1 >/sys/block/zram0/reset'
 
-  _execbkg 'tdswap' 'echo -n 10 >/proc/sys/vm/swappiness'
+  _execbkg 'tdswap' 'echo 10 >/proc/sys/vm/swappiness'
 
   [ -x /etc/rc.local ] && _execbkg 'rclocal' '/etc/rc.local'
 
