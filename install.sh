@@ -1,7 +1,7 @@
 #!/bin/sh
 # shellcheck disable=SC2154
 #
-# v5.7, Copyright (C) 2025 Stouthart. All rights reserved.
+# v5.8b, Copyright (C) 2025 Stouthart. All rights reserved.
 {
   # shellcheck disable=SC2166,SC3028
   [ "$HOSTNAME" = DX340 -o "$HOSTNAME" = DX180 ] || {
@@ -54,6 +54,8 @@
   else
     _noidle 'deep'
   fi
+
+  [ "$nozram" -eq 1 ] && _execbkg 'nozram' 'swapoff /dev/block/zram0; echo -n 1 >/sys/block/zram0/reset'
 
   _execbkg 'tdswap' 'echo -n 10 >/proc/sys/vm/swappiness'
 

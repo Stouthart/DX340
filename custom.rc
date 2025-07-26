@@ -1,4 +1,4 @@
-# v5.7, Copyright (C) 2025 Stouthart. All rights reserved.
+# v5.8b, Copyright (C) 2025 Stouthart. All rights reserved.
 #
 # Device model: DX340/DX180
 
@@ -40,6 +40,9 @@ on property:sys.boot_completed=1
 
   # Disable "Doze & App Standby" (deviceidle)
   ### noidle
+
+  # Disable zRam (compresses memory in RAM)
+  ### nozram
 
   # Runtime TuneD
   ### tdswap
