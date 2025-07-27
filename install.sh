@@ -27,16 +27,16 @@
   chmod 0644 "$file"
   chcon u:object_r:system_file:s0 "$file"
 
+  _devidle() {
+    _execbkg devidle "dumpsys deviceidle disable ${1}"
+  }
+
   _execbkg() {
     sed -i "s,### ${1}$,exec_background -- ${SHELL} -c \"sleep 2; ${2}\"," "$file"
   }
 
   _minfreq() {
-    _execbkg 'minfreq' "echo ${1} >/sys/devices/system/cpu/cpufreq/policy4/scaling_min_freq"
-  }
-
-  _noidle() {
-    _execbkg 'noidle' "dumpsys deviceidle disable ${1}"
+    _execbkg minfreq "echo ${1} >/sys/devices/system/cpu/cpufreq/policy4/scaling_min_freq"
   }
 
   _stboost() {
@@ -46,25 +46,27 @@
   if [ "$pmax" -eq 1 ]; then # Performance MAX
     _minfreq 1401600
     _stboost 'top-app/' 40 # Scheduler tuning by Whitigir
-    _noidle 'all'
+    _devidle all
   elif [ "$psave" -eq 1 ]; then # Power SAVE
     _minfreq 902400
     _stboost '' 8
     _stboost 'foreground/' 12
   else
-    _noidle 'deep'
+    _devidle deep
   fi
 
-  [ "$nozram" -eq 1 ] && _execbkg 'nozram' 'swapoff /dev/block/zram0; echo 1 >/sys/block/zram0/reset'
+  if [ "$nozram" -eq 1 ]; then
+    _execbkg nozram 'swapoff /dev/block/zram0; echo 1 >/sys/block/zram0/reset'
+  fi
 
-  _execbkg 'tdswap' 'echo 10 >/proc/sys/vm/swappiness'
+  _execbkg tdswap 'echo 10 >/proc/sys/vm/swappiness'
 
   [ -x /etc/rc.local ] && _execbkg 'rclocal' '/etc/rc.local'
 
   sed -i -E 's,### [a-z]+$,# N/A,g' "$file" # Cleanup
 
   # Reduce logging of system messages
-  setprop persist.log.tag 'W'
+  setprop persist.log.tag 'W' # 'I'
 
   # Disable tracing services (perfetto.rc)
   setprop persist.traced.enable 0 # 1
