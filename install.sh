@@ -1,7 +1,7 @@
 #!/bin/sh
 # shellcheck disable=SC2154
 #
-# v5.8b, Copyright (C) 2025 Stouthart. All rights reserved.
+# v6.0b, Copyright (C) 2025 Stouthart. All rights reserved.
 {
   # shellcheck disable=SC2166,SC3028
   [ "$HOSTNAME" = DX340 -o "$HOSTNAME" = DX180 ] || {
@@ -55,17 +55,16 @@
     _devidle deep
   fi
 
-  if [ "$nozram" -eq 1 ]; then
+  [ "$nozram" -eq 1 ] && {
     _execbkg nozram 'swapoff /dev/block/zram0; echo 1 >/sys/block/zram0/reset'
-  fi
+  }
 
-  if [ "$(LC_ALL=C grep -Fi memtotal /proc/meminfo | grep -o '[[:digit:]]*')" -gt 4194304 ]; then
+  [ "$(LC_ALL=C grep -Fi memtotal /proc/meminfo | grep -o '[[:digit:]]*')" -gt 4194304 ] && {
+    sed -i -E "s,(read_ahead_kb) [0-9]+$,\1 2048," "$file"
     _execbkg tdswap 'echo 10 >/proc/sys/vm/swappiness'
-  fi
+  }
 
-  if [ -x /etc/rc.local ]; then
-    _execbkg 'rclocal' '/etc/rc.local'
-  fi
+  [ -x /etc/rc.local ] && _execbkg 'rclocal' '/etc/rc.local'
 
   sed -i -E 's,### [a-z]+$,# N/A,g' "$file" # Cleanup
 

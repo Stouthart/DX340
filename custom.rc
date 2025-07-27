@@ -1,4 +1,4 @@
-# v5.8b, Copyright (C) 2025 Stouthart. All rights reserved.
+# v6.0b, Copyright (C) 2025 Stouthart. All rights reserved.
 #
 # Device model: DX340/DX180
 
@@ -22,7 +22,7 @@ on late-fs
   ## https://source.android.com/docs/core/perf/boot-times#tuning-the-filesystem
   write /sys/block/sda/queue/iostats 0
   write /sys/block/sda/queue/nr_requests 256
-  write /sys/block/sda/queue/read_ahead_kb 2048
+  write /sys/block/sda/queue/read_ahead_kb 1024
 
   # SD card tuning
   write /sys/block/mmcblk0/queue/iostats 0
