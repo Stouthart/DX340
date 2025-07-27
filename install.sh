@@ -45,12 +45,12 @@
 
   if [ "$pmax" -eq 1 ]; then # Performance MAX
     _minfreq 1401600
-    _stboost 'top-app/' 40 # Scheduler tuning by Whitigir
+    _stboost top-app/ 40 # Scheduler tuning by Whitigir
     _devidle all
   elif [ "$psave" -eq 1 ]; then # Power SAVE
     _minfreq 902400
     _stboost '' 8
-    _stboost 'foreground/' 12
+    _stboost foreground/ 12
   else
     _devidle deep
   fi
