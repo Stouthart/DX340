@@ -47,7 +47,7 @@ on property:sys.boot_completed=1
   # Runtime TuneD
   ### tdswap
 
-  # Reduce logging of kernel messages (dmesg)
+  # Reduce logging of kernel messages
   write /proc/sys/kernel/printk "4 4 1 7"
 
   # Debugging & testing

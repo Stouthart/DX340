@@ -64,12 +64,12 @@
     _execbkg tdswap 'echo 10 >/proc/sys/vm/swappiness'
   }
 
-  [ -x /etc/rc.local ] && _execbkg 'rclocal' '/etc/rc.local'
+  [ -x /etc/rc.local ] && _execbkg rclocal /etc/rc.local
 
   sed -i -E 's,### [a-z]+$,# N/A,g' "$file" # Cleanup
 
   # Reduce logging of system messages
-  setprop persist.log.tag 'W' # 'I'
+  setprop persist.log.tag W # I
 
   # Disable tracing services (perfetto.rc)
   setprop persist.traced.enable 0 # 1
