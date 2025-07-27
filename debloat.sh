@@ -1,7 +1,7 @@
 #!/bin/sh
 # shellcheck disable=SC2154
 #
-# v5.7, Copyright (C) 2025 Stouthart. All rights reserved.
+# v6.0b, Copyright (C) 2025 Stouthart. All rights reserved.
 {
   # shellcheck disable=SC2166,SC3028
   [ "$HOSTNAME" = DX340 -o "$HOSTNAME" = DX180 ] || {
@@ -64,7 +64,13 @@
 
   [ "$nonoise" -eq 1 ] && settings put global wifi_power_save 1 # 120
 
-  [ "$nozram" -eq 1 ] && settings put global zram_enabled 0 # 1
+  if [ "$nozram" -eq 1 ]; then
+    settings put global zram_enabled 0
+    setprop persist.sys.zram_enabled 0
+  else
+    settings put global zram_enabled 1
+    setprop persist.sys.zram_enabled 1
+  fi
 
   # Remove animations
   settings put global animator_duration_scale 0    # null

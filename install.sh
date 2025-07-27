@@ -59,9 +59,9 @@
     _execbkg nozram 'swapoff /dev/block/zram0 && echo 1 >/sys/block/zram0/reset'
   }
 
-  # Only applicable if memory > 4 GB
+  # Only apply if memory > 4 GB
   [ "$(LC_ALL=C grep -Fi memtotal /proc/meminfo | grep -o '[[:digit:]]*')" -gt 4194304 ] && {
-    sed -i -E "s,(read_ahead_kb) [0-9]+$,\1 2048," "$file"
+    sed -i -E "s,(sda/queue/read_ahead_kb) [0-9]+$,\1 2048," "$file"
     _execbkg tdswap 'echo 10 >/proc/sys/vm/swappiness'
   }
 
