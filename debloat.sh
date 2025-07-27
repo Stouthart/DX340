@@ -62,7 +62,11 @@
   settings put global multi_cb 0                                # 2 (Usage & diagnostics)
   settings put global wifi_networks_available_notification_on 0 # 1
 
-  [ "$nonoise" -eq 1 ] && settings put global wifi_power_save 1 # 120
+  if [ "$nonoise" -eq 1 ]; then
+    settings put global wifi_power_save 1
+  else
+    settings put global wifi_power_save 120
+  fi
 
   if [ "$nozram" -eq 1 ]; then
     settings put global zram_enabled 0
