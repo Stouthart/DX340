@@ -5,9 +5,9 @@
 ## https://android.googlesource.com/platform/system/core/+/master/init/README.md
 
 on init
-  write /sys/kernel/debug/debug_enabled N
+  write /sys/kernel/debug/debug_enabled 0
 
-  ## https://github.com/redhat-performance/tuned/tree/master/profiles
+x  ## https://github.com/redhat-performance/tuned/tree/master/profiles
   write /proc/sys/net/core/somaxconn 2048
   write /proc/sys/net/ipv4/tcp_fastopen 3
   write /proc/sys/vm/dirty_background_ratio 3
@@ -41,7 +41,7 @@ on property:sys.boot_completed=1
   # Deviceidle ("Doze & App Standby")
   ### devidle
 
-  # Disable zRam (Compresses memory in RAM)
+  # Disable zRam (Compressed RAM disk)
   ### nozram
 
   # Runtime TuneD
