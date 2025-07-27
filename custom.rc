@@ -38,10 +38,10 @@ on property:sys.boot_completed=1
   write /dev/stune/top-app/schedtune.boost 25
   write /dev/stune/top-app/schedtune.prefer_idle 1
 
-  # deviceidle ("Doze & App Standby")
+  # Deviceidle ("Doze & App Standby")
   ### devidle
 
-  # Disable zRam (compresses memory in RAM)
+  # Disable zRam (Compresses memory in RAM)
   ### nozram
 
   # Runtime TuneD

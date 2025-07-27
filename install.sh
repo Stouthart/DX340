@@ -59,9 +59,13 @@
     _execbkg nozram 'swapoff /dev/block/zram0; echo 1 >/sys/block/zram0/reset'
   fi
 
-  _execbkg tdswap 'echo 10 >/proc/sys/vm/swappiness'
+  if [ "$(LC_ALL=C grep -Fi memtotal /proc/meminfo | grep -o '[[:digit:]]*')" -gt 4194304 ]; then
+    _execbkg tdswap 'echo 10 >/proc/sys/vm/swappiness'
+  fi
 
-  [ -x /etc/rc.local ] && _execbkg 'rclocal' '/etc/rc.local'
+  if [ -x /etc/rc.local ]; then
+    _execbkg 'rclocal' '/etc/rc.local'
+  fi
 
   sed -i -E 's,### [a-z]+$,# N/A,g' "$file" # Cleanup
 
