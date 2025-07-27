@@ -56,7 +56,7 @@
   fi
 
   [ "$nozram" -eq 1 ] && {
-    _execbkg nozram 'swapoff /dev/block/zram0; echo 1 >/sys/block/zram0/reset'
+    _execbkg nozram 'swapoff /dev/block/zram0 && echo 1 >/sys/block/zram0/reset'
   }
 
   # Only applicable if memory > 4 GB
