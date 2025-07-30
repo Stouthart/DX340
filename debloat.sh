@@ -1,7 +1,7 @@
 #!/bin/sh
 # shellcheck disable=SC2154
 #
-# v6.0b, Copyright (C) 2025 Stouthart. All rights reserved.
+# v6.0, Copyright (C) 2025 Stouthart. All rights reserved.
 {
   # shellcheck disable=SC2166,SC3028
   [ "$HOSTNAME" = DX340 -o "$HOSTNAME" = DX180 ] || {
@@ -19,18 +19,18 @@
   }
 
   # Apps
-  _uninst cm.aptoide.pt
-  _uninst com.android.calculator2
-  _uninst com.android.deskclock
-  _uninst com.android.gallery3d
-  _uninst com.wandoujia.phoenix2
+  _uninst cm.aptoide.pt           # Aptoide (app store)
+  _uninst com.android.calculator2 # Calculator
+  _uninst com.android.deskclock   # Clock
+  _uninst com.android.gallery3d   # Gallery
+  _uninst com.wandoujia.phoenix2  # Wandoujia (Chinese app store)
   # cmd package install-existing --user 0 com.android.gallery3d
 
   # Google
   cmd package disable-user --user 0 com.google.android.apps.restore # Switch (Added by GMS)
-  _uninst com.google.android.inputmethod.latin
-  cmd package disable-user --user 0 com.google.android.partnersetup
-  _uninst com.google.android.safetycore # (Added by GMS)
+  _uninst com.google.android.inputmethod.latin                      # Google Keyboard
+  cmd package disable-user --user 0 com.google.android.partnersetup # Google Partner Setup
+  _uninst com.google.android.safetycore                             # (Added by GMS)
 
   [ "$nochrome" -eq 1 ] && cmd package disable-user --user 0 com.android.chrome
 
@@ -44,7 +44,7 @@
   _uninst com.android.managedprovisioning
   _uninst com.android.musicfx # Firmware < v1.04.440
   _uninst com.android.remoteprovisioner
-  _uninst com.android.traceur
+  _uninst com.android.traceur # System Tracing
   _uninst com.google.android.onetimeinitializer
   _uninst com.google.android.syncadapters.calendar
 
@@ -54,6 +54,7 @@
   echo '🌱 Optimizing settings...'
 
   # Global settings
+  settings put global app_install_optimise_enabled 0            # null
   settings put global bug_report 0                              # 1
   settings put global data_roaming 0                            # 1
   settings put global google_core_control 0                     # null (Reduce GMS wakelocks)
@@ -66,14 +67,6 @@
     settings put global wifi_power_save 1
   else
     settings put global wifi_power_save 120
-  fi
-
-  if [ "$nozram" -eq 1 ]; then
-    settings put global zram_enabled 0
-    setprop persist.sys.zram_enabled 0
-  else
-    settings put global zram_enabled 1
-    setprop persist.sys.zram_enabled 1
   fi
 
   # Remove animations

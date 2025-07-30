@@ -1,7 +1,7 @@
 #!/bin/sh
 # shellcheck disable=SC2154
 #
-# v6.0b, Copyright (C) 2025 Stouthart. All rights reserved.
+# v6.0, Copyright (C) 2025 Stouthart. All rights reserved.
 {
   # shellcheck disable=SC2166,SC3028
   [ "$HOSTNAME" = DX340 -o "$HOSTNAME" = DX180 ] || {
@@ -59,8 +59,8 @@
     _execbkg nozram 'swapoff /dev/block/zram0; echo 1 >/sys/block/zram0/reset'
   }
 
-  # Only apply if memory > 4 GB
-  [ "$(LC_ALL=C grep -Fi memtotal /proc/meminfo | grep -o '[[:digit:]]*')" -gt 4194304 ] && {
+  # Only apply if total memory > 4 GB
+  [ "$(LC_ALL=C grep -F MemTotal /proc/meminfo | grep -o '[0-9]*')" -gt 4194304 ] && {
     sed -i -E "s,(sda/queue/read_ahead_kb) [0-9]+$,\1 2048," "$file"
     _execbkg tdswap 'echo 10 >/proc/sys/vm/swappiness'
   }

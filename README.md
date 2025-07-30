@@ -1,4 +1,4 @@
-<!-- v5.7, Copyright (C) 2025 Stouthart. All rights reserved. -->
+<!-- v6.0, Copyright (C) 2025 Stouthart. All rights reserved. -->
 
 ![iBasso DX340]
 
@@ -23,6 +23,8 @@ This GitHub repository provides a playbook for debloating and tweaking the iBass
 
 ## Debloating & Optimization
 
+_Remove non-essential Android apps and packages ("debloat") and optimize common settings for performance, privacy, and battery life, all without requiring rooting._
+
 **Run the following line from a Command prompt, or Terminal window on Mac:**
 
 ```
@@ -43,6 +45,8 @@ The script takes ±2 minutes to finish. Your device will reboot automatically.
 > - It is recommended to apply [Debloating & Optimization] before [Advanced Tweaking]
 
 ## Advanced Tweaking
+
+_Tune the core behavior of the device for low-latency audio playback, by automating Kernel/OS tweaks that would otherwise require manual editing of system files._
 
 **Run the following lines from a Command prompt, or Terminal window on Mac:**
 
