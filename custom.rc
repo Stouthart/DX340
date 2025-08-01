@@ -1,4 +1,4 @@
-# v6.0, Copyright (C) 2025 Stouthart. All rights reserved.
+# v6.1b, Copyright (C) 2025 Stouthart. All rights reserved.
 #
 # Device model: DX340/DX180
 
@@ -7,7 +7,7 @@
 on init
   write /sys/kernel/debug/debug_enabled 0
 
-x  ## https://github.com/redhat-performance/tuned/tree/master/profiles
+  ## https://github.com/redhat-performance/tuned/tree/master/profiles
   write /proc/sys/net/core/somaxconn 2048
   write /proc/sys/net/ipv4/tcp_fastopen 3
   write /proc/sys/vm/dirty_background_ratio 3

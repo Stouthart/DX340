@@ -1,7 +1,7 @@
 #!/bin/sh
 # shellcheck disable=SC2154
 #
-# v6.0, Copyright (C) 2025 Stouthart. All rights reserved.
+# v6.1b, Copyright (C) 2025 Stouthart. All rights reserved.
 {
   # shellcheck disable=SC2166,SC3028
   [ "$HOSTNAME" = DX340 -o "$HOSTNAME" = DX180 ] || {
@@ -27,10 +27,6 @@
   chmod 0644 "$file"
   chcon u:object_r:system_file:s0 "$file"
 
-  _devidle() {
-    _execbkg devidle "dumpsys deviceidle disable ${1}"
-  }
-
   _execbkg() {
     sed -i "s,### ${1}$,exec_background -- ${SHELL} -c \"sleep 2; ${2}\"," "$file"
   }
@@ -45,14 +41,11 @@
 
   if [ "$pmax" -eq 1 ]; then # Performance MAX
     _minfreq 1401600
-    _stboost top-app/ 40 # Scheduler tuning by Whitigir
-    _devidle all
+    _stboost top-app/ 40        # Scheduler tuning by Whitigir
   elif [ "$psave" -eq 1 ]; then # Power SAVE
     _minfreq 902400
     _stboost '' 8
     _stboost foreground/ 12
-  else
-    _devidle deep
   fi
 
   [ "$nozram" -eq 1 ] && {
