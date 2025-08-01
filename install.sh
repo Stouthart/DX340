@@ -28,7 +28,7 @@
   chcon u:object_r:system_file:s0 "$file"
 
   _execbkg() {
-    _parmsed "$1" "exec_background -- ${SHELL} -c \"sleep 2; ${2}\""
+    _parmsed "$1" "exec_background -- $SHELL -c \"sleep 2; $2\""
   }
 
   _minfreq() {
@@ -40,7 +40,7 @@
   }
 
   _stboost() {
-    sed -i -E "s,(stune/${1}schedtune.boost) [0-9]+$,\1 ${2}," "$file"
+    sed -i -E "s,(stune/${1}schedtune.boost) [0-9]+$,\1 $2," "$file"
   }
 
   if [ "$pmax" -eq 1 ]; then # Performance MAX
