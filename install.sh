@@ -28,14 +28,14 @@
   chcon u:object_r:system_file:s0 "$file"
 
   _execbkg() {
-    _parmsed "$1" "exec_background -- $SHELL -c \"sleep 2; $2\""
+    _replace "$1" "exec_background -- $SHELL -c \"sleep 2; ${2}\""
   }
 
   _minfreq() {
     _execbkg minfreq "echo $1 >/sys/devices/system/cpu/cpufreq/policy4/scaling_min_freq"
   }
 
-  _parmsed() {
+  _replace() {
     sed -i "s,### ${1}$,$2," "$file"
   }
 
@@ -44,7 +44,7 @@
   }
 
   if [ "$pmax" -eq 1 ]; then # Performance MAX
-    _parmsed tdtimer 'write /proc/sys/kernel/timer_migration 0'
+    _replace tdtimer 'write /proc/sys/kernel/timer_migration 0'
     _minfreq 1401600
     _stboost top-app/ 40        # Scheduler tuning by Whitigir
   elif [ "$psave" -eq 1 ]; then # Power SAVE
