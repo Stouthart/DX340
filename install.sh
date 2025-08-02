@@ -1,5 +1,4 @@
 #!/bin/sh
-# shellcheck disable=SC2154
 #
 # v6.1b, Copyright (C) 2025 Stouthart. All rights reserved.
 {

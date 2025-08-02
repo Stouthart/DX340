@@ -1,20 +1,22 @@
 #!/bin/sh
-# shellcheck disable=SC2154
 #
-# v6.0, Copyright (C) 2025 Stouthart. All rights reserved.
+# v6.1b, Copyright (C) 2025 Stouthart. All rights reserved.
 {
-  # shellcheck disable=SC2166,SC3028
-  [ "$HOSTNAME" = DX340 -o "$HOSTNAME" = DX180 ] || {
+  # shellcheck disable=SC3028
+  case "$HOSTNAME" in
+  DX340 | DX180) ;;
+  *)
     echo '🚸 Your device is not compatible with this version.'
     exit 1
-  }
+    ;;
+  esac
 
   echo '[ Debloating & Optimization ]'
   echo '🌱 Debloating...'
 
   _uninst() {
     # shellcheck disable=SC3037
-    echo -n "${1}: "
+    echo -n "$1: "
     cmd package uninstall --user 0 "$1"
   }
 
@@ -32,9 +34,9 @@
   cmd package disable-user --user 0 com.google.android.partnersetup # Google Partner Setup
   _uninst com.google.android.safetycore                             # (Added by GMS)
 
-  [ "$nochrome" -eq 1 ] && cmd package disable-user --user 0 com.android.chrome
+  [ "${nochrome:-0}" -eq 1 ] && cmd package disable-user --user 0 com.android.chrome
 
-  [ "$noplay" -eq 1 ] && {
+  [ "${noplay:-0}" -eq 1 ] && {
     cmd package disable-user --user 0 com.android.vending
     cmd package disable-user --user 0 com.google.android.gms
     # cmd package enable --user 0 com.google.android.gms && cmd package enable --user 0 com.android.vending
@@ -63,11 +65,7 @@
   settings put global multi_cb 0                                # 2 (Usage & diagnostics)
   settings put global wifi_networks_available_notification_on 0 # 1
 
-  if [ "$nonoise" -eq 1 ]; then
-    settings put global wifi_power_save 1
-  else
-    settings put global wifi_power_save 120
-  fi
+  settings put global wifi_power_save "$([ "${nonoise:-0}" -eq 1 ] && echo 1 || echo 120)"
 
   # Remove animations
   settings put global animator_duration_scale 0    # null
