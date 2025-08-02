@@ -41,7 +41,7 @@
     deezer.android.app \
     tunein.player
 
-  p3=$(cmd package list packages -3 | sed 's,package:,,g')
+  p3=$(cmd package list packages -3 | sed 's/package://g')
   wl=$(printf '%s\n' "$@" "$p3" | LC_ALL=C sort | uniq -d | sed 's/^/+/')
 
   # shellcheck disable=SC2086
