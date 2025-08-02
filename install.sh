@@ -3,11 +3,14 @@
 #
 # v6.1b, Copyright (C) 2025 Stouthart. All rights reserved.
 {
-  # shellcheck disable=SC2166,SC3028
-  [ "$HOSTNAME" = DX340 -o "$HOSTNAME" = DX180 ] || {
+  # shellcheck disable=SC3028
+  case "$HOSTNAME" in
+  DX340 | DX180) ;;
+  *)
     echo '🚸 Your device is not compatible with this version.'
     exit 1
-  }
+    ;;
+  esac
 
   [ -w /etc/init ] || {
     echo '🚸 Read-only file system. Try "adb remount" first.'
@@ -20,7 +23,10 @@
   file=/etc/init/${url##*/}
 
   echo '🌱 Downloading...'
-  curl -so "$file" $url
+  curl -sfo "$file" "$url" || {
+    echo '🚸 Failed to download configuration file.'
+    exit 2
+  }
 
   echo '🌱 Installing...'
 
@@ -43,17 +49,17 @@
     sed -i -E "s,(stune/${1}schedtune.boost) [0-9]+$,\1 $2," "$file"
   }
 
-  if [ "$pmax" -eq 1 ]; then # Performance MAX
+  if [ "${pmax:-0}" -eq 1 ]; then # Performance MAX
     _replace tdtimer 'write /proc/sys/kernel/timer_migration 0'
     _minfreq 1401600
-    _stboost top-app/ 40        # Scheduler tuning by Whitigir
-  elif [ "$psave" -eq 1 ]; then # Power SAVE
+    _stboost top-app/ 40             # Scheduler tuning by Whitigir
+  elif [ "${psave:-0}" -eq 1 ]; then # Power SAVE
     _minfreq 902400
     _stboost '' 8
     _stboost foreground/ 12
   fi
 
-  [ "$nozram" -eq 1 ] && {
+  [ "${nozram:-0}" -eq 1 ] && {
     _execbkg nozram 'swapoff /dev/block/zram0; echo 1 >/sys/block/zram0/reset'
   }
 

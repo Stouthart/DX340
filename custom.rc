@@ -1,11 +1,10 @@
 # v6.1b, Copyright (C) 2025 Stouthart. All rights reserved.
-#
 # Device model: DX340/DX180
 
 ## https://android.googlesource.com/platform/system/core/+/master/init/README.md
 
 on init
-  # Disable "debugfs" filesystem
+  # Disable "debugfs" filesystem for security/performance
   write /sys/kernel/debug/debug_enabled 0
 
   ## https://github.com/redhat-performance/tuned/tree/master/profiles
@@ -18,7 +17,7 @@ on init
 
 on late-init
   # Disable scheduler statistics (atrace.rc)
-  write /proc/sys/kernel/sched_schedstats 0 # Firmware < v1.04.440
+  write /proc/sys/kernel/sched_schedstats 0 # For firmware < v1.04.440
 
 on late-fs
   ## https://source.android.com/docs/core/perf/boot-times#tuning-the-filesystem
