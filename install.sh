@@ -62,7 +62,7 @@
   fi
 
   [ "${nozram:-0}" -eq 1 ] && {
-    echo '> Disabling zRam...'
+    echo '> Disabling zRAM...'
     _execbkg nozram 'swapoff /dev/block/zram0; echo 1 >/sys/block/zram0/reset'
   }
 

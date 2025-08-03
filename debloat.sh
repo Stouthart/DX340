@@ -36,7 +36,7 @@
   _uninst com.google.android.safetycore                             # (Added by GMS)
 
   [ "${nochrome:-0}" -eq 1 ] && {
-    echo '> Disabling Google Chrome...'
+    echo '> Disabling Chrome...'
     cmd package disable-user --user 0 com.android.chrome
   }
 
