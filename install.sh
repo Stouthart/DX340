@@ -6,13 +6,13 @@
   case "$HOSTNAME" in
   DX340 | DX180) ;;
   *)
-    echo '🚸 Your device is not compatible with this version.'
+    echo 'Your device is not compatible with this version.'
     exit 1
     ;;
   esac
 
   [ -w /etc/init ] || {
-    echo '🔒 Read-only file system. Try "adb remount" first.'
+    echo 'Read-only file system. Try "adb remount" first.'
     exit 1
   }
 
@@ -21,14 +21,14 @@
   url=https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/custom.rc
   file=/etc/init/${url##*/}
 
-  echo '📥 Downloading custom init file...'
+  echo '> Downloading custom init file...'
 
   curl -sfo "$file" "$url" || {
-    echo '❌ Failed to download configuration file.'
+    echo 'Failed to download configuration file.'
     exit 2
   }
 
-  echo '🔧 Setting file permissions and context...'
+  echo '> Setting file permissions and context...'
 
   chmod 0644 "$file"
   chcon u:object_r:system_file:s0 "$file"
@@ -49,7 +49,7 @@
     sed -i -E "s,(stune/${1}schedtune.boost) [0-9]+$,\1 $2," "$file"
   }
 
-  echo '🚀 Applying performance/power mode...'
+  echo '> Applying performance/power mode...'
 
   if [ "${pmax:-0}" -eq 1 ]; then # Performance MAX
     _replace tmrmig 'write /proc/sys/kernel/timer_migration 0'
@@ -62,20 +62,17 @@
   fi
 
   [ "${nozram:-0}" -eq 1 ] && {
-    echo '💾 Disabling zRam...'
+    echo '> Disabling zRam...'
     _execbkg nozram 'swapoff /dev/block/zram0; echo 1 >/sys/block/zram0/reset'
   }
 
   [ "$(LC_ALL=C grep -F MemTotal /proc/meminfo | grep -o '[0-9]*')" -gt 4194304 ] && {
-    echo '🧠 Tuning for device with >4GB RAM...'
-
+    echo '> Tuning for device with >4GB RAM...'
     sed -i -E "s,(sda/queue/read_ahead_kb) [0-9]+$,\1 2048," "$file"
     _execbkg tdswap 'echo 10 >/proc/sys/vm/swappiness'
   }
 
   [ -x /etc/rc.local ] && _execbkg rclocal /etc/rc.local
-
-  echo '✨ Final cleanup & system tweaks...'
 
   sed -i -E 's,### [a-z]+$,# N/A,g' "$file" # Cleanup
 
@@ -85,9 +82,8 @@
   # Disable tracing services (perfetto.rc)
   setprop persist.traced.enable 0 # 1
 
-  echo '✅ Done'
+  echo '> Done!'
 
-  # shellcheck disable=SC3037
-  echo "🔄 Rebooting..."
+  echo "> Rebooting..."
   reboot
 }

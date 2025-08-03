@@ -6,13 +6,12 @@
   case "$HOSTNAME" in
   DX340 | DX180) ;;
   *)
-    echo '🚸 Your device is not compatible with this version.'
+    echo 'Your device is not compatible with this version.'
     exit 1
     ;;
   esac
 
   echo '[ Debloating & Optimization ]'
-  echo '🌱 Debloating...'
 
   _uninst() {
     # shellcheck disable=SC3037
@@ -20,7 +19,8 @@
     cmd package uninstall --user 0 "$1"
   }
 
-  # Apps
+  echo '> Removing preinstalled apps...'
+
   _uninst cm.aptoide.pt           # Aptoide (app store)
   _uninst com.android.calculator2 # Calculator
   _uninst com.android.deskclock   # Clock
@@ -28,21 +28,27 @@
   _uninst com.wandoujia.phoenix2  # Wandoujia (Chinese app store)
   # cmd package install-existing --user 0 com.android.gallery3d
 
-  # Google
+  echo '> Removing/disabling Google apps...'
+
   cmd package disable-user --user 0 com.google.android.apps.restore # Switch (Added by GMS)
   _uninst com.google.android.inputmethod.latin                      # Google Keyboard
   cmd package disable-user --user 0 com.google.android.partnersetup # Google Partner Setup
   _uninst com.google.android.safetycore                             # (Added by GMS)
 
-  [ "${nochrome:-0}" -eq 1 ] && cmd package disable-user --user 0 com.android.chrome
+  [ "${nochrome:-0}" -eq 1 ] && {
+    echo '> Disabling Google Chrome...'
+    cmd package disable-user --user 0 com.android.chrome
+  }
 
   [ "${noplay:-0}" -eq 1 ] && {
+    echo '> Disabling Play store/services...'
     cmd package disable-user --user 0 com.android.vending
     cmd package disable-user --user 0 com.google.android.gms
     # cmd package enable --user 0 com.google.android.gms && cmd package enable --user 0 com.android.vending
   }
 
-  # Debloat other (only running packages)
+  echo '> Removing other (running) apps...'
+
   _uninst com.android.managedprovisioning
   _uninst com.android.musicfx # Firmware < v1.04.440
   _uninst com.android.remoteprovisioner
@@ -53,7 +59,7 @@
   ## https://forum.fairphone.com/t/telemetry-spyware-list-of-privacy-threats-on-fp3-android-9/55179
   _uninst com.qualcomm.qti.qms.service.connectionsecurity
 
-  echo '🌱 Optimizing settings...'
+  echo '> Optimizing settings...'
 
   # Global settings
   settings put global app_install_optimise_enabled 0            # null
@@ -69,7 +75,6 @@
 
   # Remove animations
   settings put global animator_duration_scale 0    # null
-  settings put global remove_animations 1          # 0
   settings put global transition_animation_scale 0 # 1.0
   settings put global window_animation_scale 0     # 1.0
 
@@ -83,16 +88,16 @@
   settings put system screen_brightness 81     # 102
   settings put system screen_off_timeout 15000 # 60000
 
-  echo '🌱 Compiling packages...'
+  echo '> Compiling packages...'
 
   ## https://source.android.com/docs/core/runtime/configure#compiler_filters
   cmd package compile -a -m speed-profile
 
-  echo '🌱 Trimming caches...'
+  echo '> Trimming caches...'
   cmd package trim-caches 999G
 
-  echo '✨ Done'
+  echo '> Done!'
 
-  echo '🔨 Rebooting...'
+  echo "> Rebooting..."
   reboot
 }

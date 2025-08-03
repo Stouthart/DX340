@@ -6,14 +6,14 @@
   case "$HOSTNAME" in
   DX340 | DX180) ;;
   *)
-    echo '🚸 Your device is not compatible with this version.'
+    echo 'Your device is not compatible with this version.'
     exit 1
     ;;
   esac
 
-  echo '🌙 Doze & App Standby 🔋'
+  echo '[ Doze & App Standby ]'
 
-  echo '☑️ Whitelisting apps...'
+  echo '> Comparing 3rd-party apps with music apps...'
 
   set -- \
     au.com.shiftyjelly.pocketcasts \
@@ -45,8 +45,10 @@
   p3=$(cmd package list packages -3 | sed 's/package://g')
   wl=$(printf '%s\n' "$@" "$p3" | LC_ALL=C sort | uniq -d | sed 's/^/+/')
 
+  echo '> Whitelisting apps...'
+
   # shellcheck disable=SC2086
   dumpsys deviceidle whitelist +com.ibasso.music $wl
 
-  echo '✅ Done!'
+  echo '> Done'
 }
