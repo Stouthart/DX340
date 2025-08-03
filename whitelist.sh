@@ -11,8 +11,9 @@
     ;;
   esac
 
-  echo '[ Doze & App Standby ]'
-  echo '🌱 Whitelisting apps...'
+  echo '🌙 Doze & App Standby 🔋'
+
+  echo '☑️ Whitelisting apps...'
 
   set -- \
     au.com.shiftyjelly.pocketcasts \
@@ -47,5 +48,5 @@
   # shellcheck disable=SC2086
   dumpsys deviceidle whitelist +com.ibasso.music $wl
 
-  echo '✨ Done'
+  echo '✅ Done!'
 }
