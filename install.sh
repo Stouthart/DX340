@@ -6,7 +6,7 @@
   case "$HOSTNAME" in
   DX340 | DX180) ;;
   *)
-    echo '⚠️ Your device is not compatible with this version.'
+    echo '🚸 Your device is not compatible with this version.'
     exit 1
     ;;
   esac
@@ -28,7 +28,7 @@
     exit 2
   }
 
-  echo '🛡️ Setting file permissions and context...'
+  echo '🔧 Setting file permissions and context...'
 
   chmod 0644 "$file"
   chcon u:object_r:system_file:s0 "$file"
@@ -62,7 +62,7 @@
   fi
 
   [ "${nozram:-0}" -eq 1 ] && {
-    echo '⚙️ Disabling zRam...'
+    echo '💾 Disabling zRam...'
     _execbkg nozram 'swapoff /dev/block/zram0; echo 1 >/sys/block/zram0/reset'
   }
 
@@ -87,6 +87,7 @@
 
   echo '✅ Done'
 
-  echo '♻️ Rebooting...'
+  # shellcheck disable=SC3037
+  echo "🔄 Rebooting..."
   reboot
 }
