@@ -41,7 +41,7 @@
   }
 
   [ "${noplay:-0}" -eq 1 ] && {
-    echo '> Disabling Play store/services...'
+    echo '> Disabling Play services/store...'
     cmd package disable-user --user 0 com.android.vending
     cmd package disable-user --user 0 com.google.android.gms
     # cmd package enable --user 0 com.google.android.gms && cmd package enable --user 0 com.android.vending
