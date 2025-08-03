@@ -22,7 +22,6 @@
   file=/etc/init/${url##*/}
 
   echo '> Downloading custom init file...'
-
   curl -sfo "$file" "$url" || {
     echo 'Failed to download configuration file.'
     exit 2
@@ -31,24 +30,12 @@
   chmod 0644 "$file"
   chcon u:object_r:system_file:s0 "$file"
 
-  _execbkg() {
-    _replace "$1" "exec_background -- $SHELL -c \"sleep 2; ${2}\""
-  }
+  _execbkg() { _replace "$1" "exec_background -- $SHELL -c \"sleep 2; ${2}\""; }
+  _minfreq() { _execbkg minfreq "echo $1 >/sys/devices/system/cpu/cpufreq/policy4/scaling_min_freq"; }
+  _replace() { sed -i "s,### ${1}$,$2," "$file"; }
+  _stboost() { sed -i -E "s,(stune/${1}schedtune.boost) [0-9]+$,\1 $2," "$file"; }
 
-  _minfreq() {
-    _execbkg minfreq "echo $1 >/sys/devices/system/cpu/cpufreq/policy4/scaling_min_freq"
-  }
-
-  _replace() {
-    sed -i "s,### ${1}$,$2," "$file"
-  }
-
-  _stboost() {
-    sed -i -E "s,(stune/${1}schedtune.boost) [0-9]+$,\1 $2," "$file"
-  }
-
-  echo '> Applying performance/power mode...'
-
+  echo '> Applying performance mode...'
   if [ "${pultra:-0}" -eq 1 ]; then # Performance ULTRA
     _replace tmrmig 'write /proc/sys/kernel/timer_migration 0'
     _minfreq 1536000
@@ -68,7 +55,7 @@
     _execbkg nozram 'swapoff /dev/block/zram0; echo 1 >/sys/block/zram0/reset'
   }
 
-  [ "$(LC_ALL=C grep -F MemTotal /proc/meminfo | grep -o '[0-9]*')" -gt 4194304 ] && {
+  [ "$(awk '/MemTotal/ {print $2}' /proc/meminfo)" -gt 4194304 ] && {
     echo '> Tuning for device with >4GB RAM...'
     sed -i -E "s,(sda/queue/read_ahead_kb) [0-9]+$,\1 2048," "$file"
     _execbkg tdswap 'echo 10 >/proc/sys/vm/swappiness'
@@ -77,8 +64,7 @@
   # Debugging & testing
   [ -x /etc/rc.local ] && _execbkg rclocal /etc/rc.local
 
-  echo '> Final cleanup & system tweaks...'
-
+  echo '> Final cleanup & tweaks...'
   sed -i -E 's,### [a-z]+$,# N/A,g' "$file" # Cleanup
 
   # Reduce logging of system messages (logcat)
