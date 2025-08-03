@@ -28,8 +28,6 @@
     exit 2
   }
 
-  echo '> Setting file permissions and context...'
-
   chmod 0644 "$file"
   chcon u:object_r:system_file:s0 "$file"
 
@@ -54,7 +52,8 @@
   if [ "${pmax:-0}" -eq 1 ]; then # Performance MAX
     _replace tmrmig 'write /proc/sys/kernel/timer_migration 0'
     _minfreq 1536000
-    _stboost top-app/ 40             # Scheduler tuning by Whitigir
+    _stboost foreground/ 20
+    _stboost top-app/ 35             # Scheduler tuning by Whitigir
   elif [ "${psave:-0}" -eq 1 ]; then # Power SAVE
     _minfreq 652800
     _stboost '' 8
@@ -67,7 +66,7 @@
   }
 
   [ "$(LC_ALL=C grep -F MemTotal /proc/meminfo | grep -o '[0-9]*')" -gt 4194304 ] && {
-    echo '> Tuning device with >4GB RAM...'
+    echo '> Tuning for device with >4GB RAM...'
     sed -i -E "s,(sda/queue/read_ahead_kb) [0-9]+$,\1 2048," "$file"
     _execbkg tdswap 'echo 10 >/proc/sys/vm/swappiness'
   }

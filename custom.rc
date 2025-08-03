@@ -5,7 +5,7 @@
 ## https://android.googlesource.com/platform/system/core/+/master/init/README.md
 
 on init
-  # Disable "debugfs" filesystem for security/performance
+  # Disable debugfs for security/performance
   write /sys/kernel/debug/debug_enabled 0
 
   ## https://github.com/redhat-performance/tuned/tree/master/profiles
@@ -33,20 +33,24 @@ on property:sys.boot_completed=1
   # Set scaling_min_freq for "big" CPU cluster
   ### minfreq
 
-  ## https://xdaforums.com/t/3528807/post-70475813
+  # Default boost for all tasks
   write /dev/stune/schedtune.boost 10
+
+  # Foreground apps: moderate boost, prefer idle cores
   write /dev/stune/foreground/schedtune.boost 15
   write /dev/stune/foreground/schedtune.prefer_idle 1
+
+  # Top app (active UI apps): aggressive boost, prefer idle
   write /dev/stune/top-app/schedtune.boost 25
   write /dev/stune/top-app/schedtune.prefer_idle 1
 
-  # Disable zRam (compressed RAM disk)
+  # Disable zRAM (compressed RAM disk)
   ### nozram
 
   # Runtime TuneD
   ### tdswap
 
-  # Reduce logging of kernel messages (dmesg)
+  # Reduce kernel logging (dmesg)
   write /proc/sys/kernel/printk "4 4 1 7"
 
   # Debugging & testing
