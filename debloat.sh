@@ -47,7 +47,7 @@
     # cmd package enable --user 0 com.google.android.gms && cmd package enable --user 0 com.android.vending
   }
 
-  echo '> Removing other (running) apps...'
+  echo '> Removing other packages...'
 
   _uninst com.android.managedprovisioning
   _uninst com.android.musicfx # Firmware < v1.04.440

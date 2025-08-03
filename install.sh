@@ -67,12 +67,15 @@
   }
 
   [ "$(LC_ALL=C grep -F MemTotal /proc/meminfo | grep -o '[0-9]*')" -gt 4194304 ] && {
-    echo '> Tuning for device with >4GB RAM...'
+    echo '> Tuning device with >4GB RAM...'
     sed -i -E "s,(sda/queue/read_ahead_kb) [0-9]+$,\1 2048," "$file"
     _execbkg tdswap 'echo 10 >/proc/sys/vm/swappiness'
   }
 
+  # Debugging & testing
   [ -x /etc/rc.local ] && _execbkg rclocal /etc/rc.local
+
+  echo '> Final cleanup & system tweaks...'
 
   sed -i -E 's,### [a-z]+$,# N/A,g' "$file" # Cleanup
 

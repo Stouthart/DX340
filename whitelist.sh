@@ -13,7 +13,7 @@
 
   echo '[ Doze & App Standby ]'
 
-  echo '> Comparing 3rd-party apps with music apps...'
+  echo '> Comparing 3rd-party apps with whitelist...'
 
   set -- \
     au.com.shiftyjelly.pocketcasts \
