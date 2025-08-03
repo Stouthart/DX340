@@ -49,11 +49,14 @@
 
   echo '> Applying performance/power mode...'
 
-  if [ "${pmax:-0}" -eq 1 ]; then # Performance MAX
+  if [ "${pultra:-0}" -eq 1 ]; then # Performance ULTRA
     _replace tmrmig 'write /proc/sys/kernel/timer_migration 0'
     _minfreq 1536000
     _stboost foreground/ 20
-    _stboost top-app/ 35             # Scheduler tuning by Whitigir
+    _stboost top-app/ 35
+  elif [ "${pmax:-0}" -eq 1 ]; then # Performance MAX
+    _minfreq 1401600
+    _stboost top-app/ 40             # Scheduler tuning by Whitigir
   elif [ "${psave:-0}" -eq 1 ]; then # Power SAVE
     _minfreq 652800
     _stboost '' 8
