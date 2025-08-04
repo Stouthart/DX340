@@ -30,6 +30,8 @@
   chmod 0644 "$file"
   chcon u:object_r:system_file:s0 "$file"
 
+  # Helper functions
+
   _execbkg() {
     _replace "$1" "exec_background -- $SHELL -c \"sleep 2; ${2}\""
   }
@@ -41,17 +43,21 @@
   _replace() {
     sed -i "s,### ${1}$,$2," "$file"
   }
+  _sedregx() {
+    sed -i -E "s,($1) [0-9]+$,\1 $2," "$file"
+  }
 
   _stboost() {
-    sed -i -E "s,(stune/${1}schedtune.boost) [0-9]+$,\1 $2," "$file"
+    _sedregx "stune/${1}schedtune.boost" "$2"
   }
 
   echo '> Applying performance mode...'
   if [ "${pultra:-0}" -eq 1 ]; then # Performance ULTRA
     _replace tmrmig 'write /proc/sys/kernel/timer_migration 0'
-    _minfreq 1536000
-    _stboost foreground/ 20
-    _stboost top-app/ 35
+    _minfreq 1401600 # 1536000 ?
+    _stboost '' 20
+    _stboost foreground/ 30
+    _stboost top-app/ 40            # Scheduler tuning by Whitigir
   elif [ "${pmax:-0}" -eq 1 ]; then # Performance MAX
     _minfreq 1401600
     _stboost top-app/ 40             # Scheduler tuning by Whitigir
@@ -68,7 +74,8 @@
 
   [ "$(awk '/MemTotal/ {print $2}' /proc/meminfo)" -gt 4194304 ] && {
     echo '> Tuning for >4GB RAM...'
-    sed -i -E "s,(sda/queue/read_ahead_kb) [0-9]+$,\1 2048," "$file"
+    _sedregx sda/queue/nr_requests 512
+    _sedregx sda/queue/read_ahead_kb 2048
     _execbkg tdswap 'echo 10 >/proc/sys/vm/swappiness'
   }
 

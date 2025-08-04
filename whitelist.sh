@@ -43,7 +43,7 @@
     tunein.player
 
   p3=$(cmd package list packages -3 | sed 's/package://g')
-  wl=$(printf '%s\n' "$@" "$p3" | LC_ALL=C sort | uniq -d | awk '{ print "+" $1 }')
+  wl=$(printf '%s\n' "$@" "$p3" | LC_ALL=C sort | uniq -d | awk '{ print "+" $0 }')
 
   echo '> Whitelisting apps...'
 
