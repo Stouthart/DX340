@@ -74,7 +74,7 @@
 
   [ "$(awk '/MemTotal/ {print $2}' /proc/meminfo)" -gt 4194304 ] && {
     echo '> Tuning for >4GB RAM...'
-    _sedregx sda/queue/nr_requests 512
+    _sedregx sda/queue/nr_requests 256
     _execbkg tdswap 'echo 10 >/proc/sys/vm/swappiness'
   }
 
