@@ -75,7 +75,6 @@
   [ "$(awk '/MemTotal/ {print $2}' /proc/meminfo)" -gt 4194304 ] && {
     echo '> Tuning for >4GB RAM...'
     _sedregx sda/queue/nr_requests 512
-    _sedregx sda/queue/read_ahead_kb 2048
     _execbkg tdswap 'echo 10 >/proc/sys/vm/swappiness'
   }
 
@@ -83,7 +82,7 @@
   [ -x /etc/rc.local ] && _execbkg rclocal /etc/rc.local
 
   echo '> Final cleanup & tweaks'
-  sed -i -E 's,### [a-z]+$,# N/A,g' "$file" # Cleanup
+  sed -i -E 's,### [a-z]+$,# N/A,g' "$file"
 
   # Reduce logging of system messages (logcat)
   setprop persist.log.tag W # I
