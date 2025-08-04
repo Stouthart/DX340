@@ -47,6 +47,11 @@
     sed -i -E "s,($1) [0-9]+$,\1 $2," "$file"
   }
 
+  _setpmax() {
+    _minfreq 1401600
+    _stboost top-app/ 40 # Scheduler tuning by Whitigir
+  }
+
   _stboost() {
     _sedregx "stune/${1}schedtune.boost" "$2"
   }
@@ -54,13 +59,11 @@
   echo '> Applying performance mode...'
   if [ "${pultra:-0}" -eq 1 ]; then # Performance ULTRA
     _replace tmrmig 'write /proc/sys/kernel/timer_migration 0'
-    _minfreq 1401600 # 1536000 ?
+    _setpmax
     _stboost '' 20
     _stboost foreground/ 30
-    _stboost top-app/ 40            # Scheduler tuning by Whitigir
   elif [ "${pmax:-0}" -eq 1 ]; then # Performance MAX
-    _minfreq 1401600
-    _stboost top-app/ 40             # Scheduler tuning by Whitigir
+    _setpmax
   elif [ "${psave:-0}" -eq 1 ]; then # Power SAVE
     _minfreq 652800
     _stboost '' 8
