@@ -30,10 +30,21 @@
   chmod 0644 "$file"
   chcon u:object_r:system_file:s0 "$file"
 
-  _execbkg() { _replace "$1" "exec_background -- $SHELL -c \"sleep 2; ${2}\""; }
-  _minfreq() { _execbkg minfreq "echo $1 >/sys/devices/system/cpu/cpufreq/policy4/scaling_min_freq"; }
-  _replace() { sed -i "s,### ${1}$,$2," "$file"; }
-  _stboost() { sed -i -E "s,(stune/${1}schedtune.boost) [0-9]+$,\1 $2," "$file"; }
+  _execbkg() {
+    _replace "$1" "exec_background -- $SHELL -c \"sleep 2; ${2}\""
+  }
+
+  _minfreq() {
+    _execbkg minfreq "echo $1 >/sys/devices/system/cpu/cpufreq/policy4/scaling_min_freq"
+  }
+
+  _replace() {
+    sed -i "s,### ${1}$,$2," "$file"
+  }
+
+  _stboost() {
+    sed -i -E "s,(stune/${1}schedtune.boost) [0-9]+$,\1 $2," "$file"
+  }
 
   echo '> Applying performance mode...'
   if [ "${pultra:-0}" -eq 1 ]; then # Performance ULTRA
@@ -56,7 +67,7 @@
   }
 
   [ "$(awk '/MemTotal/ {print $2}' /proc/meminfo)" -gt 4194304 ] && {
-    echo '> Tuning for device with >4GB RAM...'
+    echo '> Tuning for >4GB RAM...'
     sed -i -E "s,(sda/queue/read_ahead_kb) [0-9]+$,\1 2048," "$file"
     _execbkg tdswap 'echo 10 >/proc/sys/vm/swappiness'
   }
