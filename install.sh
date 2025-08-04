@@ -82,7 +82,7 @@
   # Debugging & testing
   [ -x /etc/rc.local ] && _execbkg rclocal /etc/rc.local
 
-  echo '> Final cleanup & tweaks...'
+  echo '> Final cleanup & tweaks'
   sed -i -E 's,### [a-z]+$,# N/A,g' "$file" # Cleanup
 
   # Reduce logging of system messages (logcat)
