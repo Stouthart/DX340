@@ -6,7 +6,7 @@
   case "$HOSTNAME" in
   DX340 | DX180) ;;
   *)
-    echo 'Your device is not compatible with this version.'
+    echo 'Your device is not compatible with this version.' >&2
     exit 1
     ;;
   esac

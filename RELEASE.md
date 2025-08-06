@@ -1,10 +1,30 @@
 <!-- Copyright (C) 2025 Stouthart. All rights reserved. -->
 
-# v6.0 - Latest
+# v6.1 - Latest
+
+### Debloating & Optimization
+
+- Additional security & privacy settings added and grouped for better readability
+- Improved feedback during execution
 
 ### Advanced Tweaking
 
-- New option (**nozram=1**) to disable zRam (Compressed RAM disk), replacing the previous solution:
+- Added **Timer_migration** setting for "Performance MAX" mode, improving both performance and latency
+- Updated **scaling_min_freq** for "Power SAVE" (652800 Hz), further reducing battery consumption
+- Optimized file system tweaks based on extensive benchmarking and added **scheduler** setting ("noop")
+- Improved compatibility with DX180 (check for >4GB RAM)
+- Improved feedback during installation
+
+### General
+
+- Improved error handling
+- Various code improvements
+
+## v6.0
+
+### Advanced Tweaking
+
+- New option (**nozram=1**) to disable zRAM (compressed RAM disk), replacing the previous solution:
 
 ```
 curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/install.sh | nozram=1 sh
@@ -18,12 +38,11 @@ curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/insta
 
 ### Debloating & Optimization
 
-- Removed **nozram=1** option ([v5.7](#v57)), as it's now part of **Advanced Tweaking**
+- Removed **nozram** option ([v5.7](#v57)), as it's now part of **Advanced Tweaking**
 
 ### General
 
-- Complete validation with OpenAI ChatGPT & Google Gemini ✨
-- Improved DX180 compatibility
+- Complete validation with ChatGPT & Gemini
 - Various code improvements
 - More descriptive README.md
 
@@ -31,7 +50,7 @@ curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/insta
 
 ### Debloating & Optimization
 
-- ~~New option (**nozram=1**) to disable zRam (Compressed RAM disk)~~
+- ~~New option (**nozram=1**) to disable zRAM (compressed RAM disk)~~
 
 ### General
 
@@ -41,7 +60,7 @@ curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/insta
 
 ### Debloating & Optimization
 
-- Added **google_core_control** setting, to reduce wakelocks of Google Play Services (GMS)
+- Added **google_core_control** setting, to reduce wakelocks of Play services (GMS)
 
 ### General
 
@@ -69,7 +88,7 @@ curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/insta
 curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/debloat.sh | nochrome=1 sh
 ```
 
-- This can be combined with option to disable Play Services/Store (**noplay=1**, see [v4.0](#v40)):
+- This can be combined with option to disable Play services/store (**noplay=1**, see [v4.0](#v40)):
 
 ```
 curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/debloat.sh | nochrome=1 noplay=1 sh
@@ -84,7 +103,7 @@ curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/deblo
 
 ### Debloating & Optimization
 
-- Changed value of **multicore_packet_scheduler** to **0** (=disabled), to prevent spurious interrupts
+- ~~Changed value of **multicore_packet_scheduler** to **0** (=disabled), to prevent spurious interrupts~~
 - Chrome is no longer disabled automatically, as it may be needed for sign-in purposes and subscription management (thanks for the feedback **pmichaelro**)
 
 ### Advanced Tweaking
@@ -102,13 +121,13 @@ curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/deblo
 
 ### Advanced Tweaking
 
-- New "Power SAVE 🌱" option (**psave=1**) for the battery conscious. This provides most improvements while reducing battery consumption (decreases minimum scaling frequency from 1056.0MHz to 902.4MHz, applies less aggressive scheduler tuning):
+- New "Power SAVE" option (**psave=1**) for the battery conscious. This provides most improvements while reducing battery consumption (decreases minimum scaling frequency from 1056.0MHz to 902.4MHz, applies less aggressive scheduler tuning):
 
 ```
 curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/install.sh | psave=1 sh
 ```
 
-- "Scheduler tuning by Whitigir" merged with option **pmax=1** (aka "Performance MAX ✨", see [v5.0](#v50))
+- "Scheduler tuning by Whitigir" merged with option **pmax=1** (aka "Performance MAX", see [v5.0](#v50))
 
 ### General
 
@@ -133,7 +152,7 @@ curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/insta
 curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/debloat.sh | nonoise=1 sh
 ```
 
-- This can be combined with option to disable Play Services/Store (**noplay=1**, see [v4.0](#v40)):
+- This can be combined with option to disable Play services/store (**noplay=1**, see [v4.0](#v40)):
 
 ```
 curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/debloat.sh | nonoise=1 noplay=1 sh
@@ -141,7 +160,7 @@ curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/deblo
 
 ### Advanced Tweaking
 
-- New option **pmax=1** (aka "Performance MAX ✨") to get absolute maximum performance out of the DX340:
+- New option **pmax=1** (aka "Performance MAX") to get absolute maximum performance out of the DX340:
 
 ```
 curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/install.sh | pmax=1 sh
@@ -151,7 +170,7 @@ curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/insta
 
 > [!NOTE]
 >
-> Option **pmax=1** replaces option **noidle=1** (deprecated). In addition to disabling "Doze & App Standby" (deviceidle), the minimum scaling frequency is increased from 1056.0 MHz to 1401.6 MHz. This may cause "Performance MAX ✨" to have an impact on battery life (although results may vary).
+> Option **pmax=1** replaces option **noidle=1** (deprecated). In addition to disabling "Doze & App Standby" (deviceidle), the minimum scaling frequency is increased from 1056.0 MHz to 1401.6 MHz. This may cause "Performance MAX" to have an impact on battery life (although results may vary).
 
 ## v4.7
 
@@ -178,7 +197,7 @@ curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/deblo
 
 > [!IMPORTANT]
 >
-> 🚸 Be careful with this option, as it may break the network connection for some apps (e.g., Apple Music, thanks for reporting **altomo**). That's why this setting is no longer enabled by default.
+> Be careful with this option, as it may break the network connection for some apps (e.g., Apple Music, thanks for reporting **altomo**). That's why this setting is no longer enabled by default.
 
 ### Advanced Tweaking
 
@@ -201,7 +220,7 @@ curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/deblo
 
 ### Advanced Tweaking
 
-- ~~Optimized **dirty_ratio** & **dirty_background_ratio** for troughput instead of latency (reduced disk I/O)~~
+- ~~Optimized **dirty_ratio** & **dirty_background_ratio** for throughput instead of latency (reduced disk I/O)~~
 - ~~New option **noidle=1** to disable "Doze & App Standby" (deviceidle), similar to setting apps to "Unrestricted", but for the entire device~~
 
 ## v4.1
@@ -218,7 +237,7 @@ curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/deblo
 
 - Optimized compilation of packages
 - Removed compilation of overlays (no measurable impact)
-- New option **noplay=1** to disable Play Services/Store as well:
+- New option **noplay=1** to disable Play services/store as well:
 
 ```
 curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/debloat.sh | noplay=1 sh

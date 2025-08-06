@@ -6,7 +6,7 @@
   case "$HOSTNAME" in
   DX340 | DX180) ;;
   *)
-    echo 'Your device is not compatible with this version.'
+    echo 'Your device is not compatible with this version.' >&2
     exit 1
     ;;
   esac
@@ -14,8 +14,7 @@
   echo '[ Debloating & Optimization ]'
 
   _uninst() {
-    # shellcheck disable=SC3037
-    echo -n "$1: "
+    printf '%s: ' "$1"
     cmd package uninstall --user 0 "$1"
   }
 
@@ -62,7 +61,6 @@
   echo '> Optimizing settings...'
 
   # Global settings
-  settings put global app_install_optimise_enabled 0            # null
   settings put global google_core_control 0                     # null (Reduce GMS wakelocks)
   settings put global mobile_data_always_on 0                   # 1
   settings put global mobile_signal_detector 0                  # 1
@@ -86,6 +84,7 @@
 
   # Security & privacy
   settings put global activity_starts_logging_enabled 0 # 1
+  settings put global app_install_optimise_enabled 0    # null
   settings put global bug_report 0                      # 1
   settings put global multi_cb 0                        # 2 (Usage & diagnostics)
   settings put secure send_action_app_error 0           # 1

@@ -6,13 +6,13 @@
   case "$HOSTNAME" in
   DX340 | DX180) ;;
   *)
-    echo 'Your device is not compatible with this version.'
+    echo 'Your device is not compatible with this version.' >&2
     exit 1
     ;;
   esac
 
   [ -w /etc/init ] || {
-    echo 'Read-only file system. Try "adb remount" first.'
+    echo 'Read-only file system. Try "adb remount" first.' >&2
     exit 1
   }
 
@@ -23,7 +23,7 @@
 
   echo '> Downloading custom init file...'
   curl -sfo "$file" "$url" || {
-    echo 'Failed to download configuration file.'
+    echo 'Failed to download configuration file.' >&2
     exit 2
   }
 
@@ -32,24 +32,20 @@
 
   # Helper functions
 
+  _replace() {
+    sed -i "s,### ${1}$,$2," "$file"
+  }
+
   _execbkg() {
-    _replace "$1" "exec_background -- $SHELL -c \"sleep 2; ${2}\""
+    _replace "$1" "exec_background -- $SHELL -c \"sleep 2; $2\""
   }
 
   _minfreq() {
     _execbkg minfreq "echo $1 >/sys/devices/system/cpu/cpufreq/policy4/scaling_min_freq"
   }
 
-  _replace() {
-    sed -i "s,### ${1}$,$2," "$file"
-  }
   _sedregx() {
     sed -i -E "s,($1) [0-9]+$,\1 $2," "$file"
-  }
-
-  _setpmax() {
-    _minfreq 1401600
-    _stboost top-app/ 40 # Scheduler tuning by Whitigir
   }
 
   _stboost() {
@@ -57,28 +53,27 @@
   }
 
   echo '> Applying performance mode...'
-  if [ "${pultra:-0}" -eq 1 ]; then # Performance ULTRA
+  if [ "${pmax:-0}" -eq 1 ]; then # Performance MAX
     _replace tmrmig 'write /proc/sys/kernel/timer_migration 0'
-    _setpmax
+    _minfreq 1401600
     _stboost '' 20
     _stboost foreground/ 30
-  elif [ "${pmax:-0}" -eq 1 ]; then # Performance MAX
-    _setpmax
+    _stboost top-app/ 40             # Scheduler tuning by Whitigir
   elif [ "${psave:-0}" -eq 1 ]; then # Power SAVE
     _minfreq 652800
     _stboost '' 8
     _stboost foreground/ 12
   fi
 
-  [ "${nozram:-0}" -eq 1 ] && {
-    echo '> Disabling zRAM...'
-    _execbkg nozram 'swapoff /dev/block/zram0; echo 1 >/sys/block/zram0/reset'
-  }
-
-  [ "$(awk '/MemTotal/ {print $2}' /proc/meminfo)" -gt 4194304 ] && {
+  awk '/MemTotal/ {if ($2>4194304) exit 0; exit 1}' /proc/meminfo && {
     echo '> Tuning for >4GB RAM...'
     _sedregx sda/queue/nr_requests 256
     _execbkg tdswap 'echo 10 >/proc/sys/vm/swappiness'
+
+    [ "${nozram:-0}" -eq 1 ] && {
+      echo '> Disabling zRAM...'
+      _execbkg nozram 'swapoff /dev/block/zram0; echo 1 >/sys/block/zram0/reset'
+    }
   }
 
   # Debugging & testing

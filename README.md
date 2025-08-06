@@ -1,15 +1,15 @@
-<!-- v6.0, Copyright (C) 2025 Stouthart. All rights reserved. -->
+<!-- v6.1b, Copyright (C) 2025 Stouthart. All rights reserved. -->
 
 ![iBasso DX340]
 
 # iBasso DX340 Debloating & Tweaking Playbook
 
-This GitHub repository provides a playbook for debloating and tweaking the iBasso DX340 digital audio player. All scripts should also be compatible with the DX180 (although not fully tested).
+This GitHub repository provides a playbook for debloating and tweaking the iBasso DX340 digital audio player. All scripts should also be compatible with the DX180, though not fully tested.
 
 > [!IMPORTANT]
 >
 > 1. Download and install [Android SDK Platform-Tools] on your PC (or install via [Homebrew] on Mac)
-> 2. If not already done, enable "Developer options" (Settings > About device & tap “Build number” 7 times)
+> 2. If not already done, enable "Developer options" (Settings > About device and tap “Build number” 7 times)
 > 3. Enable "USB debugging" (Settings > System > Developer options)
 > 4. Make sure your device's Internet/Wi-Fi is **on**
 > 5. Check the [release notes] for changes and additional options
@@ -46,7 +46,7 @@ The script takes ±2 minutes to finish. Your device will reboot automatically.
 
 ## Advanced Tweaking
 
-_Tune the core behavior of the device for low-latency audio playback, by automating Kernel/OS tweaks that would otherwise require manual editing of system files._
+_Tune the core behavior of the device for low-latency audio playback, by automating kernel & OS tweaks that would otherwise require manual editing of system files._
 
 **Run the following lines from a Command prompt, or Terminal window on Mac:**
 
@@ -72,7 +72,7 @@ Your device will reboot immediately. Enjoy the improvements!
 > [!TIP]
 > Follow the discussion about the iBasso DX340 digital audio player on [Head-Fi]
 
-**Undo/reverse is just as easy:**
+**Undoing/reversing is just as easy:**
 
 ```
 adb root
@@ -85,13 +85,13 @@ adb reboot
 
 **Method 1:**
 
-- With device powered **on**, press Power button and select "Restart"
-- Immediately press Next button (above Play) & hold until the iBasso Audio logo appears
+- With the device powered **on**, press Power button and select "Restart"
+- Immediately press Next button (above Play) and hold until the iBasso Audio logo appears
 <!-- https://www.head-fi.org/threads/dx320-rohm-dac-chips-android-11-amp11mk2s-new-fw-2-07.962274/page-188#post-17009540 -->
 
 **Method 2:**
 
-- While the device is **off**, press & hold Next button
+- While the device is **off**, press and hold Next button
 - Connect the USB-C charger cable
 - Release button when the iBasso Audio logo appears
 <!-- https://www.head-fi.org/threads/ibasso-dx300-qualcomm-snapdragon-660-octa-core-6gb-ram-new-firmware-2-00-android-11.943221/page-353#post-16285599 -->
@@ -107,7 +107,7 @@ adb reboot
 
 Copyright (C) 2025 Stouthart. All rights reserved.
 
-🚸 The software in this repository is free for personal use. However, it is NOT published under a software license. This implies - as stated in the [GitHub Docs] - that default copyright laws apply, meaning that the owner retains all rights to the source code and no one may reproduce, distribute, or create derivative works from this work.
+_The software in this repository is free for personal use. However, it is NOT published under a software license. This implies - as stated in the [GitHub Docs] - that default copyright laws apply, meaning that the owner retains all rights to the source code and no one may reproduce, distribute, or create derivative works from this work._
 
 [iBasso DX340]: https://ibasso.com/wp-content/uploads/2024/12/2024-12-24469.webp
 [Android SDK Platform-Tools]: https://developer.android.com/tools/releases/platform-tools
