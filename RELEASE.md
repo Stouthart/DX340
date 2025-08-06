@@ -4,12 +4,12 @@
 
 ### Debloating & Optimization
 
-- Additional security & privacy settings added and grouped for better readability
+- Additional **security & privacy** settings added and grouped for better readability
 - Improved feedback during execution
 
 ### Advanced Tweaking
 
-- Added **Timer_migration** setting for "Performance MAX" mode, improving both performance and latency
+- Added **timer_migration** setting for "Performance MAX" mode, improving both performance and latency
 - Applied more aggressive **schedtune** boost for "Performance MAX" mode
 - Updated **scaling_min_freq** for "Power SAVE" (652800 Hz), further reducing battery consumption
 - Optimized file system tweaks based on extensive benchmarking and added **scheduler** setting ("noop")
