@@ -52,14 +52,15 @@
     _sedregx "stune/${1}schedtune.boost" "$2"
   }
 
-  echo '> Applying performance mode...'
-  if [ "${pmax:-0}" -eq 1 ]; then # Performance MAX
+  if [ "${pmax:-0}" -eq 1 ]; then
+    echo '> Applying "Performance MAX"...'
     _replace tmrmig 'write /proc/sys/kernel/timer_migration 0'
     _minfreq 1401600
     _stboost '' 20
     _stboost foreground/ 30
-    _stboost top-app/ 40             # Scheduler tuning by Whitigir
-  elif [ "${psave:-0}" -eq 1 ]; then # Power SAVE
+    _stboost top-app/ 40 # Scheduler tuning by Whitigir
+  elif [ "${psave:-0}" -eq 1 ]; then
+    echo '> Applying "Power SAVE"...'
     _minfreq 652800
     _stboost '' 8
     _stboost foreground/ 12
