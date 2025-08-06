@@ -21,7 +21,7 @@
   url=https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/custom.rc
   file=/etc/init/${url##*/}
 
-  echo '> Downloading custom init file...'
+  echo "> Downloading ${url##*/}..."
   curl -sfo "$file" "$url" || {
     echo 'Failed to download configuration file.' >&2
     exit 2
