@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# v6.1b, Copyright (C) 2025 Stouthart. All rights reserved.
+# v6.2b, Copyright (C) 2025 Stouthart. All rights reserved.
 {
   # shellcheck disable=SC3028
   case "$HOSTNAME" in
@@ -52,6 +52,7 @@
     _sedregx "stune/${1}schedtune.boost" "$2"
   }
 
+  # Performance/power modes
   if [ "${pmax:-0}" -eq 1 ]; then
     echo '> Applying "Performance MAX"...'
     _replace tmrmig 'write /proc/sys/kernel/timer_migration 0'
@@ -66,7 +67,8 @@
     _stboost foreground/ 12
   fi
 
-  awk '/MemTotal/ {if ($2>4194304) exit 0; exit 1}' /proc/meminfo && {
+  # RAM tuning
+  awk '$1=="MemTotal:" {exit($2<=4194304)}' /proc/meminfo && {
     echo '> Tuning for >4GB RAM...'
     _sedregx sda/queue/nr_requests 256
     _execbkg tdswap 'echo 10 >/proc/sys/vm/swappiness'

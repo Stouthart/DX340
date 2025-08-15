@@ -1,6 +1,6 @@
 # Device model: DX340/DX180
 #
-# v6.1b, Copyright (C) 2025 Stouthart. All rights reserved.
+# v6.2b, Copyright (C) 2025 Stouthart. All rights reserved.
 
 ## https://android.googlesource.com/platform/system/core/+/master/init/README.md
 
@@ -12,6 +12,8 @@ on init
   ### tmrmig
   write /proc/sys/net/core/somaxconn 2048
   write /proc/sys/net/ipv4/tcp_fastopen 3
+  write /proc/sys/net/ipv4/tcp_low_latency 1
+  write /proc/sys/net/ipv4/tcp_no_metrics_save 1
   write /proc/sys/vm/dirty_background_ratio 3
   write /proc/sys/vm/dirty_ratio 10
   write /proc/sys/vm/stat_interval 30
