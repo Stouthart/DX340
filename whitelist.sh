@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# v6.1b, Copyright (C) 2025 Stouthart. All rights reserved.
+# v6.2b, Copyright (C) 2025 Stouthart. All rights reserved.
 {
   # shellcheck disable=SC3028
   case "$HOSTNAME" in
@@ -46,9 +46,7 @@
   wl=$(printf '%s\n' "$@" "$p3" | LC_ALL=C sort | uniq -d | sed 's/^/+/')
 
   echo '> Whitelisting apps...'
-
-  # shellcheck disable=SC2086
-  dumpsys deviceidle whitelist +com.ibasso.music $wl
+  printf '%s\n' +com.ibasso.music "$wl" | xargs dumpsys deviceidle whitelist
 
   echo '> Done'
 }
