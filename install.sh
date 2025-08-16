@@ -22,7 +22,7 @@
   file=/etc/init/${url##*/}
 
   echo "> Downloading ${url##*/}..."
-  curl -sfo "$file" "$url" || {
+  curl -sSfo "$file" "$url" || {
     echo 'Failed to download configuration file.' >&2
     exit 2
   }
@@ -85,10 +85,8 @@
   echo '> Final cleanup & tweaks'
   sed -i -E 's,### [a-z]+$,# N/A,g' "$file"
 
-  # Reduce logging of system messages (logcat)
-  setprop persist.log.tag W # I
-
-  # Disable tracing services (perfetto.rc)
+  # Reduce logging (logcat) & tracing (perfetto.rc)
+  setprop persist.log.tag W       # I
   setprop persist.traced.enable 0 # 1
 
   echo '> Done!'
