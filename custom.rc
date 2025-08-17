@@ -10,11 +10,11 @@ on init
 
   ## https://github.com/redhat-performance/tuned/tree/master/profiles
   ### tmrmig
-  write /proc/sys/net/core/somaxconn 1024
+  write /proc/sys/net/core/somaxconn 2048
   write /proc/sys/net/ipv4/tcp_fastopen 3
   write /proc/sys/net/ipv4/tcp_low_latency 1
-  write /proc/sys/vm/dirty_background_ratio 3
-  write /proc/sys/vm/dirty_ratio 40
+  write /proc/sys/vm/dirty_background_ratio 2
+  write /proc/sys/vm/dirty_ratio 20
   write /proc/sys/vm/stat_interval 10
 
 on late-init
