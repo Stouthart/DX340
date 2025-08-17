@@ -21,9 +21,9 @@
   url=https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/custom.rc
   file=/etc/init/${url##*/}
 
-  echo "> Downloading ${url##*/}..."
+  echo "> Downloading template..."
   curl -sSfo "$file" "$url" || {
-    echo 'Failed to download configuration file.' >&2
+    echo 'Failed to download template.' >&2
     exit 2
   }
 
@@ -33,7 +33,7 @@
   # Helper functions
 
   _replace() {
-    sed -i "s,### ${1}$,$2," "$file"
+    sed -i "s,### $1\$,$2," "$file"
   }
 
   _execbkg() {
