@@ -91,7 +91,7 @@
 
   echo '> Done!'
 
-  [ "${noreboot:-0}" -eq 1 ] || {
+  [ "${noboot:-0}" -eq 1 ] || {
     echo "> Rebooting..."
     reboot
   }
