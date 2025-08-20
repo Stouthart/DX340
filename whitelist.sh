@@ -40,6 +40,7 @@
     de.battlestr1k3.radionerd \
     de.bluegaspode.squeezeplayer \
     deezer.android.app \
+    org.lyrion.squeezelite \
     tunein.player
 
   p3=$(cmd package list packages -3 | cut -d: -f2)
