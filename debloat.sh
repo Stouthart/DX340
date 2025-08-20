@@ -66,7 +66,8 @@
   settings put global mobile_signal_detector 0                  # 1
   settings put global wifi_networks_available_notification_on 0 # 1
 
-  settings put global wifi_power_save "$([ "${nonoise:-0}" -eq 1 ] && echo 1 || echo 120)"
+  [ "${nonoise:-0}" -eq 1 ] && sec=1 || sec=120
+  settings put global wifi_power_save "$sec"
 
   # Remove animations
   settings put global animator_duration_scale 0    # null

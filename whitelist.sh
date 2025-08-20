@@ -42,11 +42,14 @@
     deezer.android.app \
     tunein.player
 
-  p3=$(cmd package list packages -3 | sed 's/^package://')
-  wl=$(printf '%s\n' "$@" "$p3" | LC_ALL=C sort | uniq -d | sed 's/^/+/')
+  p3=$(cmd package list packages -3 | cut -d: -f2)
+  wl=$(printf '%s\n' "$@" "$p3" | LC_ALL=C sort | uniq -d)
 
   echo '> Whitelisting apps...'
-  printf '%s\n' +com.ibasso.music "$wl" | xargs dumpsys deviceidle whitelist
+
+  for pg in com.ibasso.music $wl; do
+    dumpsys deviceidle whitelist "+$pg"
+  done
 
   echo '> Done'
 }
