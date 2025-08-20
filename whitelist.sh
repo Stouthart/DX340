@@ -48,5 +48,5 @@
   echo '> Whitelisting apps...'
   for pg in com.ibasso.music $wl; do dumpsys deviceidle whitelist "+$pg"; done
 
-  echo '> Done'
+  echo '> Done!'
 }
