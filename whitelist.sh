@@ -13,7 +13,7 @@
 
   echo '[ Doze & App Standby ]'
 
-  echo '> Comparing 3rd-party apps with whitelist...'
+  echo '> Comparing 3rd-party apps...'
 
   set -- \
     au.com.shiftyjelly.pocketcasts \
@@ -46,10 +46,7 @@
   wl=$(printf '%s\n' "$@" "$p3" | LC_ALL=C sort | uniq -d)
 
   echo '> Whitelisting apps...'
-
-  for pg in com.ibasso.music $wl; do
-    dumpsys deviceidle whitelist "+$pg"
-  done
+  for pg in com.ibasso.music $wl; do dumpsys deviceidle whitelist "+$pg"; done
 
   echo '> Done'
 }
