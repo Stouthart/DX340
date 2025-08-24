@@ -56,7 +56,7 @@ EOF
 
   echo "> Writing $file2..."
 
-  cat >>$file2 <<EOF
+  cat >$file2 <<EOF
 # Device model: DX340
 
 on property:sys.boot_completed=1
