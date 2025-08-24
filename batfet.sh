@@ -21,12 +21,12 @@
   old=$(i2cget -f -y 4 0x6a 0x09)
 
   # shellcheck disable=SC3006
-  if (((old & (1 << 5)) != 0)); then
-    new=$((old & ~((1 << 5) | (1 << 3))))
-    echo '> Enabling BATFET...'
-  else
+  if (((old & (1 << 5)) == 0)); then
     new=$((old | (1 << 5) | (1 << 3)))
     echo '> Disabling BATFET...'
+  else
+    new=$((old & ~((1 << 5) | (1 << 3))))
+    echo '> Enabling BATFET...'
   fi
 
   i2cset -f -y 4 0x6a 0x09 $new b
