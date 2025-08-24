@@ -16,7 +16,7 @@
     exit 1
   }
 
-  echo '[ F_BATFET_DIS ]'
+  echo '[ BATFET_DIS ]'
 
   file1=/data/adb/batfet.sh
   file2=/etc/init/batfet.rc
