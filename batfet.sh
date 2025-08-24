@@ -37,17 +37,16 @@ _i2cset() {
 
 reg=$(i2cget -f -y 4 0x6a 0x09)
 
-
 if (((reg & (1 << 5)) == 0)); then
   if (($((reg & (1 << 2))) == 0)); then
     echo 'Not USB powered.'
     exit 2
   fi
   _i2cset $((reg | (1 << 5) | (1 << 3)))
-  echo 'Battery bypassed (BATFET disabled).'
+  echo 'Desktop mode (BATFET disabled).'
 else
   _i2cset $((reg & ~((1 << 5) | (1 << 3))))
-  echo 'Battery powered (BATFET enabled).'
+  echo 'Portable mode (BATFET enabled).'
 fi
 
 exit 0
