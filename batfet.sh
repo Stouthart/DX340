@@ -66,6 +66,8 @@ on property:sys.powerctl=*
   exec -- /bin/sh -c "$file1; sleep 2" 
 EOF
 
+  [ "${noauto:-0}" -eq 1 ] && sed -i '3,5d' $file2
+
   chmod 0644 $file2
   chcon u:object_r:system_file:s0 $file2
 
