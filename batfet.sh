@@ -29,10 +29,9 @@
     if (($((reg & (1 << 2))) == 0)); then
       echo '> Not USB powered. Abort.'
       exit 2
-    else
-      echo '> Disabling BATFET...'
-      _i2cset $((reg | (1 << 5) | (1 << 3)))
     fi
+    echo '> Disabling BATFET...'
+    _i2cset $((reg | (1 << 5) | (1 << 3)))
   else
     echo '> Enabling BATFET...'
     _i2cset $((reg & ~((1 << 5) | (1 << 3))))
