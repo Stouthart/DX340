@@ -1,4 +1,4 @@
-<!-- v6.1b, Copyright (C) 2025 Stouthart. All rights reserved. -->
+<!-- v6.2b - Copyright (C) 2025 Stouthart. All rights reserved. -->
 
 ![iBasso DX340]
 
@@ -19,6 +19,7 @@ This GitHub repository provides a playbook for debloating and tweaking the iBass
 - [Debloating & Optimization]
 - [Advanced Tweaking]
 - [Recovery Mode](#recovery-mode)
+- [Doze & App Standby](#doze-pp-standby)
 - [License](#license)
 
 ## Debloating & Optimization
@@ -81,6 +82,26 @@ adb shell rm -f /etc/init/custom.rc
 adb reboot
 ```
 
+## Doze & App Standby
+
+_Add 3rd-party music apps (and MangoPlayer) to the "Doze whitelist", so they won't be restricted by Android's battery-saving feature._
+
+**Run the following line from a Command prompt, or Terminal window on Mac:**
+
+```
+adb shell
+```
+
+**From the DX340 prompt, run the following:**
+
+```
+curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/whitelist.sh | sh
+```
+
+> [!TIP]
+>
+> - It is recommended to (re-)apply this script after installing any third-party music apps
+
 ## Recovery Mode
 
 **Method 1:**
@@ -107,7 +128,7 @@ adb reboot
 
 Copyright (C) 2025 Stouthart. All rights reserved.
 
-_The software in this repository is free for personal use. However, it is NOT published under a software license. This implies - as stated in the [GitHub Docs] - that default copyright laws apply, meaning that the owner retains all rights to the source code and no one may reproduce, distribute, or create derivative works from this work._
+_The scripts in this repository are free for personal use. However, they are NOT published under a software license. This implies — as stated in the [GitHub Docs] - that standard copyright law applies, meaning the owner retains all rights to the source code and no one may reproduce, distribute, or create derivative works from this work._
 
 [iBasso DX340]: https://ibasso.com/wp-content/uploads/2024/12/2024-12-24469.webp
 [Android SDK Platform-Tools]: https://developer.android.com/tools/releases/platform-tools
