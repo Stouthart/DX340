@@ -1,6 +1,29 @@
-<!-- Copyright (C) 2025 Stouthart. All rights reserved. -->
+<!-- v6.2 - Copyright (C) 2025 Stouthart. All rights reserved. -->
 
-# v6.1 - Latest
+# v6.2 - Latest
+
+### Debloating & Optimization
+
+- Removed **ota_disable_automatic_update** setting to fix failing firmware updates (setting was interpreted as “don't update at all”)
+
+### Advanced Tweaking
+
+- Added **tcp_low_latency** kernel setting to reduce network latency
+- Optimized **dirty_background_ratio** and **dirty_ratio** settings for better responsiveness and lower latency
+
+### Doze & App Standby
+
+- Released new script to add 3rd-party music apps (and MangoPlayer) to the "Doze whitelist", so they won't be restricted by Android's battery-saving feature:
+
+```
+curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/whitelist.sh | sh
+```
+
+### General
+
+- Various code improvements
+
+## v6.1
 
 ### Debloating & Optimization
 
@@ -13,7 +36,7 @@
 - Applied more aggressive **schedtune** boost for "Performance MAX" mode
 - Updated **scaling_min_freq** for "Power SAVE" (652800 Hz), further reducing battery consumption
 - Optimized file system tweaks based on extensive benchmarking and added **scheduler** setting ("noop")
-- Improved compatibility with DX180 (check for >4GB RAM)
+- Improved compatibility with DX180 (check for > 4GB RAM)
 - Improved feedback during installation
 
 ### General

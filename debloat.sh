@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# v6.1b, Copyright (C) 2025 Stouthart. All rights reserved.
+# v6.2 - Copyright (C) 2025 Stouthart. All rights reserved.
 {
   # shellcheck disable=SC3028
   case "$HOSTNAME" in

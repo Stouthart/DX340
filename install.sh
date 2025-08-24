@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# v6.2b, Copyright (C) 2025 Stouthart. All rights reserved.
+# v6.2 - Copyright (C) 2025 Stouthart. All rights reserved.
 {
   # shellcheck disable=SC3028
   case "$HOSTNAME" in
@@ -22,7 +22,7 @@
   file=/etc/init/${url##*/}
 
   echo "> Downloading template..."
-  curl -sSfo "$file" "$url" || {
+  curl -sSfo "$file" $url || {
     echo 'Failed to download template.' >&2
     exit 2
   }

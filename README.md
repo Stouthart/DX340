@@ -1,4 +1,4 @@
-<!-- v6.2b - Copyright (C) 2025 Stouthart. All rights reserved. -->
+<!-- v6.2 - Copyright (C) 2025 Stouthart. All rights reserved. -->
 
 ![iBasso DX340]
 
@@ -18,8 +18,8 @@ This GitHub repository provides a playbook for debloating and tweaking the iBass
 
 - [Debloating & Optimization]
 - [Advanced Tweaking]
+- [Doze & App Standby](#doze--app-standby)
 - [Recovery Mode](#recovery-mode)
-- [Doze & App Standby](#doze-pp-standby)
 - [License](#license)
 
 ## Debloating & Optimization
@@ -100,7 +100,7 @@ curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/white
 
 > [!TIP]
 >
-> - It is recommended to (re-)apply this script after installing any third-party music apps
+> It is recommended to (re-)apply this script after installing any third-party music apps
 
 ## Recovery Mode
 
