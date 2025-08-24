@@ -12,7 +12,7 @@
   esac
 
   [ "$(id -u)" = 0 ] || {
-    echo 'Must be run as root. Try "adb root" first.' >&2
+    echo 'Script must be run as root. Try "adb root" first.' >&2
     exit 1
   }
 
