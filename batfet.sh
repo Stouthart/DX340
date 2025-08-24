@@ -44,10 +44,10 @@ if (((reg & (1 << 5)) == 0)); then
     exit 2
   fi
   _i2cset $((reg | (1 << 5) | (1 << 3)))
-  echo 'BATFET disabled.'
+  echo 'Battery bypassed (BATFET disabled).'
 else
   _i2cset $((reg & ~((1 << 5) | (1 << 3))))
-  echo 'BATFET enabled.'
+  echo 'Battery powered (BATFET enabled).'
 fi
 
 exit 0
