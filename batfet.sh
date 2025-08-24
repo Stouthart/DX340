@@ -49,7 +49,6 @@ else
   echo 'BATFET enabled.'
 fi
 
-sleep 1
 exit 0
 EOF
 
@@ -61,10 +60,10 @@ EOF
 # Device model: DX340
 
 on property:sys.boot_completed=1
-  exec $file1
+  exec -- $file1
 
 on property:sys.powerctl=*
-  exec $file1
+  exec -- /bin/sh -c "$file1; sleep 2" 
 EOF
 
   chmod 0644 "$file2"
