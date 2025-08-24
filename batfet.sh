@@ -21,7 +21,7 @@
   file1=/etc/batfet.sh
   file2=/etc/init/batfet.rc
 
-  echo "> Writing $file2..."
+  echo "> Writing $file1..."
 
   cat >$file1 <<'EOF'
 #!/bin/sh
@@ -59,8 +59,6 @@ EOF
 
   cat >>$file2 <<EOF
 # Device model: DX340
-#
-# v6.2b, Copyright (C) 2025 Stouthart. All rights reserved.
 
 on property:sys.boot_completed=1
   exec $file1
