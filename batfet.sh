@@ -18,18 +18,25 @@
 
   echo '[ F_BATFET_DIS ]'
 
-  old=$(i2cget -f -y 4 0x6a 0x09)
+  reg=$(i2cget -f -y 4 0x6a 0x09)
+
+  _i2cset() {
+    i2cset -f -y 4 0x6a 0x09 "$1" b
+  }
 
   # shellcheck disable=SC3006
-  if (((old & (1 << 5)) == 0)); then
-    new=$((old | (1 << 5) | (1 << 3)))
-    echo '> Disabling BATFET...'
+  if (((reg & (1 << 5)) == 0)); then
+    if (($((reg & (1 << 2))) == 0)); then
+      echo '> Not USB powered. Abort.'
+      exit 2
+    else
+      echo '> Disabling BATFET...'
+      _i2cset $((reg | (1 << 5) | (1 << 3)))
+    fi
   else
-    new=$((old & ~((1 << 5) | (1 << 3))))
     echo '> Enabling BATFET...'
+    _i2cset $((reg & ~((1 << 5) | (1 << 3))))
   fi
-
-  i2cset -f -y 4 0x6a 0x09 $new b
 
   echo '> Done!'
 }
