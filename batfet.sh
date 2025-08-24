@@ -18,7 +18,7 @@
 
   echo '[ F_BATFET_DIS ]'
 
-  file1=/etc/batfet.sh
+  file1=/data/adb/batfet.sh
   file2=/etc/init/batfet.rc
 
   echo "> Writing $file1..."
@@ -31,11 +31,12 @@
   exit 1
 }
 
-reg=$(i2cget -f -y 4 0x6a 0x09)
-
 _i2cset() {
   i2cset -f -y 4 0x6a 0x09 "$1" b
 }
+
+reg=$(i2cget -f -y 4 0x6a 0x09)
+
 
 if (((reg & (1 << 5)) == 0)); then
   if (($((reg & (1 << 2))) == 0)); then
