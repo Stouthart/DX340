@@ -63,7 +63,7 @@ on property:sys.boot_completed=1
   exec -- $file1
 
 on property:sys.powerctl=*
-  exec -- /bin/sh -c "$file1; sleep 2" 
+  exec -- /bin/sh -c "$file1; sleep 5" 
 EOF
 
   [ "${noauto:-0}" -eq 1 ] && sed -i '3,5d' $file2
