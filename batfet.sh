@@ -26,36 +26,35 @@
   cat >$file1 <<'EOF'
 #!/bin/sh
 #
-# Charger: BQ25890
+# Copyright (C) 2025 Stouthart. All rights reserved.
 
 [ "$(id -u)" = 0 ] || {
   echo 'Script must be run as root. Try "adb root" first.' >&2
   exit 1
 }
 
+echo '[ BQ25890 ]'
+
 BUS=4
 ADR=0x6a
 REG=0x09
-BIT=5
+MSK=0x20 # Bit 5
 
-_i2cset() {
-  i2cset -f -y $BUS $ADR $REG "$(printf "0x%02x" "$1")" b
-}
+val=$(i2cget -f -y $BUS $ADR $REG)
 
-old=$(i2cget -f -y $BUS $ADR $REG)
-
-if (((old & (1 << 5)) == 0)); then
-  if (($((old & (1 << 2))) == 0)); then
+if [ $((val & MSK)) -eq 0 ]; then
+  [ $((val & 0x04)) -eq 0 ] && { # Bit 2
     echo 'Not USB powered.'
     exit 2
-  fi
-  _i2cset $((old | (1 << BIT)))
-  echo 'Desktop mode (BATFET disabled).'
+  }
+  echo '> Disabling BATFET (Desktop mode)...'
 else
-  _i2cset $((old & ~(1 << BIT)))
-  echo 'Portable mode (BATFET enabled).'
+  echo '> Enabling BATFET (Portable mode)...'
 fi
 
+i2cset -f -y "$BUS" "$ADR" "$REG" "$((val ^ MSK))" b
+
+echo '> Done!'
 exit 0
 EOF
 
@@ -65,6 +64,8 @@ EOF
 
   cat >$file2 <<EOF
 # Device model: DX340
+#
+# Copyright (C) 2025 Stouthart. All rights reserved.
 
 on property:sys.boot_completed=1
   exec -- $file1
