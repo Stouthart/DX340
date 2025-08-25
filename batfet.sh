@@ -28,15 +28,15 @@
 #
 # Copyright (C) 2025 Stouthart. All rights reserved.
 
-if [ "$(id -u)" = 0 ]; then
-  _log 'Script must be run as root. Try "adb root" first.' >&2
-  exit 1
-fi
-
 _log() {
   printf '%s %s\n' "$(date '+%Y/%m/%d %H:%M:%S')" "$1" >>"${0%.*}.log"
   echo "$1"
 }
+
+if [ "$(id -u)" = 0 ]; then
+  _log 'Script must be run as root. Try "adb root" first.' >&2
+  exit 1
+fi
 
 _log '[ BQ25890 ]'
 
