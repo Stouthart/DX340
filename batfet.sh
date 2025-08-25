@@ -28,12 +28,17 @@
 #
 # Copyright (C) 2025 Stouthart. All rights reserved.
 
-[ "$(id -u)" = 0 ] || {
-  echo 'Script must be run as root. Try "adb root" first.' >&2
+if [ "$(id -u)" = 0 ]; then
+  _log 'Script must be run as root. Try "adb root" first.' >&2
   exit 1
+fi
+
+_log() {
+  printf '%s %s\n' "$(date '+%Y/%m/%d %H:%M:%S')" "$1" >>"${0%.*}.log"
+  echo "$1"
 }
 
-echo '[ BQ25890 ]'
+_log '[ BQ25890 ]'
 
 BUS=4
 ADR=0x6a
@@ -44,17 +49,17 @@ val=$(i2cget -f -y $BUS $ADR $REG)
 
 if [ $((val & MSK)) -eq 0 ]; then
   if [ "$(getprop sys.powerctl)" ] || [ $((val & 0x04)) -eq 0 ]; then # Bit 2
-    echo '> Exit due to system status or no USB power.'
+    _log '> Exit due to system status or no USB power.'
     exit 2
   fi
-  echo '> Disabling BATFET (Desktop mode)...'
+  _log '> Disabling BATFET (Desktop mode)...'
 else
-  echo '> Enabling BATFET (Portable mode)...'
+  _log '> Enabling BATFET (Portable mode)...'
 fi
 
 i2cset -f -y "$BUS" "$ADR" "$REG" $((val ^ MSK)) b
 
-echo '> Done!'
+_log '> Done!'
 exit 0
 EOF
 
