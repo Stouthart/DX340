@@ -25,27 +25,34 @@
 
   cat >$file1 <<'EOF'
 #!/bin/sh
+#
+# Charger: BQ25890
 
 [ "$(id -u)" = 0 ] || {
   echo 'Script must be run as root. Try "adb root" first.' >&2
   exit 1
 }
 
+BUS=4
+ADR=0x6a
+REG=0x09
+BIT=5
+
 _i2cset() {
-  i2cset -f -y 4 0x6a 0x09 "$1" b
+  i2cset -f -y $BUS $ADR $REG "$(printf "0x%02x" "$1")" b
 }
 
-reg=$(i2cget -f -y 4 0x6a 0x09)
+old=$(i2cget -f -y $BUS $ADR $REG)
 
-if (((reg & (1 << 5)) == 0)); then
-  if (($((reg & (1 << 2))) == 0)); then
+if (((old & (1 << 5)) == 0)); then
+  if (($((old & (1 << 2))) == 0)); then
     echo 'Not USB powered.'
     exit 2
   fi
-  _i2cset $((reg | (1 << 5) | (1 << 3)))
+  _i2cset $((old | (1 << BIT)))
   echo 'Desktop mode (BATFET disabled).'
 else
-  _i2cset $((reg & ~((1 << 5) | (1 << 3))))
+  _i2cset $((old & ~(1 << BIT)))
   echo 'Portable mode (BATFET enabled).'
 fi
 
