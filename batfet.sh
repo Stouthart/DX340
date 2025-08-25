@@ -33,10 +33,10 @@ _log() {
   echo "$1"
 }
 
-if [ "$(id -u)" = 0 ]; then
+[ "$(id -u)" = 0 ] || {
   _log 'Script must be run as root. Try "adb root" first.' >&2
   exit 1
-fi
+}
 
 _log '[ BQ25890 ]'
 
