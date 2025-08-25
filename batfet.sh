@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# v6.2 - Copyright (C) 2025 Stouthart. All rights reserved.
+# Copyright (C) 2025 Stouthart. All rights reserved.
 {
   # shellcheck disable=SC3028
   case "$HOSTNAME" in
@@ -52,7 +52,7 @@ else
   echo '> Enabling BATFET (Portable mode)...'
 fi
 
-i2cset -f -y "$BUS" "$ADR" "$REG" "$((val ^ MSK))" b
+i2cset -f -y "$BUS" "$ADR" "$REG" $((val ^ MSK)) b
 
 echo '> Done!'
 exit 0
