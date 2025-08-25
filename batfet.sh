@@ -43,8 +43,8 @@ MSK=0x20 # Bit 5
 val=$(i2cget -f -y $BUS $ADR $REG)
 
 if [ $((val & MSK)) -eq 0 ]; then
-  if [ -n "$(getprop sys.powerctl)" ] || [ $((val & 0x04)) -eq 0 ]; then # Bit 2
-    # Exit due to system status or no USB power
+  if [ "$(getprop sys.powerctl)" ] || [ $((val & 0x04)) -eq 0 ]; then # Bit 2
+    echo '> Exit due to system status or no USB power.'
     exit 2
   fi
   echo '> Disabling BATFET (Desktop mode)...'
