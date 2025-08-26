@@ -30,16 +30,18 @@
 
 while [ ! -e /dev/i2c-4 ]; do sleep 1; done
 
+BIN=/system/bin
+
 BUS=4
 ADR=0x6a
 REG=0x09
 MSK=0x20 # bit 5
 
 _i2cset() {
-  i2cset -f -y "$BUS" "$ADR" "$REG" "$1" b
+  $BIN/i2cset -f -y "$BUS" "$ADR" "$REG" "$1" b
 }
 
-val=$(i2cget -f -y $BUS $ADR $REG)
+val=$($BIN/i2cget -f -y $BUS $ADR $REG)
 
 case $1 in
 disable)
