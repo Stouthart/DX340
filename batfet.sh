@@ -72,14 +72,10 @@ EOF
 # Copyright (C) 2025 Stouthart. All rights reserved.
 
 on property:sys.boot_completed=1
-    exec_start batfet disable
+    exec -- $file1 disable
 
 on property:sys.powerctl=*
-    exec_start batfet enable
-
-service batfet /system/bin/sh $file1
-    class late_start
-    oneshot
+    exec -- $file1 enable
 EOF
 
   chmod 0644 $file2
