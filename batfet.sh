@@ -28,7 +28,10 @@
 #
 # Copyright (C) 2025 Stouthart. All rights reserved.
 
-BIN=/system/bin
+[ -t 1 ] || {
+  exec >>"${0%.sh}.log" 2>&1
+  date '+%Y/%m/%d %H:%M:%S'
+}
 
 BUS=4
 ADR=0x6a
@@ -36,19 +39,20 @@ REG=0x09
 MSK=0x20 # bit 5
 
 _i2cset() {
-  $BIN/i2cset -f -y "$BUS" "$ADR" "$REG" "$1" b
+  i2cset -f -y "$BUS" "$ADR" "$REG" "$1" b
 }
 
-val=$($BIN/i2cget -f -y $BUS $ADR $REG)
+val=$(i2cget -f -y $BUS $ADR $REG)
 
 case $1 in
 disable)
   # Check bit 2
-  [ $((val & 0x04)) -eq 0 ] && {
-    echo 'Not USB powered'
+  # [ $((val & 0x04)) -eq 0 ] && {
+  [ "$(cat /sys/class/power_supply/bq25890/voltage_now)" -lt 300000000 ] && {
+    echo 'No or insufficient power'
     exit 1
   }
-  _i2cset $((val | MSK | 0x08)) # bit 3 / dly
+  _i2cset $((val | MSK))
   echo 'Desktop mode (BATFET disabled)'
   ;;
 enable)
