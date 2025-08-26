@@ -28,8 +28,6 @@
 #
 # Copyright (C) 2025 Stouthart. All rights reserved.
 
-while [ ! -e /dev/i2c-4 ]; do sleep 1; done
-
 BIN=/system/bin
 
 BUS=4
@@ -75,6 +73,7 @@ EOF
 
 service bq25890_disable $SHELL $file1 disable
     class late_start
+    user root
     oneshot
     disabled
 
@@ -83,6 +82,7 @@ on property:sys.boot_completed=1
 
 service bq25890_enable $SHELL $file1 enable
     class core
+    user root
     oneshot
     disabled
 
