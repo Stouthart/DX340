@@ -72,7 +72,12 @@ EOF
 # Copyright (C) 2025 Stouthart. All rights reserved.
 
 on property:sys.boot_completed=1
-    exec_background -- $SHELL -c "sleep 15; $file1 disable"
+    exec -- $file1 disable
+
+service myscript_power $SHELL $file1 disable
+    class main
+    oneshot
+    disabled
 
 on property:sys.powerctl=*
     exec -- $file1 enable
