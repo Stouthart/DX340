@@ -18,8 +18,8 @@
 
   echo '[ BATFET_DIS ]'
 
-  file1=/data/adb/batfet.sh
-  file2=/etc/init/batfet.rc
+  file1=/data/adb/bq25890.sh
+  file2=/etc/init/bq25890.rc
 
   echo "> Writing $file1..."
 
@@ -28,33 +28,37 @@
 #
 # Copyright (C) 2025 Stouthart. All rights reserved.
 
-[ -t 1 ] || {
-  exec >>"${0%.*}.log" 2>&1
-  echo "$(date '+%Y/%m/%d %H:%M:%S') ${1:-null}"
-}
-
-echo '[ BQ25890 ]'
-
 BUS=4
 ADR=0x6a
 REG=0x09
-MSK=0x20 # Bit 5
+MSK=0x20 # bit 5
+
+_i2cset() {
+  i2cset -f -y "$BUS" "$ADR" "$REG" "$1" b
+}
 
 val=$(i2cget -f -y $BUS $ADR $REG)
 
-if [ $((val & MSK)) -eq 0 ]; then
-  if [ "${1:-}" ] || [ $((val & 0x04)) -eq 0 ]; then # Bit 2
-    echo '> Exit due to system status or no USB power.'
-    exit 2
-  fi
-  echo '> Disabling BATFET (Desktop mode)...'
-else
-  echo '> Enabling BATFET (Portable mode)...'
-fi
+case $1 in
+disable)
+  # Check bit 2
+  [ $((val & 0x04)) -eq 0 ] && {
+    echo 'Not USB powered'
+    exit 1
+  }
+  _i2cset $((val | MSK))
+  echo 'Desktop mode (BATFET disabled)'
+  ;;
+enable)
+  _i2cset $((val & ~MSK))
+  echo 'Portable mode (BATFET enabled)'
+  ;;
+*)
+  echo "Usage: ${0##*/} disable|enable"
+  exit 1
+  ;;
+esac
 
-i2cset -f -y "$BUS" "$ADR" "$REG" $((val ^ MSK)) b
-
-echo '> Done!'
 exit 0
 EOF
 
@@ -68,10 +72,10 @@ EOF
 # Copyright (C) 2025 Stouthart. All rights reserved.
 
 on property:sys.boot_completed=1
-    start batfet
+    exec_start batfet disable
 
 on property:sys.powerctl=*
-    exec_start batfet \${sys.powerctl}
+    exec_start batfet enable
 
 service batfet /system/bin/sh $file1
     class late_start
