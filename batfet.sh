@@ -28,6 +28,8 @@
 #
 # Copyright (C) 2025 Stouthart. All rights reserved.
 
+while [ ! -e /dev/i2c-4 ]; do sleep 1; done
+
 BUS=4
 ADR=0x6a
 REG=0x09
