@@ -28,17 +28,12 @@
 #
 # Copyright (C) 2025 Stouthart. All rights reserved.
 
-[ "$(id -u)" = 0 ] || {
-  echo 'Script must be run as root. Try "adb root" first.' >&2
-  exit 1
+[ -t 1 ] || {
+  exec >>"${0%.*}.log" 2>&1
+  echo "$(date '+%Y/%m/%d %H:%M:%S') ${1:-}"
 }
 
-_log() {
-  printf '%s %s\n' "$(date '+%Y/%m/%d %H:%M:%S')" "$1" >>"${0%.*}.log"
-  echo "$1"
-}
-
-_log '[ BQ25890 ]'
+echo '[ BQ25890 ]'
 
 BUS=4
 ADR=0x6a
@@ -48,18 +43,18 @@ MSK=0x20 # Bit 5
 val=$(i2cget -f -y $BUS $ADR $REG)
 
 if [ $((val & MSK)) -eq 0 ]; then
-  if [ "$(getprop sys.powerctl)" ] || [ $((val & 0x04)) -eq 0 ]; then # Bit 2
-    _log '> Exit due to system status or no USB power.'
+  if [ "${1:-}" ] || [ $((val & 0x04)) -eq 0 ]; then # Bit 2
+    echo '> Exit due to system status or no USB power.'
     exit 2
   fi
-  _log '> Disabling BATFET (Desktop mode)...'
+  echo '> Disabling BATFET (Desktop mode)...'
 else
-  _log '> Enabling BATFET (Portable mode)...'
+  echo '> Enabling BATFET (Portable mode)...'
 fi
 
 i2cset -f -y "$BUS" "$ADR" "$REG" $((val ^ MSK)) b
 
-_log '> Done!'
+echo '> Done!'
 exit 0
 EOF
 
@@ -72,14 +67,18 @@ EOF
 #
 # Copyright (C) 2025 Stouthart. All rights reserved.
 
-on property:sys.boot_completed=1
-  exec -- $file1
+on boot
+    start batfet
 
-on property:sys.powerctl=*
-  exec -- $file1 
+on reboot shutdown
+    start batfet
+
+service batfet /system/bin/sh $file1 \${sys.powerctl}
+    class late_start
+    user root
+    group root
+    oneshot
 EOF
-
-  [ "${noauto:-0}" -eq 1 ] && sed -i '3,5d' $file2
 
   chmod 0644 $file2
   chcon u:object_r:system_file:s0 $file2
