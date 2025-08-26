@@ -18,7 +18,7 @@
 
   echo '[ BATFET_DIS ]'
 
-  file1=/system/bin/bq25890.sh
+  file1=/data/adb/bq25890.sh
   file2=/etc/init/bq25890.rc
 
   echo "> Writing $file1..."
