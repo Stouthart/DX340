@@ -75,7 +75,7 @@ on property:sys.boot_completed=1
     exec -- $file1 disable
 
 on property:sys.powerctl=*
-    exec -- $file1 enable
+    exec_background -- $SHELL -c \"sleep 2; $file1 enable\""
 EOF
 
   chmod 0644 $file2
