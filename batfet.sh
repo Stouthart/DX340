@@ -30,7 +30,7 @@
 
 [ -t 1 ] || {
   exec >>"${0%.sh}.log" 2>&1
-  date '+%Y/%m/%d %H:%M:%S'
+  printf '%s ' "$(date '+%Y/%m/%d %H:%M:%S')"
 }
 
 BUS=4
@@ -47,9 +47,9 @@ val=$(i2cget -f -y $BUS $ADR $REG)
 case $1 in
 disable)
   # Check bit 2
-  # [ $((val & 0x04)) -eq 0 ] && {
   [ "$(cat /sys/class/power_supply/bq25890/voltage_now)" -lt 300000000 ] && {
-    echo 'No or insufficient power'
+    _i2cset $((val & ~MSK))
+    echo 'Insufficient power'
     exit 1
   }
   _i2cset $((val | MSK))
