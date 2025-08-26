@@ -30,7 +30,7 @@
 
 [ -t 1 ] || {
   exec >>"${0%.*}.log" 2>&1
-  echo "$(date '+%Y/%m/%d %H:%M:%S') ${1:-}"
+  echo "$(date '+%Y/%m/%d %H:%M:%S') ${1:-null}"
 }
 
 echo '[ BQ25890 ]'
@@ -67,16 +67,14 @@ EOF
 #
 # Copyright (C) 2025 Stouthart. All rights reserved.
 
-on boot
+on property:sys.boot_completed=1
     start batfet
 
-on reboot shutdown
+on property:sys.powerctl=*
     start batfet
 
 service batfet /system/bin/sh $file1 \${sys.powerctl}
     class late_start
-    user root
-    group root
     oneshot
 EOF
 
