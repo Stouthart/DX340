@@ -68,10 +68,14 @@ EOF
 # Copyright (C) 2025 Stouthart. All rights reserved.
 
 on property:sys.boot_completed=1
-    exec -- /system/bin/sh $file1
+    start batfet
 
 on property:sys.powerctl=*
-    exec -- /system/bin/sh $file1 \${sys.powerctl}
+    exec_start batfet \${sys.powerctl}
+
+service batfet /system/bin/sh $file1
+    class late_start
+    oneshot
 EOF
 
   chmod 0644 $file2
