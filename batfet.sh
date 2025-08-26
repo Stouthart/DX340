@@ -18,7 +18,7 @@
 
   echo '[ BATFET_DIS ]'
 
-  file1=/data/adb/bq25890.sh
+  file1=/system/bin/bq25890.sh
   file2=/etc/init/bq25890.rc
 
   echo "> Writing $file1..."
@@ -58,8 +58,6 @@ enable)
   exit 1
   ;;
 esac
-
-exit 0
 EOF
 
   chmod +x $file1
@@ -71,16 +69,21 @@ EOF
 #
 # Copyright (C) 2025 Stouthart. All rights reserved.
 
-on property:sys.boot_completed=1
-    exec -- $file1 disable
+service bq25890_disable $SHELL $file1 disable
+    class late_start
+    oneshot
+    disabled
 
-service myscript_power $SHELL $file1 disable
-    class main
+on property:sys.boot_completed=1
+    start bq25890_disable
+
+service bq25890_enable $SHELL $file1 enable
+    class core
     oneshot
     disabled
 
 on property:sys.powerctl=*
-    exec -- $file1 enable
+    start bq25890_enable
 EOF
 
   chmod 0644 $file2
