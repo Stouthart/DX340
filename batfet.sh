@@ -48,7 +48,7 @@ disable)
     echo 'Not USB powered'
     exit 1
   }
-  _i2cset $((val | MSK))
+  _i2cset $((val | MSK | 0x08)) # bit 3 / dly
   echo 'Desktop mode (BATFET disabled)'
   ;;
 enable)
