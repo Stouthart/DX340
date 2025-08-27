@@ -86,23 +86,15 @@ EOF
 #
 # Copyright (C) 2025 Stouthart. All rights reserved.
 
-service desktop_mode $SHELL $file1 disable
-    class late_start
-    user root
-    oneshot
-    disabled
+# Device model: DX340
+#
+# Copyright (C) 2025 Stouthart. All rights reserved.
 
 on property:sys.boot_completed=1
-    start desktop_mode
-
-service portable_mode $SHELL $file1 enable
-    class core
-    user root
-    oneshot
-    disabled
+  exec -- $file1 disable
 
 on shutdown
-    start portable_mode
+  exec -- $file1 enable
 EOF
 
   chmod 0644 $file2
