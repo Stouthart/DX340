@@ -62,13 +62,13 @@ disable)
   bq24192 $((A_VAL | MSK))
   echo 'Desktop mode (BATFET disabled)'
   ;;
-enable)
+reset)
   bq24192 $((A_VAL & ~MSK))
   bq25890 $((D_VAL & ~MSK))
-  echo 'Portable mode (BATFET enabled)'
+  echo 'Portable mode (BATFET resettted)'
   ;;
 *)
-  echo "Usage: ${0##*/} disable|enable"
+  echo "Usage: ${0##*/} disable|reset"
   exit 1
   ;;
 esac
@@ -94,7 +94,7 @@ on property:sys.boot_completed=1
   exec -- $file1 disable
 
 on shutdown
-  exec -- $file1 enable
+  exec -- $file1 reset
 EOF
 
   chmod 0644 $file2
