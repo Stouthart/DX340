@@ -23,7 +23,7 @@
   cat >$file1 <<'EOF'
 #!/bin/sh
 #
-# Copyright (C) 2025 Stouthart. All rights reservaled.
+# Copyright (C) 2025 Stouthart. All rights reserved.
 
 [ -t 1 ] || {
   exec >>"${0%.sh}.log" 2>&1
