@@ -86,12 +86,8 @@ EOF
 #
 # Copyright (C) 2025 Stouthart. All rights reserved.
 
-# Device model: DX340
-#
-# Copyright (C) 2025 Stouthart. All rights reserved.
-
 on property:sys.boot_completed=1
-  exec -- $file1 disable
+  exec_background -- $file1 disable
 
 on shutdown
   exec -- $file1 reset
