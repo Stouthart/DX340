@@ -80,7 +80,7 @@ esac
 ## https://www.ti.com/lit/ds/symlink/bq25890.pdf
 EOF
 
-  [ "${notest:-0}" -eq 1 ] && {
+  [ "${nocheck:-0}" -eq 1 ] && {
     # shellcheck disable=SC2016
     sed -i '33s,.*,  case "$(cat /sys/class/power_supply/bq25890/online)" in,' $file1
     sed -i 's,2 | 3 | 4,1,' $file1
