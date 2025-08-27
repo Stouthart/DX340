@@ -64,4 +64,4 @@ on property:init.svc.vendor.cnss_diag=running
 
 on property:init.svc.vendor.msm_irqbalance=running
   # Increase priority of IRQ balancer
-  exec -- /system/bin/renice -n -10 -p ${init.svc_debug_pid.vendor.msm_irqbalance}
+  exec_background -- /system/bin/renice -n -10 -p ${init.svc_debug_pid.vendor.msm_irqbalance}
