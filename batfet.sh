@@ -86,23 +86,23 @@ EOF
 #
 # Copyright (C) 2025 Stouthart. All rights reserved.
 
-service bq25890_disable $SHELL $file1 disable
+service desktop_mode $SHELL $file1 disable
     class late_start
     user root
     oneshot
     disabled
 
 on property:sys.boot_completed=1
-    start bq25890_disable
+    start desktop_mode
 
-service bq25890_enable $SHELL $file1 enable
+service portable_mode $SHELL $file1 enable
     class core
     user root
     oneshot
     disabled
 
 on property:sys.powerctl=*
-    start bq25890_enable
+    start portable_mode
 EOF
 
   chmod 0644 $file2
