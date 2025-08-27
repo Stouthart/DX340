@@ -8,15 +8,15 @@
     exit 1
   }
 
-  [ -w /etc/init ] || {
+  file1=/data/adb/batfet.sh
+  file2=/etc/init/batfet.rc
+
+  [ -w "${file1%/*}" ] && [ -w "${file2%/*}" ] || {
     echo 'Read-only file system. Try "adb remount" first.' >&2
     exit 1
   }
 
   echo '[ BATFET_DIS ]'
-
-  file1=/data/adb/batfet.sh
-  file2=/etc/init/batfet.rc
 
   echo "> Writing $file1..."
 
