@@ -54,9 +54,9 @@ D_VAL=$(i2cget -f -y $D_BUS $D_ADR $D_REG)
 case $1 in
 disable)
   val=$(($(i2cget -f -y $D_BUS $D_ADR 0x0B) >> 5 & 0x07))
-  [ $val = 2 ] || [ $val = 3 ] || { # USB CDP (1.5A) || USB DCP (3.25A)
+  [ $val = 2 ] || [ $val = 3 ] || {
     echo 'No USB charger detected'
-    exit 1
+    exit 2
   }
   bq25890 $((D_VAL | MSK))
   bq24192 $((A_VAL | MSK))
