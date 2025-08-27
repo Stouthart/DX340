@@ -3,13 +3,10 @@
 # Copyright (C) 2025 Stouthart. All rights reserved.
 {
   # shellcheck disable=SC3028
-  case "$HOSTNAME" in
-  DX340) ;;
-  *)
+  [ "$HOSTNAME" = "DX340" ] || {
     echo 'Your device is not compatible with this version.' >&2
     exit 1
-    ;;
-  esac
+  }
 
   [ -w /etc/init ] || {
     echo 'Read-only file system. Try "adb remount" first.' >&2
