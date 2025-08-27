@@ -30,7 +30,7 @@
 
 [ -t 1 ] || {
   exec >>"${0%.sh}.log" 2>&1
-  printf '%s ' "$(date '+%Y/%m/%d %H:%M:%S')"
+  date '+%Y/%m/%d %H:%M:%S'
 }
 
 BUS=4
@@ -46,10 +46,9 @@ val=$(i2cget -f -y $BUS $ADR $REG)
 
 case $1 in
 disable)
-  # Check bit 2
-  [ "$(cat /sys/class/power_supply/bq25890/voltage_now)" -lt 300000000 ] && {
-    _i2cset $((val & ~MSK))
-    echo 'Insufficient power'
+  v=$((($(i2cget -f -y $BUS $ADR 0x0B) >> 5) & 0x07))
+  [ $v = 2 ] || [ $v = 3 ] || { # USB CDP (1.5A) || USB DCP (3.25A)
+    echo 'No USB charger'
     exit 1
   }
   _i2cset $((val | MSK))
@@ -64,6 +63,8 @@ enable)
   exit 1
   ;;
 esac
+
+# https://www.ti.com/lit/ds/symlink/bq25890.pdf
 EOF
 
   chmod +x $file1
