@@ -15,44 +15,56 @@
 
   echo '[ BATFET_DIS ]'
 
-  file1=/data/adb/bq25890.sh
-  file2=/etc/init/bq25890.rc
+  file1=/data/adb/batfet.sh
+  file2=/etc/init/batfet.rc
 
   echo "> Writing $file1..."
 
   cat >$file1 <<'EOF'
 #!/bin/sh
 #
-# Copyright (C) 2025 Stouthart. All rights reserved.
+# Copyright (C) 2025 Stouthart. All rights reservaled.
 
 [ -t 1 ] || {
   exec >>"${0%.sh}.log" 2>&1
   date '+%Y/%m/%d %H:%M:%S'
 }
 
-BUS=4
-ADR=0x6a
-REG=0x09
+A_BUS=3
+A_ADR=0x6b
+A_REG=0x07
+
+D_BUS=4
+D_ADR=0x6a
+D_REG=0x09
+
 MSK=0x20 # bit 5
 
-_i2cset() {
-  i2cset -f -y "$BUS" "$ADR" "$REG" "$1" b
+bq24192() {
+  i2cset -f -y "$A_BUS" "$A_ADR" "$A_REG" "$1" b
 }
 
-val=$(i2cget -f -y $BUS $ADR $REG)
+bq25890() {
+  i2cset -f -y "$D_BUS" "$D_ADR" "$D_REG" "$1" b
+}
+
+A_VAL=$(i2cget -f -y $A_BUS $A_ADR $A_REG)
+D_VAL=$(i2cget -f -y $D_BUS $D_ADR $D_REG)
 
 case $1 in
 disable)
-  v=$((($(i2cget -f -y $BUS $ADR 0x0B) >> 5) & 0x07))
-  [ $v = 2 ] || [ $v = 3 ] || { # USB CDP (1.5A) || USB DCP (3.25A)
+  val=$(($(i2cget -f -y $D_BUS $D_ADR 0x0B) >> 5 & 0x07))
+  [ $val = 2 ] || [ $val = 3 ] || { # USB CDP (1.5A) || USB DCP (3.25A)
     echo 'No USB charger'
     exit 1
   }
-  _i2cset $((val | MSK))
+  bq25890 $((D_VAL | MSK))
+  bq24192 $((A_VAL | MSK))
   echo 'Desktop mode (BATFET disabled)'
   ;;
 enable)
-  _i2cset $((val & ~MSK))
+  bq24192 $((A_VAL & ~MSK))
+  bq25890 $((D_VAL & ~MSK))
   echo 'Portable mode (BATFET enabled)'
   ;;
 *)
@@ -61,7 +73,8 @@ enable)
   ;;
 esac
 
-# https://www.ti.com/lit/ds/symlink/bq25890.pdf
+## https://www.ti.com/lit/ds/symlink/bq24192.pdf
+## https://www.ti.com/lit/ds/symlink/bq25890.pdf
 EOF
 
   chmod +x $file1
