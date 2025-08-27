@@ -101,7 +101,7 @@ service portable_mode $SHELL $file1 enable
     oneshot
     disabled
 
-on property:sys.powerctl=*
+on shutdown
     start portable_mode
 EOF
 
