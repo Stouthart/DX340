@@ -68,7 +68,7 @@ disable)
 reset)
   bq24192 $((A_VAL & ~MSK))
   bq25890 $((D_VAL & ~MSK))
-  echo 'Portable mode (BATFET resettted)'
+  echo 'Portable mode (BATFET resetted)'
   ;;
 *)
   echo "Usage: ${0##*/} disable|reset"
