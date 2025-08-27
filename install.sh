@@ -68,7 +68,7 @@
   fi
 
   # RAM tuning
-  read -r _ mem _ </proc/meminfo && [ "$mem" -gt 4194304 ] && {
+  awk '/MemTotal/ { exit ($2 <= 4194304) }' /proc/meminfo && {
     echo '> Tuning for > 4GB RAM...'
     _sedregx sda/queue/nr_requests 256
     _execbkg tdswap 'echo 10 >/proc/sys/vm/swappiness'
