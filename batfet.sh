@@ -53,11 +53,14 @@ D_VAL=$(i2cget -f -y $D_BUS $D_ADR $D_REG)
 
 case $1 in
 disable)
-  val=$(($(i2cget -f -y $D_BUS $D_ADR 0x0B) >> 5 & 0x07))
-  [ $val = 2 ] || [ $val = 3 ] || {
+  case $(($(i2cget -f -y $D_BUS $D_ADR 0x0B) >> 5 & 0x07)) in
+  2 | 3 | 4) ;;
+  *)
     echo 'No USB charger detected'
     exit 2
-  }
+    ;;
+  esac
+
   bq25890 $((D_VAL | MSK))
   bq24192 $((A_VAL | MSK))
   echo 'Desktop mode (BATFET disabled)'
