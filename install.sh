@@ -1,6 +1,6 @@
 #!/bin/sh
-#
-# v6.2 - Copyright (C) 2025 Stouthart. All rights reserved.
+# v6.2
+# Copyright © 2025 Stouthart. All rights reserved.
 {
   # shellcheck disable=SC3028
   case "$HOSTNAME" in
@@ -11,15 +11,15 @@
     ;;
   esac
 
-  [ -w /etc/init ] || {
+  url=https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/custom.rc
+  file=/etc/init/${url##*/}
+
+  [ -w "${file%/*}" ] || {
     echo 'Read-only file system. Try "adb remount" first.' >&2
     exit 1
   }
 
   echo '[ Advanced Tweaking ]'
-
-  url=https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/custom.rc
-  file=/etc/init/${url##*/}
 
   echo "> Downloading template..."
   curl -sSfo "$file" $url || {

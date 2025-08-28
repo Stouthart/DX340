@@ -1,4 +1,4 @@
-<!-- v6.2 - Copyright (C) 2025 Stouthart. All rights reserved. -->
+<!-- v6.2 - Copyright © 2025 Stouthart. All rights reserved. -->
 
 ![iBasso DX340]
 
@@ -126,7 +126,7 @@ curl -sS https://raw.githubusercontent.com/Stouthart/DX340/refs/heads/main/white
 
 ## License
 
-Copyright (C) 2025 Stouthart. All rights reserved.
+Copyright © 2025 Stouthart. All rights reserved.
 
 _The scripts in this repository are free for personal use. However, they are NOT published under a software license. This implies - as stated in the [GitHub Docs] - that standard copyright law applies, meaning the owner retains all rights to the source code and no one may reproduce, distribute, or create derivative works from this work._
 
