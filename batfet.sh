@@ -58,7 +58,7 @@ D_VAL=$(i2cget -f -y $D_BUS $D_ADR $D_REG)
 case $1 in
 disable)
   case $(($(i2cget -f -y $D_BUS $D_ADR 0x0B) >> 5 & 0x07)) in
-  2 | 3 | 4) ;;
+  2 | 3 | 4) ;; # USB CDP (1.5A) | USB DCP (3.25A) | Adjustable High Voltage DCP (MaxCharge)
   *)
     echo 'No USB charger detected'
     exit 2
