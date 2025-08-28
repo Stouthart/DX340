@@ -41,7 +41,7 @@ D_REG=0x09
 MSK=0x20 # bit 5
 
 _status() {
-  echo "$1: BATFET is $([ $(($2 & MSK)) -eq 0 ] && echo enabled || echo disabled)"
+  echo "$1: BATFET $([ $(($2 & MSK)) -eq 0 ] && echo enabled || echo disabled)"
 }
 
 bq24192() {
