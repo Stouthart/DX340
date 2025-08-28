@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# Copyright (C) 2025 Stouthart. All rights reserved.
+# Copyright © 2025 Stouthart. All rights reserved.
 {
   # shellcheck disable=SC3028
   [ "$HOSTNAME" = "DX340" ] || {
@@ -23,7 +23,7 @@
   cat >$file1 <<'EOF'
 #!/bin/sh
 #
-# Copyright (C) 2025 Stouthart. All rights reserved.
+# Copyright © 2025 Stouthart. All rights reserved.
 
 [ -t 1 ] || {
   exec >>"${0%.sh}.log" 2>&1
@@ -101,7 +101,7 @@ EOF
   cat >$file2 <<EOF
 # Device model: DX340
 #
-# Copyright (C) 2025 Stouthart. All rights reserved.
+# Copyright © 2025 Stouthart. All rights reserved.
 
 on property:sys.boot_completed=1
   exec_background -- $file1 disable
