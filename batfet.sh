@@ -40,6 +40,10 @@ D_REG=0x09
 
 MSK=0x20 # bit 5
 
+_status() {
+  echo "$1: BATFET is $([ $(($2 & MSK)) -eq 0 ] && echo enabled || echo disabled)"
+}
+
 bq24192() {
   i2cset -f -y "$A_BUS" "$A_ADR" "$A_REG" "$1" b
 }
@@ -65,13 +69,17 @@ disable)
   bq24192 $((A_VAL | MSK))
   echo 'Desktop mode (BATFET disabled)'
   ;;
-reset)
+enable)
   bq24192 $((A_VAL & ~MSK))
   bq25890 $((D_VAL & ~MSK))
-  echo 'Portable mode (BATFET resetted)'
+  echo 'Portable mode (BATFET enabled)'
+  ;;
+status)
+  _status bq24192 "$A_VAL"
+  _status bq25890 "$D_VAL"
   ;;
 *)
-  echo "Usage: ${0##*/} disable|reset"
+  echo "Usage: ${0##*/} disable|enable|status"
   exit 1
   ;;
 esac
@@ -82,7 +90,7 @@ EOF
 
   [ "${nocheck:-0}" -eq 1 ] && {
     # shellcheck disable=SC2016
-    sed -i '33s,.*,  case "$(cat /sys/class/power_supply/bq25890/online)" in,' $file1
+    sed -i '37s,.*,  case "$(cat /sys/class/power_supply/bq25890/online)" in,' $file1
     sed -i 's,2 | 3 | 4,1,' $file1
   }
 
@@ -99,7 +107,7 @@ on property:sys.boot_completed=1
   exec_background -- $file1 disable
 
 on shutdown
-  exec -- $file1 reset
+  exec -- $file1 enable
 EOF
 
   chmod 0644 $file2
