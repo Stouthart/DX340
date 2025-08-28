@@ -90,8 +90,7 @@ EOF
 
   [ "${nocheck:-0}" -eq 1 ] && {
     # shellcheck disable=SC2016
-    sed -i '37s,.*,  case "$(cat /sys/class/power_supply/bq25890/online)" in,' $file1
-    sed -i 's,2 | 3 | 4,1,' $file1
+    sed -i '37,38c\  case "$(cat /sys/class/power_supply/bq25890/online)" in\n  1) ;;' $file1
   }
 
   chmod +x $file1
