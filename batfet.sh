@@ -60,7 +60,7 @@ disable)
   case $(($(i2cget -f -y $D_BUS $D_ADR 0x0B) >> 5 & 0x07)) in
   2 | 3 | 4) ;; # USB CDP (1.5A) | USB DCP (3.25A) | Adjustable High Voltage DCP (MaxCharge)
   *)
-    echo 'No USB charger detected'
+    echo 'No USB charger detected' >&2
     exit 2
     ;;
   esac
@@ -79,8 +79,8 @@ status)
   _status bq25890 "$D_VAL"
   ;;
 *)
-  echo "Usage: ${0##*/} disable|enable|status"
-  exit 1
+  echo "Usage: ${0##*/} disable|enable|status" >&2
+  exit 2
   ;;
 esac
 
