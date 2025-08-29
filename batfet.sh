@@ -1,5 +1,5 @@
 #!/bin/sh
-#
+# experimental
 # Copyright © 2025 Stouthart. All rights reserved.
 
 [ -t 1 ] || {
@@ -31,8 +31,8 @@ bq25890() {
   i2cset -f -y $D_BUS $D_ADR $D_REG "$1" b
 }
 
-A_VAL=$(i2cget -f -y $A_BUS $A_ADR $A_REG)
-D_VAL=$(i2cget -f -y $D_BUS $D_ADR $D_REG)
+A_VAL="$(i2cget -f -y $A_BUS $A_ADR $A_REG)"
+D_VAL="$(i2cget -f -y $D_BUS $D_ADR $D_REG)"
 
 case $1 in
 disable)
