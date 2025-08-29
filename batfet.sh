@@ -20,7 +20,7 @@ D_REG=0x09
 MSK=32 # bit 5
 
 _status() {
-  printf "%-15s: BATFET %s\n" "$1" "$([ $(($2 & MSK)) -eq 0 ] && echo enabled || echo disabled)"
+  printf "%-17s: BATFET %s\n" "$1" "$([ $(($2 & MSK)) -eq 0 ] && echo enabled || echo disabled)"
 }
 
 bq24192() {
