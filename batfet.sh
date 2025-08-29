@@ -1,5 +1,5 @@
 #!/bin/sh
-#
+# experimental
 # Copyright © 2025 Stouthart. All rights reserved.
 
 [ -t 1 ] || {

@@ -1,5 +1,5 @@
 #!/bin/sh
-#
+# experimental
 # Copyright © 2025 Stouthart. All rights reserved.
 {
   # shellcheck disable=SC3028
@@ -36,7 +36,7 @@
 
   cat >$file2 <<EOF
 # Device model: DX340
-# 
+# experimental
 # Copyright © 2025 Stouthart. All rights reserved.
 
 on property:sys.boot_completed=1
