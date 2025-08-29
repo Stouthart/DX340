@@ -1,5 +1,5 @@
 #!/bin/sh
-# v6.2
+# v6.3
 # Copyright © 2025 Stouthart. All rights reserved.
 {
   # shellcheck disable=SC3028

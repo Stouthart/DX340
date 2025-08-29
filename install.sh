@@ -1,5 +1,5 @@
 #!/bin/sh
-# v6.2
+# v6.3
 # Copyright © 2025 Stouthart. All rights reserved.
 {
   # shellcheck disable=SC3028
@@ -37,7 +37,7 @@
   }
 
   _execbkg() {
-    _replace "$1" "exec_background -- $SHELL -c \"sleep 2; $2\""
+    _replace "$1" "exec_background -- /bin/sh -c \"sleep 2; $2\""
   }
 
   _minfreq() {

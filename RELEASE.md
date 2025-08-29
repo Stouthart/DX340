@@ -1,6 +1,13 @@
-<!-- v6.2 - Copyright © 2025 Stouthart. All rights reserved. -->
+<!-- v6.3 - Copyright © 2025 Stouthart. All rights reserved. -->
 
-# v6.2 - Latest
+# v6.3 - Latest
+
+### General
+
+- All code checked/optimized for mksh (and Bash) compatibility
+- Various code improvements
+
+## v6.2
 
 ### Debloating & Optimization
 
