@@ -36,7 +36,7 @@ D_VAL="$(i2cget -f -y $D_BUS $D_ADR $D_REG)"
 
 case $1 in
 disable)
-  case $(($(i2cget -f -y $D_BUS $D_ADR 0x0B) >> 5 & 0x07)) in
+  case $(($(i2cget -f -y $D_BUS $D_ADR 0x0b) >> 5 & 0x07)) in
   2 | 3 | 4) ;; # USB CDP (1.5A) | USB DCP (3.25A) | Adjustable High Voltage DCP (MaxCharge)
   *)
     echo 'No USB charger detected' >&2
@@ -62,6 +62,8 @@ status)
   exit 2
   ;;
 esac
+
+exit 0
 
 ## https://www.ti.com/lit/ds/symlink/bq24192.pdf
 ## https://www.ti.com/lit/ds/symlink/bq25890.pdf

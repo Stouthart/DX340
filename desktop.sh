@@ -19,9 +19,9 @@
 
   echo '[ Desktop Mode ]'
 
-  echo "> Downloading template.."
+  echo "> Downloading script..."
   curl -sSfo "$file1" $url || {
-    echo 'Failed to download template.' >&2
+    echo 'Failed to download script.' >&2
     exit 2
   }
 
@@ -32,7 +32,7 @@
     sed -i '39,40c\  case "$(cat /sys/class/power_supply/bq25890/online)" in\n  1) ;;' "$file1"
   }
 
-  echo "> Creating init file..."
+  echo "> Creating ${file2##*/}..."
 
   cat >$file2 <<EOF
 # Device model: DX340
