@@ -1,5 +1,5 @@
 #!/bin/sh
-# experimental
+#
 # Copyright © 2025 Stouthart. All rights reserved.
 {
   # shellcheck disable=SC3028
@@ -29,7 +29,7 @@
 
   [ "${nocheck:-0}" -eq 1 ] && {
     # shellcheck disable=SC2016
-    sed -i '37,38c\  case "$(cat /sys/class/power_supply/bq25890/online)" in\n  1) ;;' "$file1"
+    sed -i '39,40c\  case "$(cat /sys/class/power_supply/bq25890/online)" in\n  1) ;;' "$file1"
   }
 
   echo "> Creating init file..."
