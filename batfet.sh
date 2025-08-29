@@ -115,7 +115,7 @@ EOF
   echo '> Done!'
 
   [ "${noboot:-0}" -eq 1 ] || {
-    echo "> Rebooting..."
-    reboot
+    echo "> Shutdown..."
+    reboot -p
   }
 }
