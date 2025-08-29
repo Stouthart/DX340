@@ -22,7 +22,7 @@
 
   cat >$file1 <<'EOF'
 #!/bin/sh
-#
+# 
 # Copyright © 2025 Stouthart. All rights reserved.
 
 [ -t 1 ] || {
@@ -79,8 +79,8 @@ status)
   _status bq25890 "$D_VAL"
   ;;
 *)
-  echo "Usage: ${0##*/} disable|enable|status" >&2
-  exit 2
+  echo "Usage: ${0##*/} disable|enable|status"
+  exit 0
   ;;
 esac
 
@@ -99,7 +99,7 @@ EOF
 
   cat >$file2 <<EOF
 # Device model: DX340
-#
+# 
 # Copyright © 2025 Stouthart. All rights reserved.
 
 on property:sys.boot_completed=1
